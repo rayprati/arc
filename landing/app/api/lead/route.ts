@@ -31,12 +31,20 @@ export async function POST(request: Request) {
     const formEndpoint = process.env.FORM_ENDPOINT;
 
     if (formEndpoint) {
+      const airtableToken = process.env.AIRTABLE_TOKEN;
+
+      // Airtable expects records wrapped; plain endpoints receive payload directly.
+      const body = airtableToken
+        ? JSON.stringify({ records: [{ fields: payload }] })
+        : JSON.stringify(payload);
+
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (airtableToken) headers["Authorization"] = `Bearer ${airtableToken}`;
+
       const response = await fetch(formEndpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+        headers,
+        body,
         cache: "no-store",
       });
 
