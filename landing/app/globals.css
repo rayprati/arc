@@ -148,6 +148,95 @@ img {
   margin-bottom: 28px;
 }
 
+.subpage-header-rich {
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 14px;
+}
+
+.subpage-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.subpage-back-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.subpage-back-link:hover {
+  color: var(--text);
+}
+
+.subpage-doc-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+  font-size: 0.92rem;
+}
+
+.subpage-doc-nav a {
+  color: var(--text-muted);
+}
+
+.subpage-doc-nav a:hover {
+  color: var(--text);
+}
+
+.subpage-doc-nav a.is-current {
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.subpage-doc-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.subpage-doc-sep {
+  padding: 0 2px;
+  color: var(--text-subtle);
+  user-select: none;
+}
+
+.site-legal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 8px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.site-legal-nav a {
+  color: rgba(231, 235, 243, 0.9);
+  font-weight: 600;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.site-legal-nav a:hover {
+  color: var(--accent-strong);
+}
+
+.site-legal-nav-sep {
+  color: rgba(231, 235, 243, 0.45);
+  user-select: none;
+}
+
 .nav-links,
 .footer-nav,
 .hero-actions,
@@ -1117,6 +1206,89 @@ li {
   padding-top: 24px;
 }
 
+.learn-shell .final-cta > h2 {
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+}
+
+.learn-flow .section-label {
+  margin-bottom: 2px;
+}
+
+.learn-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+  counter-reset: learn-step;
+}
+
+.learn-steps > li {
+  position: relative;
+  padding: 18px 0 18px 2.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.learn-steps > li:first-child {
+  padding-top: 12px;
+  border-top: 0;
+}
+
+.learn-steps > li::before {
+  counter-increment: learn-step;
+  content: counter(learn-step) ".";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 1.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-strong);
+  text-align: right;
+}
+
+.learn-steps > li:first-child::before {
+  top: 0.85rem;
+}
+
+.learn-step-title {
+  margin: 0 0 8px;
+  font-size: clamp(1.05rem, 1.85vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.learn-steps > li p {
+  margin: 0;
+}
+
+.learn-steps > li p + p {
+  margin-top: 10px;
+}
+
+.learn-flow .learn-steps strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.learn-shell .learn-faq-block {
+  margin-top: 32px;
+}
+
+.learn-faq-heading {
+  margin: 6px 0 4px;
+  font-size: clamp(1.28rem, 2.4vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.learn-faq-block .faq-list {
+  margin-top: 8px;
+}
+
 .page-lead {
   display: grid;
   gap: 12px;
@@ -1147,9 +1319,12 @@ li {
   gap: 16px;
 }
 
+.page-lead h1,
 .legal-card h1 {
-  max-width: none;
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  max-width: 26ch;
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
 }
 
 .legal-card h2 {
@@ -1159,6 +1334,28 @@ li {
 
 .legal-card a {
   color: var(--accent-strong);
+}
+
+.legal-doc .legal-card h1 {
+  font-size: clamp(1.55rem, 2.85vw, 2.05rem);
+  line-height: 1.14;
+}
+
+.legal-doc .legal-card h2 {
+  font-size: clamp(1.02rem, 1.65vw, 1.18rem);
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+
+.legal-doc .legal-card p {
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+.legal-doc .legal-card .legal-updated {
+  font-size: 0.88rem;
 }
 
 .site-footer {

@@ -59,19 +59,18 @@ export default function Home() {
         <FaqAccordion items={landingFaqs} />
       </TrackedSection>
 
-      <nav className="nav-cards-grid" aria-label="Site navigation">
-        <TrackedLink className="nav-card" eventName="learn_more_click" href="/learn">
-          <span className="nav-card-title">Learn More</span>
-          <p>How Arc works, the mechanics, and what to expect from early access.</p>
+      <nav className="site-legal-nav" aria-label="Learn, terms, and privacy">
+        <TrackedLink eventName="learn_more_click" href="/learn">
+          Learn more
         </TrackedLink>
-        <TrackedLink className="nav-card" href="/terms">
-          <span className="nav-card-title">Terms</span>
-          <p>How the commitment and payment mechanics work legally.</p>
-        </TrackedLink>
-        <TrackedLink className="nav-card" href="/privacy">
-          <span className="nav-card-title">Privacy</span>
-          <p>What data Arc collects and how it is handled.</p>
-        </TrackedLink>
+        <span className="site-legal-nav-sep" aria-hidden>
+          ·
+        </span>
+        <TrackedLink href="/terms">Terms</TrackedLink>
+        <span className="site-legal-nav-sep" aria-hidden>
+          ·
+        </span>
+        <TrackedLink href="/privacy">Privacy</TrackedLink>
       </nav>
 
       <TrackedSection className="final-cta" sectionId="final-cta">

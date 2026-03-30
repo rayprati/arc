@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Arc is a premium commitment app for people who are done pretending. Choose your habit, choose your mode, and make failure cost something.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "legal@arc-app.com",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "chatgpt2792025@gmail.com",
 };
 
 export const habits = [

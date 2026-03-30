@@ -1,5 +1,5 @@
 import { SiteFooter } from "@/components/site-footer";
-import { TrackedLink } from "@/components/tracked-link";
+import { SubpageHeader } from "@/components/subpage-header";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = {
@@ -9,15 +9,8 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="page-shell legal-shell">
-      <header className="subpage-header">
-        <TrackedLink className="wordmark" href="/">
-          {siteConfig.name}
-        </TrackedLink>
-        <TrackedLink className="button button-secondary nav-button" href="/start">
-          Start Your Arc
-        </TrackedLink>
-      </header>
+    <main className="page-shell legal-shell legal-doc">
+      <SubpageHeader current="privacy" />
 
       <section className="legal-card">
         <span className="section-label">Privacy policy</span>
@@ -82,7 +75,8 @@ export default function PrivacyPage() {
 
         <h2>9. Contact</h2>
         <p>
-          Questions or requests about privacy can be sent to <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.
+          Questions or requests about privacy can be sent to{" "}
+          <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
         </p>
       </section>
 
