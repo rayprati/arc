@@ -37,15 +37,22 @@ export async function POST(request: Request) {
 
       if (airtableToken) {
         const formula = `({email}="${email}")`;
-        const checkUrl = `${formEndpoint}?filterByFormula=${encodeURIComponent(formula)}&maxRecords=1&fields[]=email`;
+        const checkUrl =
+          formEndpoint +
+          "?filterByFormula=" +
+          encodeURIComponent(formula) +
+          "&maxRecords=1";
         const checkResponse = await fetch(checkUrl, {
           method: "GET",
           headers: authHeaders,
           cache: "no-store",
         });
 
+        const checkText = await checkResponse.text();
+        console.log(`[lead] duplicate check ${checkResponse.status}:`, checkText);
+
         if (checkResponse.ok) {
-          const checkData = (await checkResponse.json()) as { records: unknown[] };
+          const checkData = JSON.parse(checkText) as { records: unknown[] };
           if (checkData.records.length > 0) {
             return NextResponse.json(
               { error: "That email is already registered." },
@@ -53,9 +60,10 @@ export async function POST(request: Request) {
             );
           }
         } else {
-          const errText = await checkResponse.text().catch(() => "(unreadable)");
-          console.error(`[lead] duplicate check failed ${checkResponse.status}:`, errText);
+          console.error(`[lead] duplicate check failed — proceeding with insert anyway`);
         }
+      } else {
+        console.warn("[lead] AIRTABLE_TOKEN not set — skipping duplicate check");
       }
 
       // Airtable expects records wrapped; plain endpoints receive payload directly.

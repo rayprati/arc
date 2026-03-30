@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type PrecommitModalProps = {
   open: boolean;
@@ -48,18 +49,19 @@ export function PrecommitModal({
   if (!open) return null;
 
   if (done) {
-    return (
+    return createPortal(
       <div aria-modal="true" className="modal-backdrop modal-backdrop-done" role="dialog">
         <div className="modal-card modal-card-done">
           <h2>Good work.</h2>
           <h2>We&apos;ll speak soon.</h2>
           <p className="modal-done-sub">You may now close this window.</p>
         </div>
-      </div>
+      </div>,
+      document.body,
     );
   }
 
-  return (
+  return createPortal(
     <div aria-modal="true" className="modal-backdrop" role="dialog">
       <div className="modal-card">
         <button aria-label="Close modal" className="modal-close" onClick={onClose} type="button">
@@ -90,6 +92,7 @@ export function PrecommitModal({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
