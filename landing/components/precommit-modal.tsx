@@ -41,12 +41,8 @@ export function PrecommitModal({
         <button aria-label="Close modal" className="modal-close" onClick={onClose} type="button">
           ×
         </button>
-        <span className="section-label">Founding cohort</span>
-        <h2>Email received. Pre-commit $1. Money returned if not spent.</h2>
-        <p>
-          Reserve your spot and show you&apos;re serious. Your $1 is only used if your commitment
-          flow uses it.
-        </p>
+        <h2>Email received.</h2>
+        <p>Show you&apos;re serious. Money returned if not spent.</p>
         <div className="modal-actions">
           <button className="button button-primary" onClick={onPrecommit} type="button">
             Pre-commit $1
@@ -55,11 +51,6 @@ export function PrecommitModal({
             Skip for now
           </button>
         </div>
-        <p className="modal-footnote">
-          {paymentLink
-            ? "You will be taken to a secure payment link."
-            : "Payment is not live yet. Clicking still records your pre-commit interest."}
-        </p>
       </div>
     </div>
   );

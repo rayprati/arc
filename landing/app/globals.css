@@ -1089,6 +1089,7 @@ li {
 
 .modal-actions {
   margin-top: 24px;
+  justify-content: center;
 }
 
 .learn-shell,
