@@ -55,17 +55,17 @@ export const howItWorks = [
   {
     step: "01",
     title: "Pick the habit",
-    body: "Choose the thing that keeps beating you: vaping, porn, drinking, skipping workouts, or endless scrolling.",
+    body: "Choose the thing that keeps beating you: vaping, porn, drinking, skipping workouts, endless scrolling, etc.",
   },
   {
     step: "02",
     title: "Choose your mode",
-    body: "Keep it private, lock in a friends-only circle, or make the commitment public when shame works better than privacy.",
+    body: "Keep it private, lock in a friends-only circle, or, preferably, make the commitment public when shame works better than willpower.",
   },
   {
     step: "03",
-    title: "Pay when you fail",
-    body: "Arc turns relapse into a consequence instead of another promise. Private if you want. Social if you need. Expensive when you break.",
+    title: "Consequence when you fail",
+    body: "Arc turns relapse into a consequence instead of another promise. Social if you want. Private if you need. Serious when you break.",
   },
 ];
 
@@ -79,7 +79,7 @@ export const landingFaqs = [
   {
     question: "How does Arc work?",
     answer:
-      "You pick a habit, choose a commitment length, choose how public it is, and use consequences instead of vague intention to stay clean.",
+      "You pick a habit, choose a commitment length, and use consequences instead of vague intention to stay clean. Every time you break your streak, you enter $1. Honor code. The money isn't the point. The ownership is.",
   },
   {
     question: "Do I have to make my goal public?",
@@ -89,17 +89,17 @@ export const landingFaqs = [
   {
     question: "What kinds of habits can I use Arc for?",
     answer:
-      "The first release is designed for clear, high-emotion habits such as vaping, porn, drinking, junk food, skipping workouts, and doomscrolling.",
+      "Whatever you want. You write the habit you're trying to break. Then you break it. It's that simple.",
   },
   {
     question: "What happens when I fail?",
     answer:
-      "The commitment is supposed to cost something. Arc is testing money-based consequences because soft utilities rarely change behavior on their own.",
+      "You admit it, you log the dollar, and you start again. That's it. No lecture, no reset screen, no motivation quote. You own your outcome.",
   },
   {
     question: "Is this available yet?",
     answer:
-      "Arc is opening early access now. Enter your email to join the founding cohort and get first access when the commitment flow goes live.",
+      "Arc is opening early access now. Enter your email to join the founding cohort and get first access when the app goes live in the coming weeks.",
   },
 ];
 
