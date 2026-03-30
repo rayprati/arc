@@ -14,7 +14,7 @@ export default function TermsPage() {
 
       <section className="legal-card">
         <span className="section-label">Terms and conditions</span>
-        <h1>Arc Terms of Service</h1>
+        <h1>ARC Terms of Service</h1>
         <p className="legal-updated">Last updated: March 21, 2026</p>
 
         <h2>1. Early access status</h2>

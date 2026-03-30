@@ -14,7 +14,7 @@ export default function PrivacyPage() {
 
       <section className="legal-card">
         <span className="section-label">Privacy policy</span>
-        <h1>Arc Privacy Policy</h1>
+        <h1>ARC Privacy Policy</h1>
         <p className="legal-updated">Last updated: March 21, 2026</p>
 
         <h2>1. Information we collect</h2>
