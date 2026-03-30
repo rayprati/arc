@@ -91,13 +91,10 @@ export function EmailCaptureForm({ paymentLink }: { paymentLink?: string }) {
     if (resolvedPaymentLink) {
       window.open(resolvedPaymentLink, "_blank", "noopener,noreferrer");
     }
-
-    setModalOpen(false);
   };
 
   const handleSkip = () => {
     trackEvent("precommit_skip");
-    setModalOpen(false);
   };
 
   return (

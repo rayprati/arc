@@ -32,23 +32,46 @@ export async function POST(request: Request) {
 
     if (formEndpoint) {
       const airtableToken = process.env.AIRTABLE_TOKEN;
+      const authHeaders: Record<string, string> = { "Content-Type": "application/json" };
+      if (airtableToken) authHeaders["Authorization"] = `Bearer ${airtableToken}`;
+
+      if (airtableToken) {
+        const checkUrl = `${formEndpoint}?filterByFormula=${encodeURIComponent(`({email}="${email}"`)}&maxRecords=1&fields[]=email`;
+        const checkResponse = await fetch(checkUrl, {
+          method: "GET",
+          headers: authHeaders,
+          cache: "no-store",
+        });
+
+        if (checkResponse.ok) {
+          const checkData = (await checkResponse.json()) as { records: unknown[] };
+          if (checkData.records.length > 0) {
+            return NextResponse.json(
+              { error: "That email is already registered." },
+              { status: 409 },
+            );
+          }
+        }
+      }
 
       // Airtable expects records wrapped; plain endpoints receive payload directly.
-      const body = airtableToken
+      const insertBody = airtableToken
         ? JSON.stringify({ records: [{ fields: payload }] })
         : JSON.stringify(payload);
 
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (airtableToken) headers["Authorization"] = `Bearer ${airtableToken}`;
-
       const response = await fetch(formEndpoint, {
         method: "POST",
-        headers,
-        body,
+        headers: authHeaders,
+        body: insertBody,
         cache: "no-store",
       });
 
       if (!response.ok) {
+        const errorBody = await response.text().catch(() => "(unreadable)");
+        console.error(
+          `[lead] Airtable error ${response.status} ${response.statusText}:`,
+          errorBody,
+        );
         return NextResponse.json(
           { error: "Unable to capture your email right now." },
           { status: 502 },

@@ -1092,6 +1092,14 @@ li {
   justify-content: center;
 }
 
+.modal-card-done {
+  text-align: center;
+}
+
+.modal-done-sub {
+  color: var(--text-subtle);
+}
+
 .learn-shell,
 .legal-shell {
   padding-top: 24px;
