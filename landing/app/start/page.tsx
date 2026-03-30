@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata = {
   title: "Start Your Arc",
-  description: "Enter your email to get early access to Arc.",
+  description: "Enter your email to get early access to ARC.",
 };
 
 export default function StartPage() {

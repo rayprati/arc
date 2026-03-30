@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata = {
   title: "Terms",
-  description: "Arc early access terms and conditions.",
+  description: "ARC early access terms and conditions.",
 };
 
 export default function TermsPage() {
@@ -19,50 +19,50 @@ export default function TermsPage() {
 
         <h2>1. Early access status</h2>
         <p>
-          Arc is currently offered as an early-access product and market validation experience.
+          ARC is currently offered as an early-access product and market validation experience.
           Features, availability, pricing, payment mechanics, and access rules may change without
           notice as the service evolves.
         </p>
 
         <h2>2. User responsibilities</h2>
         <p>
-          You agree to provide accurate information, use Arc only for lawful personal purposes, and
+          You agree to provide accurate information, use ARC only for lawful personal purposes, and
           avoid submitting content that is deceptive, abusive, defamatory, or infringing on the
           rights of others.
         </p>
 
         <h2>3. Commitment mechanics and pre-commit payments</h2>
         <p>
-          Arc is testing accountability and commitment mechanics. Any pre-commit payment option is
+          ARC is testing accountability and commitment mechanics. Any pre-commit payment option is
           intended as a seriousness signal or reservation mechanism unless otherwise stated at the
-          time of payment. Arc does not guarantee that a specific payment flow, refund flow, or
+          time of payment. ARC does not guarantee that a specific payment flow, refund flow, or
           product feature will remain unchanged.
         </p>
 
         <h2>4. Privacy mode descriptions</h2>
         <p>
-          Arc may offer Private, Friends Only, and Global visibility modes. These descriptions are
+          ARC may offer Private, Friends Only, and Global visibility modes. These descriptions are
           intended to explain product direction and do not create a warranty that the exact behavior
           of a mode will remain identical across releases.
         </p>
 
         <h2>5. Acceptable use</h2>
         <p>
-          You may not use Arc to harass others, impersonate another person, interfere with the
+          You may not use ARC to harass others, impersonate another person, interfere with the
           service, scrape the site, probe security, or attempt to reverse engineer restricted
           functionality.
         </p>
 
         <h2>6. No medical, therapeutic, or legal advice</h2>
         <p>
-          Arc is not medical advice, mental health treatment, addiction treatment, legal advice, or
+          ARC is not medical advice, mental health treatment, addiction treatment, legal advice, or
           emergency support. If you need professional care, crisis support, or substance-use
           treatment, seek a qualified provider.
         </p>
 
         <h2>7. Limitation of liability</h2>
         <p>
-          To the fullest extent permitted by law, Arc and its operators are not liable for any
+          To the fullest extent permitted by law, ARC and its operators are not liable for any
           indirect, incidental, consequential, special, or punitive damages arising from use of or
           inability to use the service, including reliance on product concepts described during
           early access.
@@ -77,7 +77,7 @@ export default function TermsPage() {
         <h2>9. No guarantee of service availability</h2>
         <p>
           We do not guarantee uninterrupted availability, continuous uptime, or permanent access to
-          any feature. Early-access users understand that Arc may be modified, suspended, or
+          any feature. Early-access users understand that ARC may be modified, suspended, or
           discontinued at any time.
         </p>
 

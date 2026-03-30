@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "Arc",
-  title: "Arc | Break your bad habit. Put your money where your mouth is.",
+  name: "ARC",
+  title: "ARC | Break your bad habit. Put your money where your mouth is.",
   description:
-    "Arc is a premium commitment app for people who are done pretending. Choose your habit, choose your mode, and make failure cost something.",
+    "ARC is a premium commitment app for people who are done pretending. Choose your habit, choose your mode, and make failure cost something.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "chatgpt2792025@gmail.com",
 };
@@ -65,7 +65,7 @@ export const howItWorks = [
   {
     step: "03",
     title: "Consequence when you fail",
-    body: "Arc turns relapse into a consequence instead of another promise. Social if you want. Private if you need. Serious when you break.",
+    body: "ARC turns relapse into a consequence instead of another promise. Social if you want. Private if you need. Serious when you break.",
   },
 ];
 
@@ -77,17 +77,17 @@ export const leaderboardRows = [
 
 export const landingFaqs = [
   {
-    question: "How does Arc work?",
+    question: "How does ARC work?",
     answer:
       "You pick a habit, choose a commitment length, and use consequences instead of vague intention to stay clean. Every time you break your streak, you enter $1. Honor code. The money isn't the point. The ownership is.",
   },
   {
     question: "Do I have to make my goal public?",
     answer:
-      "No. Arc is built around Private, Friends Only, and Global modes so you can choose the amount of pressure you actually want.",
+      "No. ARC is built around Private, Friends Only, and Global modes so you can choose the amount of pressure you actually want.",
   },
   {
-    question: "What kinds of habits can I use Arc for?",
+    question: "What kinds of habits can I use ARC for?",
     answer:
       "Whatever you want. You write the habit you're trying to break. Then you break it. It's that simple.",
   },
@@ -99,7 +99,7 @@ export const landingFaqs = [
   {
     question: "Is this available yet?",
     answer:
-      "Arc is opening early access now. Enter your email to join the founding cohort and get first access when the app goes live in the coming weeks.",
+      "ARC is opening early access now. Enter your email to join the founding cohort and get first access when the app goes live in the coming weeks.",
   },
 ];
 
@@ -108,10 +108,10 @@ export const learnFaqs = [
   {
     question: "What happens if I never fail?",
     answer:
-      "Then Arc did its job. The point is to make the downside feel real enough that you do not want to trigger it in the first place.",
+      "Then ARC did its job. The point is to make the downside feel real enough that you do not want to trigger it in the first place.",
   },
   {
-    question: "Is Arc for one habit at a time?",
+    question: "Is ARC for one habit at a time?",
     answer: "Yes.",
   },
   {

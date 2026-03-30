@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata = {
   title: "Privacy",
-  description: "Arc privacy policy and data handling overview.",
+  description: "ARC privacy policy and data handling overview.",
 };
 
 export default function PrivacyPage() {
@@ -19,19 +19,19 @@ export default function PrivacyPage() {
 
         <h2>1. Information we collect</h2>
         <p>
-          Arc may collect your email address, page interaction data, and other analytics events
+          ARC may collect your email address, page interaction data, and other analytics events
           needed to understand how the landing funnel performs.
         </p>
 
         <h2>2. Email collection</h2>
         <p>
-          When you submit your email, Arc stores the information you provide so we can manage early
+          When you submit your email, ARC stores the information you provide so we can manage early
           access, measure demand, and contact you about product availability or related updates.
         </p>
 
         <h2>3. Analytics and cookies</h2>
         <p>
-          Arc may use analytics tools, pixels, cookies, and similar technologies to measure page
+          ARC may use analytics tools, pixels, cookies, and similar technologies to measure page
           views, button clicks, email submits, scroll depth, pop-up interactions, and campaign
           attribution. These tools help us understand which paid creatives and landing experiences
           are working.
@@ -39,20 +39,20 @@ export default function PrivacyPage() {
 
         <h2>4. Event tracking and attribution</h2>
         <p>
-          Arc may record events such as landing page views, learn-page visits, button clicks, email
+          ARC may record events such as landing page views, learn-page visits, button clicks, email
           submission attempts, email submission success or error states, pop-up impressions, and
           pre-commit interactions.
         </p>
 
         <h2>5. Payment link redirection</h2>
         <p>
-          Clicking that button redirects you to Stripe. Arc is not responsible for Stripe&apos;s
+          Clicking that button redirects you to Stripe. ARC is not responsible for Stripe&apos;s
           privacy practices. Review their policy separately.
         </p>
 
         <h2>6. Communications</h2>
         <p>
-          By submitting your information, you agree that Arc may send early-access updates, launch
+          By submitting your information, you agree that ARC may send early-access updates, launch
           notifications, and related product communications. You may opt out at any time using the
           instructions included in the message.
         </p>

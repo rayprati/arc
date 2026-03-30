@@ -19,7 +19,7 @@ export default function LearnPage() {
       <SubpageHeader current="learn" />
 
       <TrackedSection className="page-lead" sectionId="learn-intro">
-        <span className="section-label">How Arc works</span>
+        <span className="section-label">How ARC works</span>
         <h1>Break your bad habit.</h1>
         <p>
           Name what you&apos;re quitting, how long you mean it, and how visible you want it.
