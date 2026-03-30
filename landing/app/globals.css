@@ -1092,8 +1092,16 @@ li {
   justify-content: center;
 }
 
+.modal-backdrop-done {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(32px);
+}
+
 .modal-card-done {
   text-align: center;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .modal-done-sub {

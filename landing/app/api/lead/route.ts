@@ -36,7 +36,8 @@ export async function POST(request: Request) {
       if (airtableToken) authHeaders["Authorization"] = `Bearer ${airtableToken}`;
 
       if (airtableToken) {
-        const checkUrl = `${formEndpoint}?filterByFormula=${encodeURIComponent(`({email}="${email}"`)}&maxRecords=1&fields[]=email`;
+        const formula = `({email}="${email}")`;
+        const checkUrl = `${formEndpoint}?filterByFormula=${encodeURIComponent(formula)}&maxRecords=1&fields[]=email`;
         const checkResponse = await fetch(checkUrl, {
           method: "GET",
           headers: authHeaders,
@@ -51,6 +52,9 @@ export async function POST(request: Request) {
               { status: 409 },
             );
           }
+        } else {
+          const errText = await checkResponse.text().catch(() => "(unreadable)");
+          console.error(`[lead] duplicate check failed ${checkResponse.status}:`, errText);
         }
       }
 

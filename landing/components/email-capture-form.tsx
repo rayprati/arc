@@ -127,11 +127,7 @@ export function EmailCaptureForm({ paymentLink }: { paymentLink?: string }) {
           {submitState === "loading" ? "Submitting..." : "Start Your Arc"}
         </button>
         <p className={`form-status ${submitState === "error" ? "error" : ""}`}>
-          {submitState === "error"
-            ? errorMessage
-            : submitState === "success"
-              ? "Check the modal to continue your Arc."
-              : ""}
+          {submitState === "error" ? errorMessage : ""}
         </p>
       </form>
 

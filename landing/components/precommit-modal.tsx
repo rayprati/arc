@@ -49,7 +49,7 @@ export function PrecommitModal({
 
   if (done) {
     return (
-      <div aria-modal="true" className="modal-backdrop" role="dialog">
+      <div aria-modal="true" className="modal-backdrop modal-backdrop-done" role="dialog">
         <div className="modal-card modal-card-done">
           <h2>Good work.</h2>
           <h2>We&apos;ll speak soon.</h2>
