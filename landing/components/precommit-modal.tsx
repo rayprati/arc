@@ -11,13 +11,7 @@ type PrecommitModalProps = {
   onSkip: () => void;
 };
 
-export function PrecommitModal({
-  open,
-  paymentLink,
-  onClose,
-  onPrecommit,
-  onSkip,
-}: PrecommitModalProps) {
+export function PrecommitModal({ open, paymentLink, onPrecommit, onSkip }: PrecommitModalProps) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
@@ -28,23 +22,10 @@ export function PrecommitModal({
 
     document.body.style.overflow = "hidden";
 
-    if (done) {
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [onClose, open, done]);
+  }, [open, done]);
 
   if (!open) return null;
 
@@ -63,10 +44,7 @@ export function PrecommitModal({
 
   return createPortal(
     <div aria-modal="true" className="modal-backdrop" role="dialog">
-      <div className="modal-card">
-        <button aria-label="Close modal" className="modal-close" onClick={onClose} type="button">
-          ×
-        </button>
+      <div className="modal-card modal-card-offer">
         <h2>Email received.</h2>
         <p>Show you&apos;re serious. Money returned if not spent.</p>
         <div className="modal-actions">

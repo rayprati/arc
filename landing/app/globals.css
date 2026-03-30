@@ -1097,6 +1097,10 @@ li {
   backdrop-filter: blur(32px);
 }
 
+.modal-card-offer {
+  text-align: center;
+}
+
 .modal-card-done {
   text-align: center;
   border: none;
