@@ -70,9 +70,9 @@ export const howItWorks = [
 ];
 
 export const leaderboardRows = [
-  { name: "M. Chen", habit: "Vaping", streak: "42d" },
-  { name: "J. Park", habit: "Drinking", streak: "19d" },
-  { name: "D. Lewis", habit: "Doomscrolling", streak: "12d" },
+  { name: "M. Chen", habit: "Vaping", lost: "$143" },
+  { name: "J. Park", habit: "Drinking", lost: "$87" },
+  { name: "D. Lewis", habit: "Doomscrolling", lost: "$34" },
 ];
 
 export const landingFaqs = [

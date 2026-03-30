@@ -18,14 +18,14 @@ export default function StartPage() {
       </TrackedLink>
 
       <section className="capture-card">
-        <span className="section-label">Founding cohort</span>
+        <span className="section-label">Founding Member #401</span>
         <h1>Enter your email</h1>
-        <p>Get early access to Arc.</p>
         <EmailCaptureForm paymentLink={process.env.PAYMENT_LINK} />
       </section>
 
       <p className="micro-links">
-        Prefer more detail first? <TrackedLink href="/learn">Learn more</TrackedLink>
+        No Spam. Prefer more detail first?{" "}
+        <TrackedLink href="/learn">Learn more</TrackedLink>
       </p>
     </main>
   );

@@ -103,10 +103,8 @@ export function EmailCaptureForm({ paymentLink }: { paymentLink?: string }) {
   return (
     <>
       <form className="email-form" onSubmit={handleSubmit}>
-        <label className="input-label" htmlFor="email">
-          Email
-        </label>
         <input
+          aria-label="Email address"
           autoComplete="email"
           className="email-input"
           id="email"
@@ -129,14 +127,14 @@ export function EmailCaptureForm({ paymentLink }: { paymentLink?: string }) {
           />
         </div>
         <button className="button button-primary button-full" disabled={submitState === "loading"} type="submit">
-          {submitState === "loading" ? "Submitting..." : "Continue"}
+          {submitState === "loading" ? "Submitting..." : "Start Your Arc"}
         </button>
         <p className={`form-status ${submitState === "error" ? "error" : ""}`}>
           {submitState === "error"
             ? errorMessage
             : submitState === "success"
               ? "Check the modal to continue your Arc."
-              : "No spam. Early access only."}
+              : ""}
         </p>
       </form>
 
