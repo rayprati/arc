@@ -2,7 +2,6 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { PageEvent } from "@/components/page-event";
 import { SiteFooter } from "@/components/site-footer";
 import { SubpageHeader } from "@/components/subpage-header";
-import { TrackedLink } from "@/components/tracked-link";
 import { TrackedSection } from "@/components/tracked-section";
 import { learnFaqs } from "@/lib/site";
 
@@ -65,19 +64,6 @@ export default function LearnPage() {
         <span className="section-label">FAQ</span>
         <h2 className="learn-faq-heading">Common questions</h2>
         <FaqAccordion items={learnFaqs} />
-      </TrackedSection>
-
-      <TrackedSection className="final-cta" sectionId="learn-cta">
-        <span className="section-label">Founding cohort</span>
-        <h2>Ready to try it?</h2>
-        <p>Join early access and be in the first group when the app opens.</p>
-        <TrackedLink
-          className="button button-primary"
-          eventName="learn_cta_click"
-          href="/start"
-        >
-          Start Your Arc
-        </TrackedLink>
       </TrackedSection>
 
       <SiteFooter />

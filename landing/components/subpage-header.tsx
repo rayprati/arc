@@ -17,9 +17,6 @@ export function SubpageHeader({ current }: SubpageHeaderProps) {
   return (
     <header className="subpage-header subpage-header-rich">
       <div className="subpage-header-brand">
-        <TrackedLink className="subpage-back-link" href="/">
-          ← Home
-        </TrackedLink>
         <TrackedLink className="wordmark" href="/">
           {siteConfig.name}
         </TrackedLink>
@@ -43,10 +40,6 @@ export function SubpageHeader({ current }: SubpageHeaderProps) {
           </span>
         ))}
       </nav>
-
-      <TrackedLink className="button button-secondary nav-button" href="/start">
-        Start Your Arc
-      </TrackedLink>
     </header>
   );
 }

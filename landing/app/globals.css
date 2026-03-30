@@ -150,13 +150,13 @@ img {
 
 .subpage-header-rich {
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   row-gap: 14px;
 }
 
 .subpage-header-brand {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   flex-wrap: wrap;
 }
@@ -178,6 +178,7 @@ img {
   flex-wrap: wrap;
   gap: 4px 2px;
   font-size: 0.92rem;
+  margin-top: 3px;
 }
 
 .subpage-doc-nav a {
@@ -1206,6 +1207,10 @@ li {
   padding-top: 24px;
 }
 
+.learn-shell .learn-flow {
+  margin-top: 14px;
+}
+
 .learn-shell .final-cta > h2 {
   font-size: clamp(1.45rem, 2.8vw, 2rem);
 }
@@ -1275,7 +1280,7 @@ li {
 }
 
 .learn-shell .learn-faq-block {
-  margin-top: 32px;
+  margin-top: 14px;
 }
 
 .learn-faq-heading {
@@ -1377,6 +1382,8 @@ li {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .footer-copy {
