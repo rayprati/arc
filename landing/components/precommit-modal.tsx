@@ -46,7 +46,7 @@ export function PrecommitModal({ open, paymentLink, onPrecommit, onSkip }: Preco
     <div aria-modal="true" className="modal-backdrop" role="dialog">
       <div className="modal-card modal-card-offer">
         <h2>Email received.</h2>
-        <p>Show you&apos;re serious. Money returned if not spent.</p>
+        <p>Show you&apos;re serious.<br />Money returned if not spent.</p>
         <div className="modal-actions">
           <button
             className="button button-primary"
