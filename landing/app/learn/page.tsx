@@ -20,15 +20,14 @@ export default function LearnPage() {
 
       <TrackedSection className="page-lead" sectionId="learn-intro">
         <span className="section-label">How Arc works</span>
-        <h1>Quit with a price on the line.</h1>
+        <h1>Break your bad habit.</h1>
         <p>
-          Name what you&apos;re quitting, how long you mean it, and how visible you want it. Early
-          access in four steps.
+          Name what you&apos;re quitting, how long you mean it, and how visible you want it.
         </p>
       </TrackedSection>
 
       <TrackedSection className="content-card learn-flow" sectionId="learn-guide">
-        <span className="section-label">Four steps</span>
+        <span className="section-label">Three steps</span>
         <ol className="learn-steps">
           <li>
             <h2 className="learn-step-title">Name one habit</h2>
@@ -47,12 +46,6 @@ export default function LearnPage() {
           <li>
             <h2 className="learn-step-title">Break your habit</h2>
             <p>You invest in your outcome.</p>
-          </li>
-          <li>
-            <h2 className="learn-step-title">Put a cost on breaking</h2>
-            <p>
-              Money when you slip, plus optional visibility. A relapse isn&apos;t free to ignore.
-            </p>
           </li>
         </ol>
       </TrackedSection>
