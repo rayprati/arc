@@ -22,10 +22,7 @@
 html {
   height: 100%;
   color-scheme: dark;
-  background:
-    radial-gradient(circle at top, rgba(140, 166, 255, 0.16), transparent 24%),
-    radial-gradient(circle at 80% 20%, rgba(140, 166, 255, 0.1), transparent 20%),
-    linear-gradient(180deg, #0a0c10 0%, #07080b 38%, #07080b 100%);
+  background: #07080b;
 }
 
 html,
@@ -37,7 +34,7 @@ body {
 body {
   min-height: 100%;
   color: var(--text);
-  background: transparent;
+  background: #07080b;
   font-family:
     Inter,
     ui-sans-serif,
@@ -54,6 +51,17 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(140, 166, 255, 0.18), transparent),
+    radial-gradient(ellipse 50% 30% at 80% 10%, rgba(140, 166, 255, 0.10), transparent);
 }
 
 *::selection {
