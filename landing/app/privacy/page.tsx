@@ -19,9 +19,8 @@ export default function PrivacyPage() {
 
         <h2>1. Information we collect</h2>
         <p>
-          Arc may collect your email address, page interaction data, UTM parameters, device and
-          browser information, and other analytics events needed to understand how the landing
-          funnel performs.
+          Arc may collect your email address, page interaction data, and other analytics events
+          needed to understand how the landing funnel performs.
         </p>
 
         <h2>2. Email collection</h2>
@@ -33,23 +32,22 @@ export default function PrivacyPage() {
         <h2>3. Analytics and cookies</h2>
         <p>
           Arc may use analytics tools, pixels, cookies, and similar technologies to measure page
-          views, CTA clicks, email submits, scroll depth, modal interactions, and campaign
+          views, button clicks, email submits, scroll depth, pop-up interactions, and campaign
           attribution. These tools help us understand which paid creatives and landing experiences
           are working.
         </p>
 
         <h2>4. Event tracking and attribution</h2>
         <p>
-          Arc may record events such as landing page views, learn-page visits, CTA clicks, email
-          submission attempts, email submission success or error states, modal impressions, and
-          pre-commit interactions, along with UTM parameters and creative identifiers when present.
+          Arc may record events such as landing page views, learn-page visits, button clicks, email
+          submission attempts, email submission success or error states, pop-up impressions, and
+          pre-commit interactions.
         </p>
 
         <h2>5. Payment link redirection</h2>
         <p>
-          If a pre-commit payment link is enabled, clicking that CTA may redirect you to a third
-          party payment provider. Arc is not responsible for the privacy practices of those third
-          party services, and you should review their policies separately.
+          Clicking that button redirects you to Stripe. Arc is not responsible for Stripe&apos;s
+          privacy practices. Review their policy separately.
         </p>
 
         <h2>6. Communications</h2>
