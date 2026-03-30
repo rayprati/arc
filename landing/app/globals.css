@@ -117,6 +117,7 @@ img {
   overflow: hidden;
   padding: 22px;
   border-radius: 36px;
+  zoom: 0.9;
 }
 
 .hero-shell::before,
@@ -1215,7 +1216,9 @@ li {
   }
 
   .phone-screen {
-    min-height: 720px;
+    height: 574px;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
 }
 

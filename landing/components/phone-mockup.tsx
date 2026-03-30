@@ -39,8 +39,9 @@ const ledger = [
   { time: "Yesterday, 11:02 am", habit: "Drinking", amount: "−$1" },
   { time: "Mar 20, 7:33 pm", habit: "Drinking", amount: "−$1" },
   { time: "Mar 19, 2:47 pm", habit: "Drinking", amount: "−$1" },
-  { time: "Mar 17, 10:18 pm", habit: "Drinking", amount: "−$1" },
 ];
+
+const tabDurations = [7500, 4000, 5000];
 
 const HomeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -81,12 +82,12 @@ export function PhoneMockup() {
   const [direction, setDirection] = useState(1);
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const id = setTimeout(() => {
       setDirection(1);
       setTab((t) => (t + 1) % 3);
-    }, 4000);
-    return () => clearInterval(id);
-  }, []);
+    }, tabDurations[tab]);
+    return () => clearTimeout(id);
+  }, [tab]);
 
   const goTo = (next: number) => {
     setDirection(next > tab ? 1 : -1);
@@ -140,7 +141,7 @@ export function PhoneMockup() {
                     </div>
                     <div className="stat-card danger">
                       <span>Dedication</span>
-                      <strong><AnimatedNumber to={143} prefix="$" /></strong>
+                      <strong><AnimatedNumber to={4} prefix="$" /></strong>
                     </div>
                   </div>
 
