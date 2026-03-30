@@ -4,7 +4,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = {
-  title: "Start Your Arc",
+  title: "Start Your ARC",
   description: "Enter your email to get early access to ARC.",
 };
 

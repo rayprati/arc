@@ -124,7 +124,7 @@ export function EmailCaptureForm({ paymentLink }: { paymentLink?: string }) {
           />
         </div>
         <button className="button button-primary button-full" disabled={submitState === "loading"} type="submit">
-          {submitState === "loading" ? "Submitting..." : "Start Your Arc"}
+          {submitState === "loading" ? "Submitting..." : "Start Your ARC"}
         </button>
         <p className={`form-status ${submitState === "error" ? "error" : ""}`}>
           {submitState === "error" ? errorMessage : ""}

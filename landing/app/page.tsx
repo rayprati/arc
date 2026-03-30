@@ -32,7 +32,7 @@ export default function Home() {
                 eventName="hero_cta_click"
                 href="/start"
               >
-                Start Your Arc
+                Start Your ARC
               </TrackedLink>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Home() {
           eventName="final_cta_click"
           href="/start"
         >
-          Start Your Arc
+          Start Your ARC
         </TrackedLink>
       </TrackedSection>
 
