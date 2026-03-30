@@ -111,24 +111,18 @@ export const learnFaqs = [
       "Then Arc did its job. The point is to make the downside feel real enough that you do not want to trigger it in the first place.",
   },
   {
-    question: "How does the $1 pre-commit work?",
-    answer:
-      "It is a lightweight seriousness check for early access. If the payment flow is active, the pre-commit button will route you there. If not, Arc still records your intent.",
-  },
-  {
     question: "Is Arc for one habit at a time?",
-    answer:
-      "The concept is strongest when one commitment stays unambiguous. The early product direction is one habit commitment at a time.",
+    answer: "Yes.",
   },
   {
     question: "Can I switch commitment lengths?",
     answer:
-      "The product direction treats the length as part of the seriousness of the promise, so switches are likely to be limited and intentional.",
+      "Yes. You can give up on a goal and set a different one with new settings. If you want.",
   },
   {
     question: "Is this honor-code based?",
     answer:
-      "For the validation phase, yes. Arc is testing desire for the mechanism first. Perfect enforcement is not required to learn whether the market wants stronger consequences.",
+      "Yes. There is no app that does the hard work for you. You own your outcome. ARC just helps keep you accountable, with notifications and consequences.",
   },
 ];
 

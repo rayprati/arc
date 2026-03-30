@@ -33,7 +33,7 @@ export default function LearnPage() {
           <li>
             <h2 className="learn-step-title">Name one habit</h2>
             <p>
-              Specific beats vague—vaping, drinking, doomscrolling, skipping the gym—not &quot;be
+              Specific beats vague: vaping, drinking, doomscrolling, skipping the gym. Not &quot;be
               healthier.&quot;
             </p>
           </li>
@@ -45,16 +45,13 @@ export default function LearnPage() {
             </p>
           </li>
           <li>
-            <h2 className="learn-step-title">Put a cost on breaking</h2>
-            <p>
-              Money when you slip, plus optional visibility—so a relapse isn&apos;t free to ignore.
-            </p>
+            <h2 className="learn-step-title">Break your habit</h2>
+            <p>You invest in your outcome.</p>
           </li>
           <li>
-            <h2 className="learn-step-title">Choose who can see you fail</h2>
+            <h2 className="learn-step-title">Put a cost on breaking</h2>
             <p>
-              <strong>Private</strong>, <strong>friends only</strong>, or <strong>global</strong>—how
-              much pressure you want in the moment.
+              Money when you slip, plus optional visibility. A relapse isn&apos;t free to ignore.
             </p>
           </li>
         </ol>
