@@ -75,9 +75,9 @@ export default function Home() {
       </nav>
 
       <TrackedSection className="final-cta" sectionId="final-cta">
-        <h2>Done pretending?</h2>
+        <h2>Done waiting?</h2>
         <TrackedLink
-          className="button button-primary"
+          className="button button-primary final-cta-btn"
           eventName="final_cta_click"
           href="/start"
         >

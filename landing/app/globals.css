@@ -22,6 +22,7 @@
 html {
   height: 100%;
   color-scheme: dark;
+  background: #07080b;
 }
 
 html,
@@ -968,10 +969,11 @@ li {
 }
 
 .final-cta {
-  display: grid;
-  justify-items: start;
-  gap: 14px;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .capture-card {
@@ -1140,6 +1142,15 @@ li {
   margin-top: 24px;
   padding: 20px 4px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  opacity: 0.6;
 }
 
 .footer-brand {
@@ -1201,6 +1212,10 @@ li {
     align-items: flex-start;
   }
 
+  .final-cta-btn {
+    display: none;
+  }
+
   .nav-links {
     gap: 10px 16px;
   }
@@ -1216,9 +1231,9 @@ li {
   }
 
   .phone-screen {
-    height: 574px;
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    height: 710px;
+    mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
   }
 }
 
