@@ -101,6 +101,11 @@ export const landingFaqs = [
     answer:
       "ARC is opening early access now. Enter your email to join the founding cohort and get first access when the app goes live in the coming weeks.",
   },
+  {
+    question: "Where does the money go?",
+    answer:
+      "After basic costs to support ARC, all proceeds go toward Hazelden Betty Ford Foundation to help addiction survivors.",
+  },
 ];
 
 export const learnFaqs = [
