@@ -104,7 +104,7 @@ export const landingFaqs = [
   {
     question: "Where does the money go?",
     answer:
-      "After basic costs to support ARC, all proceeds go toward Hazelden Betty Ford Foundation to help addiction survivors.",
+      "After basic costs to support ARC, a portion of proceeds go toward Hazelden Betty Ford Foundation to help addiction survivors.",
   },
 ];
 
