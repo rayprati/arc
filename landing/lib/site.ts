@@ -97,14 +97,14 @@ export const landingFaqs = [
       "You admit it, you log the dollar, and you start again. That's it. No lecture, no reset screen, no motivation quote. You own your outcome.",
   },
   {
+    question: "Where does the dollar go?",
+    answer:
+      "After costs to support ARC, a large portion of all proceeds go toward charities to fight alcohol addiction.",
+  },
+  {
     question: "Is this available yet?",
     answer:
       "ARC is opening early access now. Enter your email to join the founding cohort and get first access when the app goes live in the coming weeks.",
-  },
-  {
-    question: "Where does the money go?",
-    answer:
-      "After costs to support ARC, a large portion of all proceeds go toward charities to fight alcohol addiction.",
   },
 ];
 
