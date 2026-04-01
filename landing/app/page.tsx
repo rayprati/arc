@@ -27,7 +27,6 @@ export default function Home() {
             <p className="hero-tagline">Enter $1 every time you break your streak.</p>
             <div className="hero-directive-block">
               <p className="hero-honor">Honor code.</p>
-              <p className="hero-directive">Press the red button. Do it now.</p>
             </div>
             <div className="hero-actions">
               <TrackedLink
