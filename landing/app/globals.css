@@ -1623,6 +1623,10 @@ li {
 }
 
 @media (max-width: 759px) {
+  .hero-shell {
+    zoom: 1;
+  }
+
   .top-nav,
   .site-footer {
     flex-direction: column;
