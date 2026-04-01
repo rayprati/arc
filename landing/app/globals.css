@@ -308,22 +308,26 @@ h2,
 h3 {
   line-height: 1.02;
   letter-spacing: -0.04em;
+  font-family: var(--font-display), Georgia, serif;
 }
 
 h1 {
   max-width: 11ch;
   font-size: clamp(3rem, 7vw, 6.3rem);
-  font-family: var(--font-display), Georgia, serif;
   font-weight: 800;
   font-variation-settings: "SOFT" 30, "WONK" 0;
 }
 
 h2 {
   font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  font-variation-settings: "SOFT" 20, "WONK" 0;
 }
 
 h3 {
   font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 700;
+  font-variation-settings: "SOFT" 10, "WONK" 0;
 }
 
 p,
@@ -633,7 +637,7 @@ li {
   display: flex;
   flex-direction: column;
   height: 820px;
-  padding: 52px 0 0;
+  padding: 0;
   border-radius: 36px;
   background:
     linear-gradient(180deg, rgba(15, 18, 25, 0.88), rgba(8, 9, 13, 0.98)),
@@ -642,6 +646,32 @@ li {
   box-shadow:
     inset 0 0 0 1px rgba(0, 0, 0, 0.7),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.phone-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 14px 22px 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 4;
+}
+
+.phone-status-time {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.phone-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .phone-content {
@@ -663,10 +693,14 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 12px 0 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(8, 9, 13, 0.6);
-  backdrop-filter: blur(12px);
+  padding: 12px 0 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(14, 16, 22, 0.55);
+  backdrop-filter: blur(28px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 -4px 24px rgba(0, 0, 0, 0.18);
 }
 
 .phone-tab {
@@ -1389,7 +1423,8 @@ li {
 .learn-step-title {
   margin: 0 0 8px;
   font-size: clamp(1.05rem, 1.85vw, 1.28rem);
-  font-weight: 600;
+  font-weight: 700;
+  font-variation-settings: "SOFT" 10, "WONK" 0;
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--text);
