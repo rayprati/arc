@@ -126,9 +126,14 @@ export function PhoneMockup() {
   };
 
   const variants = {
-    enter: (d: number) => ({ x: d * 40, opacity: 0 }),
+    enter: (d: number) => ({ x: d * 36, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (d: number) => ({ x: d * -40, opacity: 0 }),
+    exit: (d: number) => ({ x: d * -28, opacity: 0 }),
+  };
+
+  const transition = {
+    x: { type: "spring" as const, stiffness: 340, damping: 30, mass: 0.85 },
+    opacity: { duration: 0.16, ease: "easeOut" as const },
   };
 
   return (
@@ -163,7 +168,7 @@ export function PhoneMockup() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ duration: 0.28, ease: "easeInOut" }}
+                  transition={transition}
                 >
                   <div className="phone-header">
                     <div>
@@ -188,6 +193,7 @@ export function PhoneMockup() {
                   </div>
 
                   <div className="admit-wrapper">
+                    <div className="admit-glow" />
                     <button className="admit-button" type="button">
                       <span className="admit-pulse" />
                       <span className="admit-pulse admit-pulse-2" />
@@ -220,7 +226,7 @@ export function PhoneMockup() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ duration: 0.28, ease: "easeInOut" }}
+                  transition={transition}
                 >
                   <div className="panel-header lb-header">
                     <span className="lb-title">Global Leaderboard</span>
@@ -229,14 +235,12 @@ export function PhoneMockup() {
                   <div className="leaderboard leaderboard-full">
                     {allLeaderboardRows.map((row, index) => (
                       <div className="leaderboard-row" key={row.name}>
-                        <span className="leaderboard-rank">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div>
+                        <span className="leaderboard-rank">{index + 1}</span>
+                        <div className="leaderboard-identity">
                           <strong>{row.name}</strong>
                           <p>{row.habit}</p>
                         </div>
-                        <span className="leaderboard-streak">{row.lost}</span>
+                        <span className="leaderboard-amount">{row.lost}</span>
                       </div>
                     ))}
                   </div>
@@ -252,11 +256,17 @@ export function PhoneMockup() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={{ duration: 0.28, ease: "easeInOut" }}
+                  transition={transition}
                 >
                   <div>
                     <p className="eyebrow">Your Circle</p>
-                    <p className="commitment-meta">4 members</p>
+                    <p className="groups-title">The Usual Suspects</p>
+                    <div className="group-avatars">
+                      {["AP", "JM", "SK", "RT"].map((initials) => (
+                        <span className="group-avatar" key={initials}>{initials}</span>
+                      ))}
+                      <span className="group-member-count">4 members</span>
+                    </div>
                   </div>
 
                   <div className="activity-feed">

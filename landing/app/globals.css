@@ -762,10 +762,20 @@ li {
 }
 
 .admit-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 0 4px;
+}
+
+.admit-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(180, 0, 0, 0.22) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .admit-button {
@@ -916,8 +926,40 @@ li {
 }
 
 .groups-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
   margin-top: 2px;
+}
+
+.group-avatars {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.group-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.group-member-count {
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  margin-left: 4px;
 }
 
 .activity-feed {
@@ -1093,11 +1135,11 @@ li {
   color: #fff;
 }
 
-.stat-positive {
+.stat-card strong.stat-positive {
   color: #7fff5a;
 }
 
-.stat-danger {
+.stat-card strong.stat-danger {
   color: var(--accent-strong);
 }
 
@@ -1163,10 +1205,32 @@ li {
   padding-bottom: 0;
 }
 
-.leaderboard-rank,
-.leaderboard-streak {
-  color: var(--accent-strong);
+.leaderboard-rank {
+  color: var(--text-subtle);
+  font-size: 0.72rem;
+  font-weight: 500;
+  min-width: 18px;
+  opacity: 0.5;
+}
+
+.leaderboard-identity strong {
+  font-size: 0.9rem;
   font-weight: 600;
+  color: var(--text);
+}
+
+.leaderboard-identity p {
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  margin-top: 1px;
+}
+
+.leaderboard-amount {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent-strong);
+  flex-shrink: 0;
 }
 
 .section-card-grid,
