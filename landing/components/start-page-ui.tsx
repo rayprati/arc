@@ -7,7 +7,7 @@ import { PageEvent } from "@/components/page-event";
 import { TrackedLink } from "@/components/tracked-link";
 import { siteConfig } from "@/lib/site";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function StartPageUI({ paymentLink }: { paymentLink?: string }) {
   const reduceMotion = useReducedMotion();
