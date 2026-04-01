@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "ARC",
-  title: "ARC | Break your bad habit.",
+  title: "ARC | Break your bad habit",
   description:
     "ARC is a premium commitment app for people who are done pretending. Choose your habit, choose your mode, and make failure cost something.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
