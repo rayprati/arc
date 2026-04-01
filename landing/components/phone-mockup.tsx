@@ -69,6 +69,12 @@ const GroupIcon = () => (
   </svg>
 );
 
+const FlameIcon = () => (
+  <svg width="13" height="14" viewBox="0 0 13 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#7fff5a" }}>
+    <path d="M6.5 13c2.2 0 4-1.6 4-3.5 0-1.8-1.3-3.1-1.8-3.5.2.9-.9 2-.9 2S7 7 7 5.5C7 4 8 2.5 8 2.5 6.2 3.2 2.5 5.5 2.5 9.5c0 2 1.8 3.5 4 3.5z" />
+  </svg>
+);
+
 const SettingsIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3" />
@@ -173,16 +179,18 @@ export function PhoneMockup() {
                   <div className="stat-grid">
                     <div className="stat-card">
                       <span>Streak</span>
-                      <strong><AnimatedNumber to={42} suffix="d" /></strong>
+                      <strong className="stat-positive"><AnimatedNumber to={42} suffix="d" /></strong>
                     </div>
                     <div className="stat-card danger">
-                      <span>Dedication</span>
-                      <strong><AnimatedNumber to={4} prefix="$" /></strong>
+                      <span>Invested</span>
+                      <strong className="stat-danger"><AnimatedNumber to={4} prefix="$" /></strong>
                     </div>
                   </div>
 
                   <div className="admit-wrapper">
                     <button className="admit-button" type="button">
+                      <span className="admit-pulse" />
+                      <span className="admit-pulse admit-pulse-2" />
                       <span className="admit-label-top">TAP TO</span>
                       <span className="admit-word">ADMIT</span>
                     </button>
@@ -260,7 +268,7 @@ export function PhoneMockup() {
                           <p>{item.habit} · {item.detail}</p>
                         </div>
                         <span className={`activity-badge ${item.status}`}>
-                          {item.status === "streak" ? "🔥" : "−$5"}
+                          {item.status === "streak" ? <FlameIcon /> : "−$5"}
                         </span>
                       </div>
                     ))}

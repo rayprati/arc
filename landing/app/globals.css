@@ -769,6 +769,7 @@ li {
 }
 
 .admit-button {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -777,14 +778,35 @@ li {
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  background: linear-gradient(180deg, #1e0000 0%, #120000 100%);
-  border: 1.5px solid rgba(200, 0, 0, 0.35);
+  background: linear-gradient(180deg, #2a0000 0%, #160000 100%);
+  border: 1.5px solid rgba(200, 0, 0, 0.45);
   box-shadow:
+    0 0 36px rgba(180, 0, 0, 0.32),
+    0 0 80px rgba(160, 0, 0, 0.12),
     0 5px 0 0 #0a0000,
-    inset 0 1px 0 rgba(255, 80, 80, 0.08),
+    inset 0 1px 0 rgba(255, 80, 80, 0.1),
     0 10px 32px rgba(0, 0, 0, 0.7);
   cursor: pointer;
   transition: transform 80ms ease, box-shadow 80ms ease;
+  overflow: visible;
+}
+
+.admit-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 0, 0, 0.55);
+  animation: admit-pulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+.admit-pulse-2 {
+  animation-delay: 1.3s;
+}
+
+@keyframes admit-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.75); opacity: 0; }
 }
 
 .admit-button:active {
@@ -1067,9 +1089,16 @@ li {
   letter-spacing: -0.04em;
 }
 
-.stat-card.danger strong,
 .proof-card strong {
   color: #fff;
+}
+
+.stat-positive {
+  color: #7fff5a;
+}
+
+.stat-danger {
+  color: var(--accent-strong);
 }
 
 .commitment-meta {
