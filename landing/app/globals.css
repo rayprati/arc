@@ -8,8 +8,8 @@
   --text-muted: rgba(231, 235, 243, 0.74);
   --text-subtle: rgba(231, 235, 243, 0.56);
   --border: rgba(255, 255, 255, 0.1);
-  --accent: #8ca6ff;
-  --accent-strong: #b7c6ff;
+  --accent: #c06060;
+  --accent-strong: #dc8888;
   --danger: #ff8d81;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
   --radius-xl: 32px;
@@ -959,8 +959,8 @@ li {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--accent-strong);
-  color: #07080b;
+  background: linear-gradient(180deg, #c43030 0%, #8a1010 100%);
+  color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
   border: 0;
@@ -1094,9 +1094,9 @@ li {
 
 .mode-chip.active,
 .toggle-option.active {
-  color: #091018;
-  background: linear-gradient(180deg, #dbe3ff 0%, #a9bcff 100%);
-  border-color: transparent;
+  color: rgba(255, 210, 210, 0.95);
+  background: linear-gradient(180deg, rgba(180, 50, 50, 0.4) 0%, rgba(120, 20, 20, 0.35) 100%);
+  border-color: rgba(200, 80, 80, 0.3);
 }
 
 .leaderboard {
