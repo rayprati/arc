@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
+import { Fraunces } from "next/font/google";
 
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK"],
+  weight: ["700", "800"],
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -39,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={fraunces.variable}>
       <body>
         <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>

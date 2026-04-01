@@ -3,6 +3,7 @@ import { PageEvent } from "@/components/page-event";
 import { PhoneMockup } from "@/components/phone-mockup";
 import { ScrollTracker } from "@/components/scroll-tracker";
 import { SiteFooter } from "@/components/site-footer";
+import { StaggerGrid } from "@/components/stagger-grid";
 import { TrackedLink } from "@/components/tracked-link";
 import { TrackedSection } from "@/components/tracked-section";
 import { howItWorks, landingFaqs, siteConfig } from "@/lib/site";
@@ -44,7 +45,7 @@ export default function Home() {
       </TrackedSection>
 
       <TrackedSection className="section-card-grid" sectionId="how-it-works">
-        <div className="three-up-grid">
+        <StaggerGrid className="three-up-grid">
           {howItWorks.map((item) => (
             <article className="feature-card" key={item.step}>
               <span className="feature-step">{item.step}</span>
@@ -52,7 +53,7 @@ export default function Home() {
               <p>{item.body}</p>
             </article>
           ))}
-        </div>
+        </StaggerGrid>
       </TrackedSection>
 
       <TrackedSection className="section-card-grid" sectionId="faq-preview">

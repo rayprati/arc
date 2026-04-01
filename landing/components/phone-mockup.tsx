@@ -108,6 +108,9 @@ export function PhoneMockup() {
     >
       <div className="phone-glow" />
       <div className="phone-frame">
+        <div className="phone-side-button phone-side-button-power" />
+        <div className="phone-side-button phone-side-button-vol-up" />
+        <div className="phone-side-button phone-side-button-vol-down" />
         <div className="phone-notch" />
         <div className="phone-screen">
           <div className="phone-content">
