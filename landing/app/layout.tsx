@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import { Fraunces } from "next/font/google";
+import { Geist } from "next/font/google";
 
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const geist = Geist({
   subsets: ["latin"],
-  axes: ["SOFT", "WONK"],
-  weight: "variable",
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-geist",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fraunces.variable}>
+    <html lang="en" className={geist.variable}>
       <body>
         <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>

@@ -25,8 +25,10 @@ export default function Home() {
           <div className="hero-copy">
             <h1>Break your bad habit.</h1>
             <p className="hero-tagline">Enter $1 every time you break your streak.</p>
-            <p className="hero-tagline">Honor code.</p>
-            <p className="hero-footnote">Press the red button. Do it now.</p>
+            <div className="hero-directive-block">
+              <p className="hero-honor">Honor code.</p>
+              <p className="hero-directive">Press the red button. Do it now.</p>
+            </div>
             <div className="hero-actions">
               <TrackedLink
                 className="button button-primary"

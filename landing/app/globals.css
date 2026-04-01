@@ -36,12 +36,10 @@ body {
   color: var(--text);
   background: #07080b;
   font-family:
-    Inter,
+    var(--font-geist),
     ui-sans-serif,
     system-ui,
     -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -98,7 +96,6 @@ img {
 }
 
 .hero-shell,
-.section-card-grid,
 .section-split,
 .final-cta,
 .capture-card,
@@ -112,14 +109,23 @@ img {
   backdrop-filter: blur(24px);
 }
 
+.section-card-grid {
+  position: relative;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
 .hero-shell {
   overflow: hidden;
   padding: 22px;
   border-radius: 36px;
   zoom: 0.9;
+  border-color: rgba(160, 40, 40, 0.28);
   background:
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(140, 166, 255, 0.18), transparent 70%),
-    radial-gradient(ellipse 50% 40% at 85% 10%, rgba(140, 166, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(160, 40, 40, 0.12), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 10%, rgba(120, 20, 20, 0.08), transparent 60%),
     linear-gradient(180deg, rgba(21, 24, 31, 0.78), rgba(10, 12, 16, 0.94));
 }
 
@@ -308,26 +314,22 @@ h2,
 h3 {
   line-height: 1.02;
   letter-spacing: -0.04em;
-  font-family: var(--font-display), Georgia, serif;
 }
 
 h1 {
   max-width: 11ch;
   font-size: clamp(3rem, 7vw, 6.3rem);
   font-weight: 800;
-  font-variation-settings: "SOFT" 30, "WONK" 0;
 }
 
 h2 {
   font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 700;
-  font-variation-settings: "SOFT" 20, "WONK" 0;
 }
 
 h3 {
   font-size: clamp(1.2rem, 2vw, 1.55rem);
   font-weight: 700;
-  font-variation-settings: "SOFT" 10, "WONK" 0;
 }
 
 p,
@@ -360,6 +362,31 @@ li {
 .hero-footnote {
   color: var(--text-subtle);
   font-size: 0.95rem;
+}
+
+.hero-directive-block {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.hero-honor {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  line-height: 1;
+}
+
+.hero-directive {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.3;
 }
 
 .honor-code {
@@ -664,7 +691,7 @@ li {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.92);
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: inherit;
 }
 
 .phone-status-icons {
@@ -1201,6 +1228,7 @@ li {
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
+  border-color: rgba(160, 40, 40, 0.25);
 }
 
 .capture-card {
@@ -1424,7 +1452,6 @@ li {
   margin: 0 0 8px;
   font-size: clamp(1.05rem, 1.85vw, 1.28rem);
   font-weight: 700;
-  font-variation-settings: "SOFT" 10, "WONK" 0;
   line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--text);
