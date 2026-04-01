@@ -61,6 +61,17 @@ export default function Home() {
         <FaqAccordion items={landingFaqs} />
       </TrackedSection>
 
+      <TrackedSection className="final-cta" sectionId="final-cta">
+        <h2>Done waiting?</h2>
+        <TrackedLink
+          className="button button-primary final-cta-btn"
+          eventName="final_cta_click"
+          href="/start"
+        >
+          Start Your ARC
+        </TrackedLink>
+      </TrackedSection>
+
       <nav className="site-legal-nav" aria-label="Learn, terms, and privacy">
         <TrackedLink eventName="learn_more_click" href="/learn">
           Learn more
@@ -74,17 +85,6 @@ export default function Home() {
         </span>
         <TrackedLink href="/privacy">Privacy</TrackedLink>
       </nav>
-
-      <TrackedSection className="final-cta" sectionId="final-cta">
-        <h2>Done waiting?</h2>
-        <TrackedLink
-          className="button button-primary final-cta-btn"
-          eventName="final_cta_click"
-          href="/start"
-        >
-          Start Your ARC
-        </TrackedLink>
-      </TrackedSection>
 
       <SiteFooter />
     </main>
