@@ -970,7 +970,7 @@ li {
 }
 
 .activity-dot.streak {
-  background: #7fff5a;
+  background: #6ee7b7;
 }
 
 .activity-dot.relapsed {
@@ -1119,7 +1119,7 @@ li {
 
 .stat-card strong.stat-positive,
 .stat-card strong.stat-positive span {
-  color: #7fff5a;
+  color: #6ee7b7;
 }
 
 .stat-card strong.stat-danger,

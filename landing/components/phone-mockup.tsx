@@ -69,15 +69,15 @@ const GroupIcon = () => (
   </svg>
 );
 
-const SendIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="22" y1="2" x2="11" y2="13" />
-    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+const ArrowUpIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5" />
+    <polyline points="5 12 12 5 19 12" />
   </svg>
 );
 
 const FlameIcon = () => (
-  <svg width="13" height="14" viewBox="0 0 13 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#7fff5a" }}>
+  <svg width="13" height="14" viewBox="0 0 13 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#6ee7b7" }}>
     <path d="M6.5 13c2.2 0 4-1.6 4-3.5 0-1.8-1.3-3.1-1.8-3.5.2.9-.9 2-.9 2S7 7 7 5.5C7 4 8 2.5 8 2.5 6.2 3.2 2.5 5.5 2.5 9.5c0 2 1.8 3.5 4 3.5z" />
   </svg>
 );
@@ -291,7 +291,7 @@ export function PhoneMockup() {
 
                   <div className="group-input-row">
                     <span className="group-input-mock">Call someone out…</span>
-                    <button className="group-send-btn" type="button" aria-label="Send"><SendIcon /></button>
+                    <button className="group-send-btn" type="button" aria-label="Send"><ArrowUpIcon /></button>
                   </div>
                 </motion.div>
               )}
