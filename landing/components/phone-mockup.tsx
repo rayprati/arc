@@ -14,7 +14,7 @@ const floatingTransition = {
 
 const groupFeed = [
   { name: "Alex P.", status: "streak", detail: "18d clean", habit: "Vaping" },
-  { name: "Jordan M.", status: "relapsed", detail: "−$5 today", habit: "Drinking" },
+  { name: "Jordan M.", status: "relapsed", detail: "−$1 today", habit: "Drinking" },
   { name: "Sam K.", status: "streak", detail: "31d clean", habit: "Porn" },
   { name: "Riley T.", status: "streak", detail: "7d clean", habit: "Doomscrolling" },
 ];
@@ -283,7 +283,7 @@ export function PhoneMockup() {
                           <p>{item.habit} · {item.detail}</p>
                         </div>
                         <span className={`activity-badge ${item.status}`}>
-                          {item.status === "streak" ? <FlameIcon /> : "−$5"}
+                          {item.status === "streak" ? <FlameIcon /> : "−$1"}
                         </span>
                       </div>
                     ))}
