@@ -219,6 +219,7 @@ img {
   flex-wrap: wrap;
   gap: 6px 10px;
   margin-top: 28px;
+  margin-bottom: 28px;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -1653,7 +1654,7 @@ li {
   }
 
   .phone-screen {
-    height: 575px;
+    height: 630px;
     mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
   }
