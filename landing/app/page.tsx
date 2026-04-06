@@ -15,6 +15,7 @@ export default function Home() {
       <ScrollTracker />
 
       <TrackedSection className="hero-shell" sectionId="hero">
+        <div className="hero-shell-veil" aria-hidden="true" />
         <div className="top-nav">
           <TrackedLink className="wordmark hero-anim-wordmark" href="/">
             {siteConfig.name}
