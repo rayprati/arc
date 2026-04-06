@@ -1675,6 +1675,10 @@ li {
     margin-top: 10px;
   }
 
+  .hero-grid {
+    gap: 32px;
+  }
+
   .top-nav,
   .site-footer {
     flex-direction: column;
@@ -1703,6 +1707,45 @@ li {
     height: 630px;
     mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  }
+}
+
+/* ─── Hero entrance animations ──────────────────────────────────────────── */
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-stamp {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* h1 first — the anchor */
+  .hero-anim-h1 {
+    animation: hero-fade-up 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+  }
+
+  /* ARC wordmark second — sharp stamp, no drift */
+  .hero-anim-wordmark {
+    animation: hero-stamp 0.32s ease-out 0.38s both;
+  }
+
+  /* Tagline third */
+  .hero-anim-tagline {
+    animation: hero-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;
+  }
+
+  /* Button fourth */
+  .hero-anim-cta {
+    animation: hero-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both;
+  }
+
+  /* Phone last — slightly slower, feels grounded */
+  .hero-anim-phone {
+    animation: hero-fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both;
   }
 }
 

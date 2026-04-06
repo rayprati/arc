@@ -16,16 +16,16 @@ export default function Home() {
 
       <TrackedSection className="hero-shell" sectionId="hero">
         <div className="top-nav">
-          <TrackedLink className="wordmark" href="/">
+          <TrackedLink className="wordmark hero-anim-wordmark" href="/">
             {siteConfig.name}
           </TrackedLink>
         </div>
 
         <div className="hero-grid">
           <div className="hero-copy">
-            <h1>Break your bad habit.</h1>
-            <p className="hero-tagline">Enter $1 every time you break your streak.</p>
-            <div className="hero-actions">
+            <h1 className="hero-anim-h1">Break your bad habit.</h1>
+            <p className="hero-tagline hero-anim-tagline">Enter $1 every time you break your streak.</p>
+            <div className="hero-actions hero-anim-cta">
               <TrackedLink
                 className="button button-primary"
                 eventName="hero_cta_click"
@@ -36,7 +36,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-visual">
+          <div className="hero-visual hero-anim-phone">
             <PhoneMockup />
           </div>
         </div>
