@@ -1,5 +1,5 @@
 :root {
-  --background: #07080b;
+  --background: #0b0908;
   --background-elevated: rgba(17, 19, 25, 0.8);
   --background-soft: rgba(255, 255, 255, 0.03);
   --surface: rgba(14, 17, 23, 0.84);
@@ -22,7 +22,7 @@
 html {
   height: 100%;
   color-scheme: dark;
-  background: #07080b;
+  background: #0b0908;
 }
 
 html,
@@ -34,7 +34,7 @@ body {
 body {
   min-height: 100%;
   color: var(--text);
-  background: #07080b;
+  background: #0b0908;
   font-family:
     var(--font-geist),
     ui-sans-serif,
@@ -502,7 +502,7 @@ li {
   position: absolute;
   inset: 10% 12%;
   border-radius: 120px;
-  background: radial-gradient(circle, rgba(140, 166, 255, 0.32), transparent 65%);
+  background: radial-gradient(circle, rgba(220, 210, 200, 0.28), transparent 65%);
   filter: blur(48px);
 }
 
@@ -629,13 +629,134 @@ li {
   height: 820px;
   padding: 0;
   border-radius: 36px;
-  background:
-    linear-gradient(180deg, rgba(15, 18, 25, 0.88), rgba(8, 9, 13, 0.98)),
-    radial-gradient(circle at top, rgba(140, 166, 255, 0.12), transparent 26%);
+  background: #f5f2ee;
   overflow: hidden;
   box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* Override CSS variables for light theme — cascades to all descendants */
+  --text: #111111;
+  --text-muted: rgba(17, 17, 17, 0.62);
+  --text-subtle: rgba(17, 17, 17, 0.4);
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #c03030;
+  --accent-strong: #9a2020;
+  color: #111111;
+}
+
+/* Hardcoded color overrides for light phone theme */
+.phone-screen .phone-status-time,
+.phone-screen .phone-status-icons {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.phone-screen .commitment-meta {
+  color: rgba(0, 0, 0, 0.36);
+}
+
+.phone-screen .ledger-panel {
+  border-color: rgba(0, 0, 0, 0.07);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.phone-screen .ledger-title {
+  color: rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.phone-screen .ledger-row {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.phone-screen .ledger-time {
+  color: rgba(0, 0, 0, 0.36);
+}
+
+.phone-screen .ledger-amount {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.phone-screen .stat-card {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.02));
+}
+
+.phone-screen .stat-card strong.stat-positive,
+.phone-screen .stat-card strong.stat-positive span {
+  color: #1a9060;
+}
+
+.phone-screen .admit-label-top {
+  color: rgba(180, 30, 30, 0.5);
+}
+
+.phone-screen .admit-word {
+  color: rgba(190, 20, 20, 0.88);
+}
+
+.phone-screen .admit-glow {
+  background: radial-gradient(circle, rgba(180, 0, 0, 0.1) 0%, transparent 70%);
+}
+
+.phone-screen .leaderboard-row {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.phone-screen .activity-item {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.phone-screen .activity-dot.relapsed {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.phone-screen .activity-badge.relapsed {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.phone-screen .group-input-row {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.phone-screen .group-input-mock {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.phone-screen .group-send-btn {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.phone-screen .group-avatar {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.phone-screen .settings-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.09);
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.phone-screen .phone-tab-bar {
+  background: rgba(245, 242, 238, 0.85);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-top-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 -2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.phone-screen .phone-tab {
+  color: rgba(0, 0, 0, 0.22);
+}
+
+.phone-screen .phone-tab.active {
+  color: rgba(0, 0, 0, 0.78);
 }
 
 .phone-status-bar {
@@ -1733,7 +1854,7 @@ li {
   position: absolute;
   inset: -2px;
   border-radius: inherit;
-  background: #07080b;
+  background: #0b0908;
   z-index: 10;
   pointer-events: none;
 }
