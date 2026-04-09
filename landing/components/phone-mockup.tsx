@@ -1,9 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 import { AnimatedNumber } from "@/components/animated-number";
+import { TrackedLink } from "@/components/tracked-link";
 
 const floatingTransition = {
   duration: 5.5,
@@ -22,6 +23,70 @@ function formatEasternStatusTime(date: Date): string {
     hour12: true,
   }).format(date);
   return s.replace(/\s?[AP]M$/i, "").trim();
+}
+
+function getEasternYmdString(date: Date): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: EASTERN_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+}
+
+function addCalendarDaysToYmd(ymd: string, deltaDays: number): { y: number; m: number; d: number } {
+  const [y, mo, da] = ymd.split("-").map(Number);
+  const t = new Date(Date.UTC(y, mo - 1, da + deltaDays));
+  return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() };
+}
+
+const LEDGER_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
+
+function formatLedgerStamp(
+  parts: { y: number; m: number; d: number },
+  hour12: number,
+  minute: number,
+  pm: boolean,
+): string {
+  const mm = minute.toString().padStart(2, "0");
+  const suf = pm ? "pm" : "am";
+  return `${LEDGER_MONTHS[parts.m - 1]} ${parts.d}, ${hour12}:${mm} ${suf}`;
+}
+
+type HomeLedgerRow = { key: string; time: string; habit: string; amount: string };
+
+function buildHomeLedger(now: Date): HomeLedgerRow[] {
+  const ymd = getEasternYmdString(now);
+  const d28 = addCalendarDaysToYmd(ymd, -28);
+  const d29 = addCalendarDaysToYmd(ymd, -29);
+  const d35 = addCalendarDaysToYmd(ymd, -35);
+  const d36 = addCalendarDaysToYmd(ymd, -36);
+  return [
+    {
+      key: "ledger-28",
+      time: formatLedgerStamp(d28, 9, 14, true),
+      habit: "Drinking",
+      amount: "−$1",
+    },
+    {
+      key: "ledger-29",
+      time: formatLedgerStamp(d29, 11, 2, false),
+      habit: "Drinking",
+      amount: "−$1",
+    },
+    {
+      key: "ledger-35",
+      time: formatLedgerStamp(d35, 7, 33, true),
+      habit: "Drinking",
+      amount: "−$1",
+    },
+    {
+      key: "ledger-36",
+      time: formatLedgerStamp(d36, 2, 47, true),
+      habit: "Drinking",
+      amount: "−$1",
+    },
+  ];
 }
 
 const groupFeed = [
@@ -44,13 +109,6 @@ const allLeaderboardRows = [
   { name: "Blake Walsh", habit: "Weed", lost: "$4" },
   { name: "Fatima Osei", habit: "Vaping", lost: "$3" },
   { name: "Hannah Muller", habit: "Drinking", lost: "$2" },
-];
-
-const ledger = [
-  { time: "Today, 9:14 pm", habit: "Drinking", amount: "−$1" },
-  { time: "Yesterday, 11:02 am", habit: "Drinking", amount: "−$1" },
-  { time: "Mar 20, 7:33 pm", habit: "Drinking", amount: "−$1" },
-  { time: "Mar 19, 2:47 pm", habit: "Drinking", amount: "−$1" },
 ];
 
 const tabDurations = [7500, 4000, 5000];
@@ -166,15 +224,22 @@ export function PhoneMockup() {
   const [tab, setTab] = useState(0);
   const [direction, setDirection] = useState(1);
   const [statusTime, setStatusTime] = useState("9:41");
+  const [homeLedger, setHomeLedger] = useState<HomeLedgerRow[]>(() => buildHomeLedger(new Date()));
+
+  const syncEasternClockAndLedger = useCallback(() => {
+    const now = new Date();
+    setStatusTime(formatEasternStatusTime(now));
+    setHomeLedger(buildHomeLedger(now));
+  }, []);
 
   useLayoutEffect(() => {
-    setStatusTime(formatEasternStatusTime(new Date()));
-  }, []);
+    syncEasternClockAndLedger();
+  }, [syncEasternClockAndLedger]);
 
   useEffect(() => {
-    const id = setInterval(() => setStatusTime(formatEasternStatusTime(new Date())), 60_000);
+    const id = setInterval(syncEasternClockAndLedger, 60_000);
     return () => clearInterval(id);
-  }, []);
+  }, [syncEasternClockAndLedger]);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -250,7 +315,7 @@ export function PhoneMockup() {
                   <div className="stat-grid">
                     <div className="stat-card">
                       <span>Streak</span>
-                      <strong className="stat-positive"><AnimatedNumber to={42} suffix="d" /></strong>
+                      <strong className="stat-positive"><AnimatedNumber to={28} suffix="d" /></strong>
                     </div>
                     <div className="stat-card danger">
                       <span>Invested</span>
@@ -259,16 +324,20 @@ export function PhoneMockup() {
                   </div>
 
                   <div className="admit-wrapper">
-                    <button className="admit-button" type="button">
+                    <TrackedLink
+                      className="admit-button"
+                      eventName="hero_admit_click"
+                      href="/start"
+                    >
                       <span className="admit-label-top">TAP TO</span>
                       <span className="admit-word">ADMIT</span>
-                    </button>
+                    </TrackedLink>
                   </div>
 
                   <div className="ledger-panel">
                     <p className="ledger-title">History</p>
-                    {ledger.map((entry) => (
-                      <div className="ledger-row" key={entry.time}>
+                    {homeLedger.map((entry) => (
+                      <div className="ledger-row" key={entry.key}>
                         <div className="ledger-left">
                           <span className="ledger-habit">{entry.habit}</span>
                           <span className="ledger-time">{entry.time}</span>

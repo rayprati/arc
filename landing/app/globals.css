@@ -905,6 +905,9 @@ li {
   cursor: pointer;
   transition: transform 80ms ease, box-shadow 80ms ease;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
 }
 
 .admit-button::before {
@@ -939,6 +942,11 @@ li {
     0 4px 10px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 100, 100, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.admit-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
 }
 
 .admit-label-top {
