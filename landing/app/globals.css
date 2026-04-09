@@ -656,17 +656,17 @@ li {
 }
 
 .phone-screen .ledger-panel {
-  border-color: rgba(0, 0, 0, 0.07);
+  border-color: rgba(0, 0, 0, 0.14);
   background: rgba(0, 0, 0, 0.03);
 }
 
 .phone-screen .ledger-title {
   color: rgba(0, 0, 0, 0.3);
-  border-bottom-color: rgba(0, 0, 0, 0.06);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
 .phone-screen .ledger-row {
-  border-bottom-color: rgba(0, 0, 0, 0.05);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .phone-screen .ledger-time {
@@ -678,7 +678,7 @@ li {
 }
 
 .phone-screen .stat-card {
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.14);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.02));
 }
 
@@ -688,10 +688,6 @@ li {
 }
 
 
-.phone-screen .admit-glow {
-  background: radial-gradient(circle, rgba(180, 0, 0, 0.1) 0%, transparent 70%);
-}
-
 .phone-screen .leaderboard-row {
   border-bottom-color: rgba(0, 0, 0, 0.06);
 }
@@ -700,27 +696,50 @@ li {
   border-bottom-color: rgba(0, 0, 0, 0.05);
 }
 
-.phone-screen .activity-dot.relapsed {
-  background: rgba(0, 0, 0, 0.45);
+.phone-screen .activity-streak-flame {
+  color: #1a9060;
 }
 
-.phone-screen .activity-badge.relapsed {
-  color: rgba(0, 0, 0, 0.72);
+.phone-screen .activity-streak-days {
+  color: #1a9060;
+}
+
+.phone-screen .activity-streak-days-zero {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.phone-screen .activity-gravestone {
+  color: rgba(0, 0, 0, 0.38);
 }
 
 .phone-screen .group-input-row {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.08);
+  padding: 5px 5px 5px 14px;
+  gap: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .phone-screen .group-input-mock {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.42);
+  font-size: 0.84rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 .phone-screen .group-send-btn {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.45);
+  width: 32px;
+  height: 32px;
+  background: #1a1a1a;
+  border: none;
+  color: #fff;
+  box-shadow: none;
+}
+
+.phone-screen .group-send-btn:hover {
+  background: #333333;
+  color: #fff;
 }
 
 .phone-screen .group-avatar {
@@ -738,10 +757,10 @@ li {
   background: rgba(245, 242, 238, 0.85);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-top-color: rgba(0, 0, 0, 0.08);
+  border-top-color: rgba(0, 0, 0, 0.16);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 -2px 12px rgba(0, 0, 0, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 -2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .phone-screen .phone-tab {
@@ -865,58 +884,84 @@ li {
   padding: 8px 0 4px;
 }
 
-.admit-glow {
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(180, 0, 0, 0.22) 0%, transparent 70%);
-  pointer-events: none;
-}
-
 .admit-button {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0;
   width: 108px;
-  height: 108px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #cc2020 0%, #9a0000 100%);
+  height: 104px;
+  border-radius: 48% 52% 50% 50% / 51% 49% 50% 50%;
+  background-color: #9a0000;
+  background-image: linear-gradient(180deg, #cc2020 0%, #9a0000 100%);
   border: 1px solid rgba(120, 0, 0, 0.25);
   box-shadow:
-    0 4px 0 0 #6a0000,
-    inset 0 1px 0 rgba(255, 100, 100, 0.14);
+    2px 7px 0 0 #6a0000,
+    0 10px 18px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 100, 100, 0.14),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: transform 80ms ease, box-shadow 80ms ease;
-  overflow: visible;
+  overflow: hidden;
 }
 
+.admit-button::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 5%;
+  height: 38%;
+  border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 92%);
+  pointer-events: none;
+}
+
+.admit-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  width: 78%;
+  height: 26%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse 100% 55% at 50% 0%, rgba(0, 0, 0, 0.1), transparent 68%);
+  pointer-events: none;
+}
 
 .admit-button:active {
-  transform: translateY(4px);
+  transform: translateY(5px);
   box-shadow:
-    0 0 0 0 #6a0000,
-    inset 0 1px 0 rgba(255, 100, 100, 0.1);
+    1px 2px 0 0 #6a0000,
+    0 4px 10px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 100, 100, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
 }
 
 .admit-label-top {
-  font-size: 0.55rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 1;
+  margin-bottom: -2px;
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.52);
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .admit-word {
-  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1.38rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.96);
+  letter-spacing: 0.075em;
+  color: #fff;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .ledger-panel {
@@ -1054,19 +1099,61 @@ li {
   border-bottom: 0;
 }
 
-.activity-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.activity-lead {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 56px;
   flex-shrink: 0;
 }
 
-.activity-dot.streak {
-  background: #6ee7b7;
+.activity-flame-slot {
+  width: 17px;
+  height: 1.125rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow: visible;
 }
 
-.activity-dot.relapsed {
-  background: rgba(255, 255, 255, 0.7);
+.activity-flame-slot svg {
+  display: block;
+  height: 15px;
+  width: auto;
+  max-width: 17px;
+  flex-shrink: 0;
+  transform: translateY(-2.5px);
+}
+
+.activity-flame-slot svg.activity-gravestone {
+  transform: translateY(-2.5px) scale(1.18);
+  transform-origin: center center;
+  max-width: none;
+}
+
+.activity-streak-flame {
+  color: #6ee7b7;
+  flex-shrink: 0;
+}
+
+.activity-gravestone {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.activity-streak-days {
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.125rem;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.activity-streak-days-zero {
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .activity-body {
@@ -1083,16 +1170,6 @@ li {
   font-size: 0.76rem;
   color: var(--text-subtle);
   margin-top: 1px;
-}
-
-.activity-badge {
-  font-size: 0.82rem;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.activity-badge.relapsed {
-  color: rgba(255, 255, 255, 0.85);
 }
 
 .group-input-row {

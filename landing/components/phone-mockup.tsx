@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 import { AnimatedNumber } from "@/components/animated-number";
 
@@ -12,26 +12,38 @@ const floatingTransition = {
   ease: "easeInOut" as const,
 };
 
+const EASTERN_TZ = "America/New_York";
+
+function formatEasternStatusTime(date: Date): string {
+  const s = new Intl.DateTimeFormat("en-US", {
+    timeZone: EASTERN_TZ,
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).format(date);
+  return s.replace(/\s?[AP]M$/i, "").trim();
+}
+
 const groupFeed = [
-  { name: "Alex P.", status: "streak", detail: "18d clean", habit: "Vaping" },
-  { name: "Jordan M.", status: "relapsed", detail: "−$1 today", habit: "Drinking" },
-  { name: "Sam K.", status: "streak", detail: "31d clean", habit: "Porn" },
-  { name: "Riley T.", status: "streak", detail: "7d clean", habit: "Doomscrolling" },
+  { name: "Alex Peterson", status: "streak" as const, habit: "Vaping", streakDays: 18, lost: "$5" },
+  { name: "Jordan Martinez", status: "relapsed" as const, habit: "Drinking", lost: "$2" },
+  { name: "Ryan Smith", status: "streak" as const, habit: "Porn", streakDays: 31, lost: "$25" },
+  { name: "Jamal Williams", status: "streak" as const, habit: "Doomscrolling", streakDays: 7, lost: "$0" },
 ];
 
 const allLeaderboardRows = [
-  { name: "M. Chen", habit: "Vaping", lost: "$143" },
-  { name: "J. Park", habit: "Drinking", lost: "$87" },
-  { name: "D. Lewis", habit: "Scrolling", lost: "$54" },
-  { name: "R. Torres", habit: "Porn", lost: "$31" },
-  { name: "A. Kim", habit: "Weed", lost: "$18" },
-  { name: "C. Ngo", habit: "Vaping", lost: "$12" },
-  { name: "T. Reyes", habit: "Drinking", lost: "$7" },
-  { name: "S. Patel", habit: "Scrolling", lost: "$6" },
-  { name: "L. Grant", habit: "Porn", lost: "$5" },
-  { name: "B. Walsh", habit: "Weed", lost: "$4" },
-  { name: "F. Osei", habit: "Vaping", lost: "$3" },
-  { name: "H. Muller", habit: "Drinking", lost: "$2" },
+  { name: "Marcus Chen", habit: "Vaping", lost: "$143" },
+  { name: "Jamie Park", habit: "Drinking", lost: "$87" },
+  { name: "Dana Lewis", habit: "Scrolling", lost: "$54" },
+  { name: "Rafael Torres", habit: "Porn", lost: "$31" },
+  { name: "Avery Kim", habit: "Weed", lost: "$18" },
+  { name: "Cameron Ngo", habit: "Vaping", lost: "$12" },
+  { name: "Taylor Reyes", habit: "Drinking", lost: "$7" },
+  { name: "Sanjay Patel", habit: "Scrolling", lost: "$6" },
+  { name: "Leslie Grant", habit: "Porn", lost: "$5" },
+  { name: "Blake Walsh", habit: "Weed", lost: "$4" },
+  { name: "Fatima Osei", habit: "Vaping", lost: "$3" },
+  { name: "Hannah Muller", habit: "Drinking", lost: "$2" },
 ];
 
 const ledger = [
@@ -77,8 +89,43 @@ const ArrowUpIcon = () => (
 );
 
 const FlameIcon = () => (
-  <svg width="13" height="14" viewBox="0 0 13 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#6ee7b7" }}>
+  <svg
+    className="activity-streak-flame"
+    width="13"
+    height="14"
+    viewBox="0 0 13 14"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
     <path d="M6.5 13c2.2 0 4-1.6 4-3.5 0-1.8-1.3-3.1-1.8-3.5.2.9-.9 2-.9 2S7 7 7 5.5C7 4 8 2.5 8 2.5 6.2 3.2 2.5 5.5 2.5 9.5c0 2 1.8 3.5 4 3.5z" />
+  </svg>
+);
+
+const GravestoneIcon = () => (
+  <svg
+    className="activity-gravestone"
+    width="17"
+    height="16"
+    viewBox="0 0 17 16"
+    fill="none"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden
+  >
+    <path strokeWidth="1.5" d="M3.65 14.95h9.7" />
+    <path
+      strokeWidth="1.5"
+      d="M5.2 14.55V8.35Q8.5 4.25 11.8 8.35v6.2H5.2z"
+    />
+    <path
+      strokeWidth="1.15"
+      d="M6.35 9.45h4.3M5.9 10.52h5.2M6.35 11.58h4.3"
+    />
   </svg>
 );
 
@@ -107,7 +154,7 @@ const WifiIcon = () => (
 );
 
 const BatteryIcon = () => (
-  <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+  <svg width="25" height="12" viewBox="0 0 25 12" fill="none" aria-hidden>
     <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="currentColor" strokeOpacity="0.5" />
     <rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor" />
     <path d="M23 4v4a2 2 0 000-4z" fill="currentColor" fillOpacity="0.4" />
@@ -118,6 +165,16 @@ export function PhoneMockup() {
   const reduceMotion = useReducedMotion();
   const [tab, setTab] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [statusTime, setStatusTime] = useState("9:41");
+
+  useLayoutEffect(() => {
+    setStatusTime(formatEasternStatusTime(new Date()));
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setStatusTime(formatEasternStatusTime(new Date())), 60_000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -157,7 +214,9 @@ export function PhoneMockup() {
         <div className="phone-notch" />
         <div className="phone-screen">
           <div className="phone-status-bar">
-            <span className="phone-status-time">9:41</span>
+            <span className="phone-status-time" aria-live="polite" aria-atomic="true">
+              {statusTime}
+            </span>
             <div className="phone-status-icons">
               <SignalIcon />
               <WifiIcon />
@@ -200,7 +259,6 @@ export function PhoneMockup() {
                   </div>
 
                   <div className="admit-wrapper">
-                    <div className="admit-glow" />
                     <button className="admit-button" type="button">
                       <span className="admit-label-top">TAP TO</span>
                       <span className="admit-word">ADMIT</span>
@@ -267,7 +325,7 @@ export function PhoneMockup() {
                     <p className="eyebrow">Your Circle</p>
                     <p className="groups-title">The Usual Suspects</p>
                     <div className="group-avatars">
-                      {["AP", "JM", "SK", "RT"].map((initials) => (
+                      {["AP", "JM", "RS", "JW"].map((initials) => (
                         <span className="group-avatar" key={initials}>{initials}</span>
                       ))}
                       <span className="group-member-count">4 members</span>
@@ -277,14 +335,23 @@ export function PhoneMockup() {
                   <div className="activity-feed">
                     {groupFeed.map((item) => (
                       <div className="activity-item" key={item.name}>
-                        <div className={`activity-dot ${item.status}`} />
+                        <div className="activity-lead">
+                          <span className="activity-flame-slot" aria-hidden>
+                            {item.status === "streak" ? <FlameIcon /> : <GravestoneIcon />}
+                          </span>
+                          {item.status === "streak" ? (
+                            <span className="activity-streak-days">{item.streakDays}d</span>
+                          ) : (
+                            <span className="activity-streak-days activity-streak-days-zero">0d</span>
+                          )}
+                        </div>
                         <div className="activity-body">
                           <strong>{item.name}</strong>
-                          <p>{item.habit} · {item.detail}</p>
+                          <p>
+                            <span className="activity-habit">{item.habit}</span>
+                          </p>
                         </div>
-                        <span className={`activity-badge ${item.status}`}>
-                          {item.status === "streak" ? <FlameIcon /> : "−$1"}
-                        </span>
+                        <span className="leaderboard-amount">{item.lost}</span>
                       </div>
                     ))}
                   </div>
