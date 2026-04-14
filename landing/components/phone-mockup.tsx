@@ -329,7 +329,6 @@ export function PhoneMockup() {
                       eventName="hero_admit_click"
                       href="/start"
                     >
-                      <span className="admit-label-top">TAP TO</span>
                       <span className="admit-word">ADMIT</span>
                     </TrackedLink>
                   </div>

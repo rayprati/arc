@@ -644,6 +644,25 @@ li {
   color: #6ee7b7;
 }
 
+.phone-screen .stat-card {
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+.phone-screen .ledger-panel {
+  border: none;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
 .phone-screen .activity-streak-flame {
   color: #6ee7b7;
 }
@@ -739,7 +758,7 @@ li {
 
 .phone-page {
   display: grid;
-  gap: 14px;
+  gap: 18px;
   height: 100%;
   overflow: hidden;
   align-content: start;
@@ -785,7 +804,8 @@ li {
   height: 32px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
+  box-shadow: none;
   color: rgba(231, 235, 243, 0.45);
   cursor: pointer;
   flex-shrink: 0;
@@ -815,14 +835,12 @@ li {
   width: 108px;
   height: 104px;
   border-radius: 48% 52% 50% 50% / 51% 49% 50% 50%;
-  background-color: #9a0000;
-  background-image: linear-gradient(180deg, #cc2020 0%, #9a0000 100%);
-  border: 1px solid rgba(120, 0, 0, 0.25);
+  background-color: #9e2424;
+  background-image: linear-gradient(180deg, #a82828 0%, #8c1818 100%);
+  border: 1px solid rgba(80, 0, 0, 0.3);
   box-shadow:
-    2px 7px 0 0 #6a0000,
-    0 10px 18px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 100, 100, 0.14),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    2px 6px 0 0 #5a0e0e,
+    0 8px 16px rgba(0, 0, 0, 0.28);
   cursor: pointer;
   transition: transform 80ms ease, box-shadow 80ms ease;
   overflow: hidden;
@@ -831,38 +849,12 @@ li {
   box-sizing: border-box;
 }
 
-.admit-button::before {
-  content: "";
-  position: absolute;
-  left: 6%;
-  right: 6%;
-  top: 5%;
-  height: 38%;
-  border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 92%);
-  pointer-events: none;
-}
-
-.admit-button::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 10%;
-  width: 78%;
-  height: 26%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(ellipse 100% 55% at 50% 0%, rgba(0, 0, 0, 0.1), transparent 68%);
-  pointer-events: none;
-}
 
 .admit-button:active {
   transform: translateY(5px);
   box-shadow:
-    1px 2px 0 0 #6a0000,
-    0 4px 10px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 100, 100, 0.08),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+    0 1px 0 0 #5a0e0e,
+    0 3px 8px rgba(0, 0, 0, 0.22);
 }
 
 .admit-button:focus-visible {
@@ -885,9 +877,9 @@ li {
 .admit-word {
   position: relative;
   z-index: 1;
-  font-size: 1.38rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 0.075em;
+  letter-spacing: 0.06em;
   color: #fff;
   text-transform: uppercase;
   line-height: 0.95;
@@ -1148,7 +1140,12 @@ li {
 
 .phone-header h3 {
   font-size: 1.4rem;
-  margin-top: 4px;
+  margin-top: 1px;
+  color: #ffffff;
+}
+
+.phone-screen .eyebrow {
+  color: rgba(255, 255, 255, 0.28);
 }
 
 .stat-grid,
