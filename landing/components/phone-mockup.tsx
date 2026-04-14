@@ -361,12 +361,14 @@ export function PhoneMockup() {
                       <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
                     </div>
                   </div>
-                  <p className="groups-title">The Usual Suspects</p>
-                  <div className="group-avatars">
-                    {["AP", "JM", "RS", "JW"].map((initials) => (
-                      <span className="group-avatar" key={initials}>{initials}</span>
-                    ))}
-                    <span className="group-member-count">4 members</span>
+                  <div>
+                    <h3>The Usual Suspects</h3>
+                    <div className="group-avatars">
+                      {["AP", "JM", "RS", "JW"].map((initials) => (
+                        <span className="group-avatar" key={initials}>{initials}</span>
+                      ))}
+                      <span className="group-member-count">4 members</span>
+                    </div>
                   </div>
 
                   <div className="activity-feed">
