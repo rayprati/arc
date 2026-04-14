@@ -1373,6 +1373,11 @@ li {
   min-width: 18px;
 }
 
+.leaderboard-identity {
+  flex: 1;
+  min-width: 0;
+}
+
 .leaderboard-identity strong {
   font-size: 0.9rem;
   font-weight: 600;

@@ -351,36 +351,6 @@ export function PhoneMockup() {
 
               {tab === 1 && (
                 <motion.div
-                  key="leaderboard"
-                  className="phone-page"
-                  custom={direction}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={transition}
-                >
-                  <div className="panel-header lb-header">
-                    <span className="lb-title">Global Leaderboard</span>
-                    <span className="lb-sub">This month</span>
-                  </div>
-                  <div className="leaderboard leaderboard-full">
-                    {allLeaderboardRows.map((row, index) => (
-                      <div className="leaderboard-row" key={row.name}>
-                        <span className="leaderboard-rank">{index + 1}</span>
-                        <div className="leaderboard-identity">
-                          <strong>{row.name}</strong>
-                          <p>{row.habit}</p>
-                        </div>
-                        <span className="leaderboard-amount">{row.lost}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {tab === 2 && (
-                <motion.div
                   key="groups"
                   className="phone-page"
                   custom={direction}
@@ -431,17 +401,47 @@ export function PhoneMockup() {
                   </div>
                 </motion.div>
               )}
+
+              {tab === 2 && (
+                <motion.div
+                  key="leaderboard"
+                  className="phone-page"
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={transition}
+                >
+                  <div className="panel-header lb-header">
+                    <span className="lb-title">Global Leaderboard</span>
+                    <span className="lb-sub">This month</span>
+                  </div>
+                  <div className="leaderboard leaderboard-full">
+                    {allLeaderboardRows.map((row, index) => (
+                      <div className="leaderboard-row" key={row.name}>
+                        <span className="leaderboard-rank">{index + 1}</span>
+                        <div className="leaderboard-identity">
+                          <strong>{row.name}</strong>
+                          <p>{row.habit}</p>
+                        </div>
+                        <span className="leaderboard-amount">{row.lost}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
 
           <nav className="phone-tab-bar">
-            {[HomeIcon, TrophyIcon, GroupIcon].map((Icon, i) => (
+            {[HomeIcon, GroupIcon, TrophyIcon].map((Icon, i) => (
               <button
                 key={i}
                 className={`phone-tab ${tab === i ? "active" : ""}`}
                 onClick={() => goTo(i)}
                 type="button"
-                aria-label={["Home", "Leaderboard", "Groups"][i]}
+                aria-label={["Home", "Groups", "Leaderboard"][i]}
               >
                 <Icon />
               </button>
