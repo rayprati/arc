@@ -111,7 +111,6 @@ const allLeaderboardRows = [
   { name: "Hannah Muller", habit: "Drinking", lost: "$2" },
 ];
 
-const tabDurations = [7500, 4000, 5000];
 
 const HomeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -241,13 +240,6 @@ export function PhoneMockup() {
     return () => clearInterval(id);
   }, [syncEasternClockAndLedger]);
 
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setDirection(1);
-      setTab((t) => (t + 1) % 3);
-    }, tabDurations[tab]);
-    return () => clearTimeout(id);
-  }, [tab]);
 
   const goTo = (next: number) => {
     setDirection(next > tab ? 1 : -1);
@@ -309,7 +301,6 @@ export function PhoneMockup() {
                     </div>
                     <div className="phone-page-nav">
                       <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
-                      <button type="button" aria-label="Leaderboard" onClick={() => goTo(2)}><TrophyIcon /></button>
                       <button type="button" aria-label="Settings"><SettingsIcon /></button>
                     </div>
                   </div>
@@ -362,13 +353,12 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="phone-header">
-                    <div>
-                      <p className="eyebrow">Your Circle</p>
-                      <p className="groups-title">The Usual Suspects</p>
+                    <div className="phone-text-nav">
+                      <button type="button" className="active">Your Circle</button>
+                      <button type="button" onClick={() => goTo(2)}>Leaderboard</button>
                     </div>
                     <div className="phone-page-nav">
                       <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
-                      <button type="button" aria-label="Leaderboard" onClick={() => goTo(2)}><TrophyIcon /></button>
                     </div>
                   </div>
                   <div className="group-avatars">
@@ -421,13 +411,12 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="phone-header">
-                    <div>
-                      <p className="eyebrow">Global</p>
-                      <h3 className="lb-title">Leaderboard</h3>
+                    <div className="phone-text-nav">
+                      <button type="button" onClick={() => goTo(1)}>Your Circle</button>
+                      <button type="button" className="active">Leaderboard</button>
                     </div>
                     <div className="phone-page-nav">
                       <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
-                      <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
                     </div>
                   </div>
                   <div className="leaderboard leaderboard-full">

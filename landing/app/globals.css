@@ -796,6 +796,29 @@ li {
   color: var(--text);
 }
 
+.phone-text-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.phone-text-nav button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: rgba(231, 235, 243, 0.28);
+  transition: color 120ms ease;
+  letter-spacing: -0.01em;
+}
+
+.phone-text-nav button.active {
+  color: rgba(231, 235, 243, 0.92);
+}
+
 .phone-page-nav {
   display: flex;
   align-items: center;
