@@ -796,6 +796,32 @@ li {
   color: var(--text);
 }
 
+.phone-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.phone-page-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: rgba(231, 235, 243, 0.38);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: color 120ms ease;
+}
+
+.phone-page-nav button:hover {
+  color: rgba(231, 235, 243, 0.72);
+}
+
 .settings-btn {
   display: flex;
   align-items: center;
@@ -908,12 +934,13 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px 12px;
+  border-bottom: none;
+  margin-bottom: 2px;
 }
 
 .ledger-row:last-child {
-  border-bottom: 0;
+  margin-bottom: 0;
 }
 
 .ledger-left {
@@ -925,18 +952,20 @@ li {
 .ledger-habit {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text);
+  color: #f87171;
 }
 
 .ledger-time {
-  font-size: 0.7rem;
-  color: rgba(231, 235, 243, 0.32);
+  font-size: 0.68rem;
+  color: rgba(231, 235, 243, 0.22);
+  letter-spacing: 0.01em;
 }
 
 .ledger-amount {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
+  color: #f87171;
+  letter-spacing: -0.01em;
 }
 
 .lb-header {

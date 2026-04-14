@@ -307,9 +307,11 @@ export function PhoneMockup() {
                       <h3>Stop Drinking</h3>
                       <p className="commitment-meta">Private &middot; 30 days</p>
                     </div>
-                    <button className="settings-btn" type="button" aria-label="Settings">
-                      <SettingsIcon />
-                    </button>
+                    <div className="phone-page-nav">
+                      <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
+                      <button type="button" aria-label="Leaderboard" onClick={() => goTo(2)}><TrophyIcon /></button>
+                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
+                    </div>
                   </div>
 
                   <div className="stat-grid">
@@ -338,7 +340,7 @@ export function PhoneMockup() {
                     {homeLedger.map((entry) => (
                       <div className="ledger-row" key={entry.key}>
                         <div className="ledger-left">
-                          <span className="ledger-habit">{entry.habit}</span>
+                          <span className="ledger-habit">Failed</span>
                           <span className="ledger-time">{entry.time}</span>
                         </div>
                         <span className="ledger-amount">{entry.amount}</span>
@@ -359,15 +361,21 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
-                  <div>
-                    <p className="eyebrow">Your Circle</p>
-                    <p className="groups-title">The Usual Suspects</p>
-                    <div className="group-avatars">
-                      {["AP", "JM", "RS", "JW"].map((initials) => (
-                        <span className="group-avatar" key={initials}>{initials}</span>
-                      ))}
-                      <span className="group-member-count">4 members</span>
+                  <div className="phone-header">
+                    <div>
+                      <p className="eyebrow">Your Circle</p>
+                      <p className="groups-title">The Usual Suspects</p>
                     </div>
+                    <div className="phone-page-nav">
+                      <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
+                      <button type="button" aria-label="Leaderboard" onClick={() => goTo(2)}><TrophyIcon /></button>
+                    </div>
+                  </div>
+                  <div className="group-avatars">
+                    {["AP", "JM", "RS", "JW"].map((initials) => (
+                      <span className="group-avatar" key={initials}>{initials}</span>
+                    ))}
+                    <span className="group-member-count">4 members</span>
                   </div>
 
                   <div className="activity-feed">
@@ -412,9 +420,15 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
-                  <div className="panel-header lb-header">
-                    <span className="lb-title">Global Leaderboard</span>
-                    <span className="lb-sub">This month</span>
+                  <div className="phone-header">
+                    <div>
+                      <p className="eyebrow">Global</p>
+                      <h3 className="lb-title">Leaderboard</h3>
+                    </div>
+                    <div className="phone-page-nav">
+                      <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
+                      <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
+                    </div>
                   </div>
                   <div className="leaderboard leaderboard-full">
                     {allLeaderboardRows.map((row, index) => (
@@ -433,19 +447,6 @@ export function PhoneMockup() {
             </AnimatePresence>
           </div>
 
-          <nav className="phone-tab-bar">
-            {[HomeIcon, GroupIcon, TrophyIcon].map((Icon, i) => (
-              <button
-                key={i}
-                className={`phone-tab ${tab === i ? "active" : ""}`}
-                onClick={() => goTo(i)}
-                type="button"
-                aria-label={["Home", "Groups", "Leaderboard"][i]}
-              >
-                <Icon />
-              </button>
-            ))}
-          </nav>
         </div>
       </div>
     </motion.div>
