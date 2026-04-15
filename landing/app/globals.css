@@ -504,14 +504,7 @@ li {
 }
 
 .phone-glow {
-  position: absolute;
-  inset: -18% -12%;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse at 38% 28%, rgba(80, 120, 220, 0.42), transparent 55%),
-    radial-gradient(ellipse at 64% 72%, rgba(60, 180, 150, 0.26), transparent 55%);
-  filter: blur(72px);
-  z-index: 0;
+  display: none;
 }
 
 .phone-frame {
