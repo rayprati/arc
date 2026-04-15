@@ -114,18 +114,18 @@ const allLeaderboardRows = [
 
 const HomeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" />
-    <path d="M9 21V12h6v9" />
+    <path d="M3 10a2 2 0 01.709-1.528l7-5.999a2 2 0 012.582 0l7 5.999A2 2 0 0121 10v9a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+    <path d="M15 21v-8a1 1 0 00-1-1h-4a1 1 0 00-1 1v8" />
   </svg>
 );
 
 const TrophyIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 9H4a2 2 0 01-2-2V5h4" />
-    <path d="M18 9h2a2 2 0 002-2V5h-4" />
-    <path d="M12 17v4" />
-    <path d="M8 21h8" />
-    <path d="M6 5h12v7a6 6 0 01-12 0V5z" />
+    <path d="M6 4h12v6a6 6 0 01-12 0V4z" />
+    <path d="M6 7H4a2 2 0 010-4h2" />
+    <path d="M18 7h2a2 2 0 000-4h-2" />
+    <path d="M12 16v4" />
+    <path d="M8 20h8" />
   </svg>
 );
 
@@ -301,7 +301,6 @@ export function PhoneMockup() {
                         <p className="commitment-meta">30 days</p>
                       </div>
                       <div className="phone-page-nav">
-                        <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
                         <button type="button" aria-label="Settings"><SettingsIcon /></button>
                       </div>
                     </div>
@@ -364,21 +363,17 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="phone-header">
-                    <div className="phone-text-nav">
-                      <button type="button" className="active">Your Circle</button>
-                      <button type="button" onClick={() => goTo(2)}>Leaderboard</button>
+                    <div>
+                      <h3>The Usual Suspects</h3>
+                      <div className="group-avatars">
+                        {["AP", "JM", "RS", "JW"].map((initials) => (
+                          <span className="group-avatar" key={initials}>{initials}</span>
+                        ))}
+                        <span className="group-member-count">4 members</span>
+                      </div>
                     </div>
                     <div className="phone-page-nav">
-                      <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
-                    </div>
-                  </div>
-                  <div>
-                    <h3>The Usual Suspects</h3>
-                    <div className="group-avatars">
-                      {["AP", "JM", "RS", "JW"].map((initials) => (
-                        <span className="group-avatar" key={initials}>{initials}</span>
-                      ))}
-                      <span className="group-member-count">4 members</span>
+                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
                     </div>
                   </div>
 
@@ -425,12 +420,9 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="phone-header">
-                    <div className="phone-text-nav">
-                      <button type="button" onClick={() => goTo(1)}>Your Circle</button>
-                      <button type="button" className="active">Leaderboard</button>
-                    </div>
+                    <h3>Leaderboard</h3>
                     <div className="phone-page-nav">
-                      <button type="button" aria-label="Home" onClick={() => goTo(0)}><HomeIcon /></button>
+                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
                     </div>
                   </div>
                   <div className="leaderboard leaderboard-full">
@@ -450,17 +442,66 @@ export function PhoneMockup() {
             </AnimatePresence>
           </div>
 
-          {tab === 0 && (
-            <div className="admit-bottom">
-              <TrackedLink
-                className="admit-button"
-                eventName="hero_admit_click"
-                href="/start"
-              >
-                <span className="admit-word">ADMIT</span>
-              </TrackedLink>
+          {/* Mega pill — always visible, center slot fixed-width to prevent jumping */}
+          <div className="phone-bottom-pill">
+            <button
+              type="button"
+              className={`pill-icon-btn${tab === 1 ? " active" : ""}`}
+              onClick={() => goTo(1)}
+              aria-label="Your Circle"
+            >
+              <GroupIcon />
+            </button>
+
+            <div className="pill-center-slot">
+              <AnimatePresence mode="wait" initial={false}>
+                {tab === 0 ? (
+                  <motion.div
+                    key="admit"
+                    className="pill-admit-wrap"
+                    initial={{ opacity: 0, scale: 0.9, y: 4 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.88, y: -2 }}
+                    transition={{
+                      duration: 0.48,
+                      ease: [0.16, 1, 0.3, 1] as const,
+                    }}
+                  >
+                    <TrackedLink
+                      className="pill-admit"
+                      eventName="hero_admit_click"
+                      href="/start"
+                    >
+                      <span className="pill-admit-word">ADMIT</span>
+                    </TrackedLink>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key="home"
+                    type="button"
+                    className="pill-icon-btn pill-home-btn"
+                    onClick={() => goTo(0)}
+                    aria-label="Home"
+                    initial={{ opacity: 0, scale: 0.82 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.82 }}
+                    transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] as const }}
+                  >
+                    <HomeIcon />
+                  </motion.button>
+                )}
+              </AnimatePresence>
             </div>
-          )}
+
+            <button
+              type="button"
+              className={`pill-icon-btn${tab === 2 ? " active" : ""}`}
+              onClick={() => goTo(2)}
+              aria-label="Leaderboard"
+            >
+              <TrophyIcon />
+            </button>
+          </div>
 
         </div>
       </div>
