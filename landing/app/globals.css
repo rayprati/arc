@@ -722,7 +722,7 @@ li {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .stat-moon {
@@ -747,7 +747,7 @@ li {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .phone-screen .stat-card strong.stat-positive,
@@ -973,7 +973,7 @@ li {
   background: none;
   border: none;
   box-shadow: none;
-  color: rgba(231, 235, 243, 0.38);
+  color: rgba(255, 255, 255, 0.95);
   cursor: pointer;
   border-radius: 8px;
   transition: color 120ms ease;
@@ -1102,7 +1102,7 @@ li {
   border-radius: 999px;
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.95);
   cursor: pointer;
   transition: color 0.18s ease, transform 0.12s ease;
   flex-shrink: 0;
@@ -1119,7 +1119,7 @@ li {
 .pill-home-btn {
   width: 100%;
   height: 100%;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .pill-center-slot {
@@ -1183,7 +1183,7 @@ li {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(231, 235, 243, 0.55);
+  color: rgba(255, 255, 255, 0.95);
   padding: 8px 0 6px;
   border-bottom: none;
 }
@@ -1199,7 +1199,7 @@ li {
 .ledger-time {
   font-size: 0.76rem;
   font-weight: 400;
-  color: rgba(231, 235, 243, 0.35);
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 0.01em;
   flex: 1;
 }
@@ -1503,7 +1503,7 @@ li {
 .commitment-meta {
   margin-top: 5px;
   font-size: 0.78rem;
-  color: rgba(231, 235, 243, 0.38);
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 0.04em;
 }
 
