@@ -285,7 +285,7 @@ export function PhoneMockup() {
               {tab === 0 && (
                 <motion.div
                   key="home"
-                  className="phone-page"
+                  className="phone-page phone-page-home"
                   custom={direction}
                   variants={variants}
                   initial="enter"
@@ -293,47 +293,58 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
-                  <div className="phone-header">
-                    <div>
-                      <p className="eyebrow">Current Commitment</p>
-                      <h3>Stop Drinking</h3>
-                      <p className="commitment-meta">Private &middot; 30 days</p>
+                  {/* Top: header + stats + progress */}
+                  <div className="home-top">
+                    <div className="phone-header">
+                      <div>
+                        <h3>Stop Drinking</h3>
+                        <p className="commitment-meta">30 days</p>
+                      </div>
+                      <div className="phone-page-nav">
+                        <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
+                        <button type="button" aria-label="Settings"><SettingsIcon /></button>
+                      </div>
                     </div>
-                    <div className="phone-page-nav">
-                      <button type="button" aria-label="My Circle" onClick={() => goTo(1)}><GroupIcon /></button>
-                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
-                    </div>
-                  </div>
 
-                  <div className="stat-grid">
-                    <div className="stat-card">
-                      <span>Streak</span>
-                      <strong className="stat-positive"><AnimatedNumber to={28} suffix="d" /></strong>
-                    </div>
-                    <div className="stat-card danger">
-                      <span>Invested</span>
-                      <strong className="stat-danger"><AnimatedNumber to={4} prefix="$" /></strong>
-                    </div>
-                  </div>
-
-                  <div className="admit-wrapper">
-                    <TrackedLink
-                      className="admit-button"
-                      eventName="hero_admit_click"
-                      href="/start"
-                    >
-                      <span className="admit-word">ADMIT</span>
-                    </TrackedLink>
-                  </div>
-
-                  <div className="ledger-panel">
-                    <p className="ledger-title">History</p>
-                    {homeLedger.map((entry) => (
-                      <div className="ledger-row" key={entry.key}>
-                        <div className="ledger-left">
-                          <span className="ledger-habit">Failed</span>
-                          <span className="ledger-time">{entry.time}</span>
+                    <div className="stat-earth-moon">
+                      <div className="stat-arc-container">
+                        <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
+                          <circle cx="50" cy="50" r="38" fill="none"
+                            stroke="rgba(255,255,255,0.09)" strokeWidth="4.5"
+                            strokeLinecap="round"
+                            strokeDasharray="208.91 238.76"
+                            transform="rotate(112.5 50 50)"
+                          />
+                          <circle cx="50" cy="50" r="38" fill="none"
+                            stroke="rgba(255,255,255,0.55)" strokeWidth="4.5"
+                            strokeLinecap="round"
+                            strokeDasharray="195.52 238.76"
+                            transform="rotate(112.5 50 50)"
+                          />
+                        </svg>
+                        <div className="stat-arc-content">
+                          <strong className="stat-positive"><AnimatedNumber to={28} suffix="d" /></strong>
+                          <span>Streak</span>
                         </div>
+                      </div>
+                      <div className="stat-moon">
+                        <strong className="stat-danger"><AnimatedNumber to={4} prefix="$" /></strong>
+                        <span>Dedicated</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Spacer pushes relapses toward the button */}
+                  <div className="home-spacer" />
+
+                  {/* Bottom: relapses sit just above ADMIT */}
+                  <div className="ledger-panel">
+                    <p className="ledger-title">Relapses</p>
+                    {homeLedger.map((entry, i) => (
+                      <div className="ledger-row" key={entry.key}>
+                        <span className="ledger-time">
+                          {["28 days ago", "31 days ago", "40 days ago", "45 days ago"][i] ?? entry.time}
+                        </span>
                         <span className="ledger-amount">{entry.amount}</span>
                       </div>
                     ))}
@@ -438,6 +449,18 @@ export function PhoneMockup() {
               )}
             </AnimatePresence>
           </div>
+
+          {tab === 0 && (
+            <div className="admit-bottom">
+              <TrackedLink
+                className="admit-button"
+                eventName="hero_admit_click"
+                href="/start"
+              >
+                <span className="admit-word">ADMIT</span>
+              </TrackedLink>
+            </div>
+          )}
 
         </div>
       </div>
