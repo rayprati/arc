@@ -632,7 +632,7 @@ li {
   padding: 0;
   border-radius: 36px;
   background:
-    radial-gradient(ellipse 30% 14% at 50% 36%, rgba(80, 120, 210, 0.11) 0%, transparent 100%),
+    radial-gradient(ellipse 10% 5% at 50% 36%, rgba(80, 120, 210, 0.11) 0%, transparent 100%),
     linear-gradient(160deg, #0b0f1a 0%, #07090d 50%, #0d0b16 100%);
   overflow: hidden;
   box-shadow:
