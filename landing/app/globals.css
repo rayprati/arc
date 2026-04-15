@@ -8,6 +8,8 @@
   --text-muted: rgba(231, 235, 243, 0.74);
   --text-subtle: rgba(231, 235, 243, 0.56);
   --border: rgba(255, 255, 255, 0.1);
+  /* Matches hero phone admit control face red */
+  --admit-money: #d85858;
   --accent: #c06060;
   --accent-strong: #dc8888;
   --danger: #ff8d81;
@@ -84,15 +86,15 @@ img {
 }
 
 .page-shell {
-  padding: 24px 0 72px;
+  padding: 16px 0 64px;
 }
 
 .simple-page-shell {
   min-height: 100dvh;
   display: grid;
   align-content: center;
-  gap: 20px;
-  padding: 32px 0 64px;
+  gap: 18px;
+  padding: 24px 0 52px;
 }
 
 .hero-shell,
@@ -103,7 +105,7 @@ img {
 .content-card,
 .page-lead {
   position: relative;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: linear-gradient(180deg, rgba(21, 24, 31, 0.78), rgba(10, 12, 16, 0.94));
   box-shadow: var(--shadow);
   backdrop-filter: blur(24px);
@@ -111,6 +113,9 @@ img {
 
 .section-card-grid {
   position: relative;
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 30px;
   border: none;
   background: transparent;
   box-shadow: none;
@@ -119,7 +124,7 @@ img {
 
 .hero-shell {
   overflow: hidden;
-  padding: 22px;
+  padding: 16px;
   border-radius: 36px;
   zoom: 0.9;
   border-color: rgba(160, 40, 40, 0.28);
@@ -147,23 +152,23 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .subpage-header {
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .subpage-header-rich {
   flex-wrap: wrap;
   align-items: flex-start;
-  row-gap: 14px;
+  row-gap: 10px;
 }
 
 .subpage-header-brand {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -251,7 +256,7 @@ img {
 }
 
 .wordmark {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -283,7 +288,7 @@ img {
 
 .hero-grid {
   align-items: center;
-  padding-top: 28px;
+  padding-top: 18px;
 }
 
 .hero-copy {
@@ -645,7 +650,7 @@ li {
 }
 
 .phone-screen .stat-card {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.78);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -654,8 +659,17 @@ li {
   box-shadow: none;
 }
 
+.phone-screen .stat-card strong.stat-danger,
+.phone-screen .stat-card strong.stat-danger span {
+  color: var(--admit-money);
+}
+
+.phone-screen .leaderboard-amount {
+  color: var(--admit-money);
+}
+
 .phone-screen .ledger-panel {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.78);
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -987,7 +1001,7 @@ li {
 .ledger-amount {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #f87171;
+  color: var(--admit-money);
   letter-spacing: -0.01em;
 }
 
@@ -1222,7 +1236,7 @@ li {
 .content-card,
 .legal-card {
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
 }
 
@@ -1271,7 +1285,7 @@ li {
 
 .stat-card strong.stat-danger,
 .stat-card strong.stat-danger span {
-  color: var(--accent-strong);
+  color: var(--admit-money);
 }
 
 .commitment-meta {
@@ -1364,11 +1378,10 @@ li {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--accent-strong);
+  color: var(--admit-money);
   flex-shrink: 0;
 }
 
-.section-card-grid,
 .section-split,
 .final-cta,
 .page-lead,
@@ -1376,6 +1389,7 @@ li {
   margin-top: 24px;
   padding: 24px;
   border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .section-intro,
@@ -1564,7 +1578,7 @@ li {
   width: min(100%, 540px);
   padding: 28px;
   border-radius: 30px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: linear-gradient(180deg, rgba(20, 22, 29, 0.98), rgba(10, 12, 16, 1));
   box-shadow: var(--shadow);
 }
@@ -1808,13 +1822,13 @@ li {
 
 @media (min-width: 760px) {
   .hero-shell {
-    padding: 28px;
+    padding: 20px;
   }
 
   .hero-grid {
     grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
     gap: 40px;
-    padding-top: 38px;
+    padding-top: 22px;
   }
 
   .three-up-grid {
@@ -1846,7 +1860,7 @@ li {
 @media (max-width: 759px) {
   .hero-shell {
     zoom: 1;
-    padding: 28px;
+    padding: 18px;
   }
 
   .hero-copy {
