@@ -315,7 +315,7 @@ export function PhoneMockup() {
                             transform="rotate(112.5 50 50)"
                           />
                           <circle cx="50" cy="50" r="38" fill="none"
-                            stroke="rgba(255,255,255,0.55)" strokeWidth="4.5"
+                            stroke="rgba(100, 148, 220, 0.82)" strokeWidth="4.5"
                             strokeLinecap="round"
                             strokeDasharray="195.52 238.76"
                             transform="rotate(112.5 50 50)"
