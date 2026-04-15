@@ -308,12 +308,14 @@ export function PhoneMockup() {
                     <div className="stat-earth-moon">
                       <div className="stat-arc-container">
                         <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
+                          {/* track */}
                           <circle cx="50" cy="50" r="38" fill="none"
                             stroke="rgba(255,255,255,0.09)" strokeWidth="4.5"
                             strokeLinecap="round"
                             strokeDasharray="208.91 238.76"
                             transform="rotate(112.5 50 50)"
                           />
+                          {/* progress arc */}
                           <circle cx="50" cy="50" r="38" fill="none"
                             stroke="rgba(100, 148, 220, 0.82)" strokeWidth="4.5"
                             strokeLinecap="round"
