@@ -2107,7 +2107,7 @@ li {
 
   .stat-earth-moon {
     gap: 14px;
-    transform: translateX(-12px);
+    transform: translateX(-8px);
   }
 
   .top-nav,
