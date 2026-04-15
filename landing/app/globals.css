@@ -1980,7 +1980,7 @@ li {
 @media (max-width: 759px) {
   .hero-shell {
     zoom: 1;
-    padding: 18px;
+    padding: 28px;
   }
 
   .hero-copy {
@@ -1993,6 +1993,23 @@ li {
 
   .hero-grid {
     gap: 32px;
+  }
+
+  .stat-arc-container {
+    width: 155px;
+    height: 155px;
+  }
+
+  .stat-arc-content strong {
+    font-size: 2.3rem;
+  }
+
+  .stat-moon strong {
+    font-size: 1.8rem;
+  }
+
+  .stat-earth-moon {
+    gap: 14px;
   }
 
   .top-nav,
