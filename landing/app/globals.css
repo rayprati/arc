@@ -2010,6 +2010,7 @@ li {
 
   .stat-earth-moon {
     gap: 14px;
+    transform: translateX(-12px);
   }
 
   .top-nav,
