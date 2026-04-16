@@ -363,10 +363,16 @@ export function PhoneMockup() {
                     <div>
                       <h3>The Usual Suspects</h3>
                       <div className="group-avatars">
-                        {["AP", "JM", "RS", "JW"].map((initials) => (
-                          <span className="group-avatar" key={initials}>{initials}</span>
+                        {groupFeed.map((member) => (
+                          <img
+                            key={member.name}
+                            className="group-avatar"
+                            src={`https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(member.name)}&backgroundColor=141414&bold=true`}
+                            alt={member.name}
+                            width={26}
+                            height={26}
+                          />
                         ))}
-                        <span className="group-member-count">4 members</span>
                       </div>
                     </div>
                     <div className="phone-page-nav">
