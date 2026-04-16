@@ -333,8 +333,6 @@ export function PhoneMockup() {
                     </div>
                   </div>
 
-                  <div className="hero-divider" />
-
                   {/* Bottom: relapses sit just above ADMIT */}
                   <div className="ledger-panel">
                     <p className="ledger-title">Relapses</p>

@@ -631,7 +631,7 @@ li {
   padding: 0;
   border-radius: 36px;
   background:
-    radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 45%),
+    radial-gradient(ellipse 160% 65% at 50% -5%, #171F30 0%, transparent 65%),
     #050505;
   overflow: hidden;
   font-family: var(--font-geist), ui-sans-serif, -apple-system, sans-serif;
@@ -785,6 +785,7 @@ li {
   border: none;
   padding: 0;
   margin: 0;
+  margin-top: 20px;
 }
 
 .phone-screen .activity-streak-flame {
@@ -902,12 +903,6 @@ li {
   flex: 0 0 22px;
 }
 
-.hero-divider {
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-  margin: 28px 0;
-  flex-shrink: 0;
-}
 
 .phone-tab-bar {
   display: flex;
@@ -2127,6 +2122,10 @@ li {
 
   .phone-screen {
     height: 630px;
+  }
+
+  .phone-page-home {
+    zoom: 0.8;
   }
 }
 
