@@ -910,6 +910,7 @@ li {
   display: flex;
   flex-direction: column;
   gap: 0;
+  overflow: visible;
 }
 
 .home-top {
