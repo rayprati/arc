@@ -90,25 +90,25 @@ function buildHomeLedger(now: Date): HomeLedgerRow[] {
 }
 
 const groupFeed = [
-  { name: "Alex Peterson", status: "streak" as const, habit: "Vaping", streakDays: 18, lost: "$5" },
-  { name: "Jordan Martinez", status: "relapsed" as const, habit: "Drinking", lost: "$2" },
-  { name: "Ryan Smith", status: "streak" as const, habit: "Porn", streakDays: 31, lost: "$25" },
-  { name: "Jamal Williams", status: "streak" as const, habit: "Doomscrolling", streakDays: 7, lost: "$0" },
+  { name: "Alex Peterson", status: "streak" as const, habit: "Vaping", streakDays: 18, lost: "$5", photo: "https://i.pravatar.cc/150?img=11" },
+  { name: "Jordan Martinez", status: "relapsed" as const, habit: "Drinking", lost: "$2", photo: "https://i.pravatar.cc/150?img=33" },
+  { name: "Ryan Smith", status: "streak" as const, habit: "Porn", streakDays: 31, lost: "$25", photo: "https://i.pravatar.cc/150?img=52" },
+  { name: "Jamal Williams", status: "streak" as const, habit: "Doomscrolling", streakDays: 7, lost: "$0", photo: "https://i.pravatar.cc/150?img=68" },
 ];
 
 const allLeaderboardRows = [
-  { name: "Marcus Chen", habit: "Vaping", lost: "$143" },
-  { name: "Jamie Park", habit: "Drinking", lost: "$87" },
-  { name: "Dana Lewis", habit: "Scrolling", lost: "$54" },
-  { name: "Rafael Torres", habit: "Porn", lost: "$31" },
-  { name: "Avery Kim", habit: "Weed", lost: "$18" },
-  { name: "Cameron Ngo", habit: "Vaping", lost: "$12" },
-  { name: "Taylor Reyes", habit: "Drinking", lost: "$7" },
-  { name: "Sanjay Patel", habit: "Scrolling", lost: "$6" },
-  { name: "Leslie Grant", habit: "Porn", lost: "$5" },
-  { name: "Blake Walsh", habit: "Weed", lost: "$4" },
-  { name: "Fatima Osei", habit: "Vaping", lost: "$3" },
-  { name: "Hannah Muller", habit: "Drinking", lost: "$2" },
+  { name: "Marcus Chen", habit: "Vaping", lost: "$143", photo: "https://i.pravatar.cc/150?img=14" },
+  { name: "Jamie Park", habit: "Drinking", lost: "$87", photo: "https://i.pravatar.cc/150?img=25" },
+  { name: "Dana Lewis", habit: "Scrolling", lost: "$54", photo: "https://i.pravatar.cc/150?img=39" },
+  { name: "Rafael Torres", habit: "Porn", lost: "$31", photo: "https://i.pravatar.cc/150?img=61" },
+  { name: "Avery Kim", habit: "Weed", lost: "$18", photo: "https://i.pravatar.cc/150?img=17" },
+  { name: "Cameron Ngo", habit: "Vaping", lost: "$12", photo: "https://i.pravatar.cc/150?img=44" },
+  { name: "Taylor Reyes", habit: "Drinking", lost: "$7", photo: "https://i.pravatar.cc/150?img=57" },
+  { name: "Sanjay Patel", habit: "Scrolling", lost: "$6", photo: "https://i.pravatar.cc/150?img=22" },
+  { name: "Leslie Grant", habit: "Porn", lost: "$5", photo: "https://i.pravatar.cc/150?img=5" },
+  { name: "Blake Walsh", habit: "Weed", lost: "$4", photo: "https://i.pravatar.cc/150?img=48" },
+  { name: "Fatima Osei", habit: "Vaping", lost: "$3", photo: "https://i.pravatar.cc/150?img=63" },
+  { name: "Hannah Muller", habit: "Drinking", lost: "$2", photo: "https://i.pravatar.cc/150?img=36" },
 ];
 
 
@@ -367,7 +367,7 @@ export function PhoneMockup() {
                           <img
                             key={member.name}
                             className="group-avatar"
-                            src={`https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(member.name)}&backgroundColor=141414&bold=true`}
+                            src={member.photo}
                             alt={member.name}
                             width={26}
                             height={26}
@@ -432,6 +432,7 @@ export function PhoneMockup() {
                     {allLeaderboardRows.map((row, index) => (
                       <div className="leaderboard-row" key={row.name}>
                         <span className="leaderboard-rank">{index + 1}</span>
+                        <img className="leaderboard-avatar" src={row.photo} alt={row.name} width={28} height={28} />
                         <div className="leaderboard-identity">
                           <strong>{row.name}</strong>
                           <p>{row.habit}</p>
