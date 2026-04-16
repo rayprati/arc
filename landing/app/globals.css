@@ -631,7 +631,7 @@ li {
   padding: 0;
   border-radius: 36px;
   background:
-    radial-gradient(ellipse 160% 65% at 50% -5%, #171F30 0%, transparent 65%),
+    radial-gradient(ellipse 160% 65% at 50% -5%, #1D273C 0%, transparent 65%),
     #050505;
   overflow: hidden;
   font-family: var(--font-geist), ui-sans-serif, -apple-system, sans-serif;
@@ -2126,6 +2126,14 @@ li {
 
   .phone-page-home {
     zoom: 0.8;
+  }
+
+  .phone-bottom-pill {
+    zoom: 0.8;
+  }
+
+  .stat-earth-moon {
+    justify-content: center;
   }
 }
 
