@@ -113,14 +113,14 @@ const allLeaderboardRows = [
 
 
 const HomeIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3 10a2 2 0 01.709-1.528l7-5.999a2 2 0 012.582 0l7 5.999A2 2 0 0121 10v9a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
     <path d="M15 21v-8a1 1 0 00-1-1h-4a1 1 0 00-1 1v8" />
   </svg>
 );
 
 const TrophyIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 4h12v6a6 6 0 01-12 0V4z" />
     <path d="M6 7H4a2 2 0 010-4h2" />
     <path d="M18 7h2a2 2 0 000-4h-2" />
@@ -130,7 +130,7 @@ const TrophyIcon = () => (
 );
 
 const GroupIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="9" cy="7" r="3" />
     <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
     <path d="M16 3.13a4 4 0 010 7.75" />
@@ -187,7 +187,7 @@ const GravestoneIcon = () => (
 );
 
 const SettingsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3" />
     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
   </svg>
@@ -308,19 +308,17 @@ export function PhoneMockup() {
                     <div className="stat-earth-moon">
                       <div className="stat-arc-container">
                         <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
-                          {/* track */}
-                          <circle cx="50" cy="50" r="38" fill="none"
-                            stroke="rgba(255,255,255,0.09)" strokeWidth="4.5"
+                          <circle cx="50" cy="50" r="46" fill="none"
+                            stroke="rgba(255,255,255,0.08)" strokeWidth="5"
                             strokeLinecap="round"
-                            strokeDasharray="208.91 238.76"
-                            transform="rotate(112.5 50 50)"
+                            strokeDasharray="252.90 289.03"
+                            transform="rotate(135 50 50)"
                           />
-                          {/* progress arc */}
-                          <circle cx="50" cy="50" r="38" fill="none"
-                            stroke="rgba(100, 148, 220, 0.82)" strokeWidth="4.5"
+                          <circle cx="50" cy="50" r="46" fill="none"
+                            stroke="#7FA8FF" strokeWidth="5"
                             strokeLinecap="round"
-                            strokeDasharray="195.52 238.76"
-                            transform="rotate(112.5 50 50)"
+                            strokeDasharray="236.04 289.03"
+                            transform="rotate(135 50 50)"
                           />
                         </svg>
                         <div className="stat-arc-content">
@@ -335,8 +333,7 @@ export function PhoneMockup() {
                     </div>
                   </div>
 
-                  {/* Spacer pushes relapses toward the button */}
-                  <div className="home-spacer" />
+                  <div className="hero-divider" />
 
                   {/* Bottom: relapses sit just above ADMIT */}
                   <div className="ledger-panel">
