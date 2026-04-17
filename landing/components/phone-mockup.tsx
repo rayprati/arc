@@ -425,7 +425,7 @@ export function PhoneMockup() {
                   <div className="phone-header">
                     <div>
                       <h3>Loserboard</h3>
-                      <p className="commitment-meta">this month</p>
+                      <p className="commitment-meta">This month</p>
                     </div>
                     <div className="phone-page-nav">
                       <button type="button" aria-label="Settings"><SettingsIcon /></button>
