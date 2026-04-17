@@ -423,7 +423,10 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="phone-header">
-                    <h3>Leaderboard</h3>
+                    <div>
+                      <h3>Loserboard</h3>
+                      <p className="commitment-meta">this month</p>
+                    </div>
                     <div className="phone-page-nav">
                       <button type="button" aria-label="Settings"><SettingsIcon /></button>
                     </div>
