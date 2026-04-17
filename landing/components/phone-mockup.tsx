@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 import { AnimatedNumber } from "@/components/animated-number";
-import { TrackedLink } from "@/components/tracked-link";
 
 const floatingTransition = {
   duration: 5.5,
@@ -25,92 +24,38 @@ function formatEasternStatusTime(date: Date): string {
   return s.replace(/\s?[AP]M$/i, "").trim();
 }
 
-function getEasternYmdString(date: Date): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: EASTERN_TZ,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-}
+const monitoredApps = ["Instagram", "TikTok", "X", "YouTube"];
 
-function addCalendarDaysToYmd(ymd: string, deltaDays: number): { y: number; m: number; d: number } {
-  const [y, mo, da] = ymd.split("-").map(Number);
-  const t = new Date(Date.UTC(y, mo - 1, da + deltaDays));
-  return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() };
-}
-
-const LEDGER_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
-
-function formatLedgerStamp(
-  parts: { y: number; m: number; d: number },
-  hour12: number,
-  minute: number,
-  pm: boolean,
-): string {
-  const mm = minute.toString().padStart(2, "0");
-  const suf = pm ? "pm" : "am";
-  return `${LEDGER_MONTHS[parts.m - 1]} ${parts.d}, ${hour12}:${mm} ${suf}`;
-}
-
-type HomeLedgerRow = { key: string; time: string; habit: string; amount: string };
-
-function buildHomeLedger(now: Date): HomeLedgerRow[] {
-  const ymd = getEasternYmdString(now);
-  const d28 = addCalendarDaysToYmd(ymd, -28);
-  const d29 = addCalendarDaysToYmd(ymd, -29);
-  const d35 = addCalendarDaysToYmd(ymd, -35);
-  const d36 = addCalendarDaysToYmd(ymd, -36);
-  return [
-    {
-      key: "ledger-28",
-      time: formatLedgerStamp(d28, 9, 14, true),
-      habit: "Drinking",
-      amount: "−$1",
-    },
-    {
-      key: "ledger-29",
-      time: formatLedgerStamp(d29, 11, 2, false),
-      habit: "Drinking",
-      amount: "−$1",
-    },
-    {
-      key: "ledger-35",
-      time: formatLedgerStamp(d35, 7, 33, true),
-      habit: "Drinking",
-      amount: "−$1",
-    },
-    {
-      key: "ledger-36",
-      time: formatLedgerStamp(d36, 2, 47, true),
-      habit: "Drinking",
-      amount: "−$1",
-    },
-  ];
-}
-
-const groupFeed = [
-  { name: "Alex Peterson", status: "streak" as const, habit: "Vaping", streakDays: 18, lost: "$5", photo: "https://i.pravatar.cc/150?img=11" },
-  { name: "Jordan Martinez", status: "relapsed" as const, habit: "Drinking", lost: "$2", photo: "https://i.pravatar.cc/150?img=33" },
-  { name: "Ryan Smith", status: "streak" as const, habit: "Porn", streakDays: 31, lost: "$25", photo: "https://i.pravatar.cc/150?img=52" },
-  { name: "Jamal Williams", status: "streak" as const, habit: "Doomscrolling", streakDays: 7, lost: "$0", photo: "https://i.pravatar.cc/150?img=68" },
+const todaysUsage = [
+  { app: "Instagram", minutes: 7 },
+  { app: "TikTok", minutes: 3 },
+  { app: "X", minutes: 2 },
+  { app: "YouTube", minutes: 0 },
 ];
 
-const allLeaderboardRows = [
-  { name: "Marcus Chen", habit: "Vaping", lost: "$143", photo: "https://i.pravatar.cc/150?img=14" },
-  { name: "Jamie Park", habit: "Drinking", lost: "$87", photo: "https://i.pravatar.cc/150?img=25" },
-  { name: "Dana Lewis", habit: "Scrolling", lost: "$54", photo: "https://i.pravatar.cc/150?img=39" },
-  { name: "Rafael Torres", habit: "Porn", lost: "$31", photo: "https://i.pravatar.cc/150?img=61" },
-  { name: "Avery Kim", habit: "Weed", lost: "$18", photo: "https://i.pravatar.cc/150?img=17" },
-  { name: "Cameron Ngo", habit: "Vaping", lost: "$12", photo: "https://i.pravatar.cc/150?img=44" },
-  { name: "Taylor Reyes", habit: "Drinking", lost: "$7", photo: "https://i.pravatar.cc/150?img=57" },
-  { name: "Sanjay Patel", habit: "Scrolling", lost: "$6", photo: "https://i.pravatar.cc/150?img=22" },
-  { name: "Leslie Grant", habit: "Porn", lost: "$5", photo: "https://i.pravatar.cc/150?img=5" },
-  { name: "Blake Walsh", habit: "Weed", lost: "$4", photo: "https://i.pravatar.cc/150?img=48" },
-  { name: "Fatima Osei", habit: "Vaping", lost: "$3", photo: "https://i.pravatar.cc/150?img=63" },
-  { name: "Hannah Muller", habit: "Drinking", lost: "$2", photo: "https://i.pravatar.cc/150?img=36" },
+type CircleMember = {
+  name: string;
+  photo: string;
+  cleanStreak: number;
+  unlocksWeek: number;
+  burned: string;
+  status: "clean" | "unlocked";
+};
+
+const circleFeed: CircleMember[] = [
+  { name: "Ryan Smith", photo: "https://i.pravatar.cc/150?img=52", cleanStreak: 31, unlocksWeek: 0, burned: "$0", status: "clean" },
+  { name: "Alex Peterson", photo: "https://i.pravatar.cc/150?img=11", cleanStreak: 18, unlocksWeek: 2, burned: "$2", status: "clean" },
+  { name: "Jamal Williams", photo: "https://i.pravatar.cc/150?img=68", cleanStreak: 7, unlocksWeek: 1, burned: "$1", status: "clean" },
+  { name: "Jordan Martinez", photo: "https://i.pravatar.cc/150?img=33", cleanStreak: 0, unlocksWeek: 6, burned: "$6", status: "unlocked" },
 ];
 
+const unlockHistory = [
+  { when: "Today 11:42a", delta: "+10m", cost: "−$1" },
+  { when: "Yesterday 9:04p", delta: "+10m", cost: "−$1" },
+  { when: "Mon 7:15p", delta: "+10m", cost: "−$1" },
+  { when: "Sun 8:30p", delta: "+10m", cost: "−$1" },
+  { when: "Fri 6:22p", delta: "+10m", cost: "−$1" },
+];
 
 const HomeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -119,13 +64,11 @@ const HomeIcon = () => (
   </svg>
 );
 
-const TrophyIcon = () => (
+const StatsIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 4h12v6a6 6 0 01-12 0V4z" />
-    <path d="M6 7H4a2 2 0 010-4h2" />
-    <path d="M18 7h2a2 2 0 000-4h-2" />
-    <path d="M12 16v4" />
-    <path d="M8 20h8" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="18" y1="20" x2="18" y2="10" />
   </svg>
 );
 
@@ -138,58 +81,24 @@ const GroupIcon = () => (
   </svg>
 );
 
-const ArrowUpIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="12" y1="19" x2="12" y2="5" />
-    <polyline points="5 12 12 5 19 12" />
-  </svg>
-);
-
-const FlameIcon = () => (
-  <svg
-    className="activity-streak-flame"
-    width="13"
-    height="14"
-    viewBox="0 0 13 14"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <path d="M6.5 13c2.2 0 4-1.6 4-3.5 0-1.8-1.3-3.1-1.8-3.5.2.9-.9 2-.9 2S7 7 7 5.5C7 4 8 2.5 8 2.5 6.2 3.2 2.5 5.5 2.5 9.5c0 2 1.8 3.5 4 3.5z" />
-  </svg>
-);
-
-const GravestoneIcon = () => (
-  <svg
-    className="activity-gravestone"
-    width="17"
-    height="16"
-    viewBox="0 0 17 16"
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <path strokeWidth="1.5" d="M3.65 14.95h9.7" />
-    <path
-      strokeWidth="1.5"
-      d="M5.2 14.55V8.35Q8.5 4.25 11.8 8.35v6.2H5.2z"
-    />
-    <path
-      strokeWidth="1.15"
-      d="M6.35 9.45h4.3M5.9 10.52h5.2M6.35 11.58h4.3"
-    />
+const LockIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="11" width="16" height="10" rx="2" />
+    <path d="M8 11V7a4 4 0 018 0v4" />
   </svg>
 );
 
 const SettingsIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3" />
     <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+  </svg>
+);
+
+const LockBigIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="11" width="16" height="10" rx="2" />
+    <path d="M8 11V7a4 4 0 018 0v4" />
   </svg>
 );
 
@@ -223,22 +132,19 @@ export function PhoneMockup() {
   const [tab, setTab] = useState(0);
   const [direction, setDirection] = useState(1);
   const [statusTime, setStatusTime] = useState("9:41");
-  const [homeLedger, setHomeLedger] = useState<HomeLedgerRow[]>(() => buildHomeLedger(new Date()));
 
-  const syncEasternClockAndLedger = useCallback(() => {
-    const now = new Date();
-    setStatusTime(formatEasternStatusTime(now));
-    setHomeLedger(buildHomeLedger(now));
+  const syncEasternClock = useCallback(() => {
+    setStatusTime(formatEasternStatusTime(new Date()));
   }, []);
 
   useLayoutEffect(() => {
-    syncEasternClockAndLedger();
-  }, [syncEasternClockAndLedger]);
+    syncEasternClock();
+  }, [syncEasternClock]);
 
   useEffect(() => {
-    const id = setInterval(syncEasternClockAndLedger, 60_000);
+    const id = setInterval(syncEasternClock, 60_000);
     return () => clearInterval(id);
-  }, [syncEasternClockAndLedger]);
+  }, [syncEasternClock]);
 
 
   const goTo = (next: number) => {
@@ -293,55 +199,68 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
-                  {/* Top: header + stats + progress */}
                   <div className="home-top">
                     <div className="phone-header">
                       <div>
-                        <h3>Stop Drinking</h3>
-                        <p className="commitment-meta">30 days</p>
+                        <h3>Social Media</h3>
+                        <p className="commitment-meta">{monitoredApps.join(" · ")}</p>
                       </div>
                       <div className="phone-page-nav">
                         <button type="button" aria-label="Settings"><SettingsIcon /></button>
                       </div>
                     </div>
 
-                    <div className="stat-earth-moon">
-                      <div className="stat-arc-container">
-                        <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
-                          <circle cx="50" cy="50" r="46" fill="none"
-                            stroke="rgba(255,255,255,0.08)" strokeWidth="5"
-                            strokeLinecap="round"
-                            strokeDasharray="252.90 289.03"
-                            transform="rotate(135 50 50)"
-                          />
-                          <circle cx="50" cy="50" r="46" fill="none"
-                            stroke="#7FA8FF" strokeWidth="5"
-                            strokeLinecap="round"
-                            strokeDasharray="236.04 289.03"
-                            transform="rotate(135 50 50)"
-                          />
-                        </svg>
-                        <div className="stat-arc-content">
-                          <strong className="stat-positive"><AnimatedNumber to={28} suffix="d" /></strong>
-                          <span>Streak</span>
+                    <div className="home-hero-block">
+                      <div className="stat-earth-moon">
+                        <div className="stat-arc-container">
+                          <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
+                            <circle cx="50" cy="50" r="46" fill="none"
+                              stroke="rgba(255,255,255,0.08)" strokeWidth="5"
+                              strokeLinecap="round"
+                              strokeDasharray="252.90 289.03"
+                              transform="rotate(135 50 50)"
+                            />
+                            <circle cx="50" cy="50" r="46" fill="none"
+                              stroke="#8AA4C0" strokeWidth="5"
+                              strokeLinecap="round"
+                              strokeDasharray="101.16 289.03"
+                              transform="rotate(135 50 50)"
+                            />
+                          </svg>
+                          <div className="stat-arc-content">
+                            <strong>18m</strong>
+                            <span>Left today</span>
+                          </div>
+                        </div>
+                        <div className="stat-moon">
+                          <strong><AnimatedNumber to={12} suffix="d" /></strong>
+                          <span>Clean streak</span>
                         </div>
                       </div>
-                      <div className="stat-moon">
-                        <strong className="stat-danger"><AnimatedNumber to={4} prefix="$" /></strong>
-                        <span>Dedicated</span>
+
+                      <div className="home-metrics-row">
+                        <div className="home-metric">
+                          <strong>0</strong>
+                          <span>Unlocks today</span>
+                        </div>
+                        <div className="home-metric">
+                          <strong>4h 12m</strong>
+                          <span>Baseline avg</span>
+                        </div>
+                        <div className="home-metric">
+                          <strong className="home-metric-burn">$12</strong>
+                          <span>This month</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom: relapses sit just above ADMIT */}
                   <div className="ledger-panel">
-                    <p className="ledger-title">Relapses</p>
-                    {homeLedger.map((entry, i) => (
-                      <div className="ledger-row" key={entry.key}>
-                        <span className="ledger-time">
-                          {["28 days ago", "31 days ago", "40 days ago", "45 days ago"][i] ?? entry.time}
-                        </span>
-                        <span className="ledger-amount">{entry.amount}</span>
+                    <p className="ledger-title">Today&apos;s usage</p>
+                    {todaysUsage.map((row) => (
+                      <div className="ledger-row" key={row.app}>
+                        <span className="ledger-time">{row.app}</span>
+                        <span className="ledger-amount ledger-minutes">{row.minutes}m</span>
                       </div>
                     ))}
                   </div>
@@ -350,7 +269,7 @@ export function PhoneMockup() {
 
               {tab === 1 && (
                 <motion.div
-                  key="groups"
+                  key="circle"
                   className="phone-page"
                   custom={direction}
                   variants={variants}
@@ -361,59 +280,41 @@ export function PhoneMockup() {
                 >
                   <div className="phone-header">
                     <div>
-                      <h3>The Usual Suspects</h3>
-                      <div className="group-avatars">
-                        {groupFeed.map((member) => (
-                          <img
-                            key={member.name}
-                            className="group-avatar"
-                            src={member.photo}
-                            alt={member.name}
-                            width={26}
-                            height={26}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="phone-page-nav">
-                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
+                      <h3>Your Circle</h3>
+                      <p className="commitment-meta">Most disciplined · This week</p>
                     </div>
                   </div>
 
                   <div className="activity-feed">
-                    {groupFeed.map((item) => (
+                    {circleFeed.map((item, i) => (
                       <div className="activity-item" key={item.name}>
-                        <div className="activity-lead">
-                          <span className="activity-flame-slot" aria-hidden>
-                            {item.status === "streak" ? <FlameIcon /> : <GravestoneIcon />}
-                          </span>
-                          {item.status === "streak" ? (
-                            <span className="activity-streak-days">{item.streakDays}d</span>
-                          ) : (
-                            <span className="activity-streak-days activity-streak-days-zero">0d</span>
-                          )}
-                        </div>
+                        <span className="activity-rank">{i + 1}</span>
+                        <img className="activity-photo" src={item.photo} alt={item.name} width={36} height={36} />
                         <div className="activity-body">
                           <strong>{item.name}</strong>
                           <p>
-                            <span className="activity-habit">{item.habit}</span>
+                            {item.status === "clean" ? (
+                              <>
+                                <span>{item.cleanStreak}d clean</span>
+                                {item.unlocksWeek > 0 && (
+                                  <span> · {item.unlocksWeek} unlock{item.unlocksWeek > 1 ? "s" : ""}</span>
+                                )}
+                              </>
+                            ) : (
+                              <span className="activity-status-unlocked">Unlocked today</span>
+                            )}
                           </p>
                         </div>
-                        <span className="leaderboard-amount">{item.lost}</span>
+                        <span className="leaderboard-amount">{item.burned}</span>
                       </div>
                     ))}
-                  </div>
-
-                  <div className="group-input-row">
-                    <span className="group-input-mock">Call someone out…</span>
-                    <button className="group-send-btn" type="button" aria-label="Send"><ArrowUpIcon /></button>
                   </div>
                 </motion.div>
               )}
 
               {tab === 2 && (
                 <motion.div
-                  key="leaderboard"
+                  key="stats"
                   className="phone-page"
                   custom={direction}
                   variants={variants}
@@ -424,89 +325,114 @@ export function PhoneMockup() {
                 >
                   <div className="phone-header">
                     <div>
-                      <h3>Loserboard</h3>
-                      <p className="commitment-meta">This month</p>
-                    </div>
-                    <div className="phone-page-nav">
-                      <button type="button" aria-label="Settings"><SettingsIcon /></button>
+                      <h3>Stats</h3>
+                      <p className="commitment-meta">Last 30 days</p>
                     </div>
                   </div>
-                  <div className="leaderboard leaderboard-full">
-                    {allLeaderboardRows.map((row, index) => (
-                      <div className="leaderboard-row" key={row.name}>
-                        <span className="leaderboard-rank">{index + 1}</span>
-                        <img className="leaderboard-avatar" src={row.photo} alt={row.name} width={28} height={28} />
-                        <div className="leaderboard-identity">
-                          <strong>{row.name}</strong>
-                          <p>{row.habit}</p>
-                        </div>
-                        <span className="leaderboard-amount">{row.lost}</span>
+
+                  <div className="stats-overview">
+                    <div className="stats-hero">
+                      <div className="stats-hero-label">Daily average</div>
+                      <div className="stats-hero-row">
+                        <strong>58m</strong>
+                        <span className="stats-hero-before">↓ from 4h 12m</span>
+                      </div>
+                    </div>
+
+                    <div className="stats-metrics">
+                      <div className="stats-metric">
+                        <strong>12d</strong>
+                        <span>Streak</span>
+                      </div>
+                      <div className="stats-metric">
+                        <strong className="stats-metric-burn">$12</strong>
+                        <span>Burned</span>
+                      </div>
+                      <div className="stats-metric">
+                        <strong>8</strong>
+                        <span>Unlocks</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="ledger-panel">
+                    <p className="ledger-title">Unlock history</p>
+                    {unlockHistory.map((row, i) => (
+                      <div className="ledger-row" key={`${row.when}-${i}`}>
+                        <span className="ledger-time">{row.when} · {row.delta}</span>
+                        <span className="ledger-amount">{row.cost}</span>
                       </div>
                     ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {tab === 3 && (
+                <motion.div
+                  key="lock"
+                  className="phone-page phone-page-lock"
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={transition}
+                >
+                  <div className="lock-screen">
+                    <div className="lock-icon-wrap">
+                      <LockBigIcon />
+                    </div>
+                    <h2 className="lock-title">Time&apos;s Up</h2>
+                    <p className="lock-body">You&apos;ve used today&apos;s social allowance.</p>
+
+                    <div className="lock-cta-group">
+                      <button type="button" className="lock-cta-primary">
+                        Unlock 10m for $1
+                      </button>
+                      <button type="button" className="lock-cta-secondary">
+                        Stay Locked
+                      </button>
+                    </div>
+
+                    <p className="lock-note">This breaks today&apos;s clean streak.</p>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Mega pill — always visible, center slot fixed-width to prevent jumping */}
           <div className="phone-bottom-pill">
+            <button
+              type="button"
+              className={`pill-icon-btn${tab === 0 ? " active" : ""}`}
+              onClick={() => goTo(0)}
+              aria-label="Home"
+            >
+              <HomeIcon />
+            </button>
             <button
               type="button"
               className={`pill-icon-btn${tab === 1 ? " active" : ""}`}
               onClick={() => goTo(1)}
-              aria-label="Your Circle"
+              aria-label="Circle"
             >
               <GroupIcon />
             </button>
-
-            <div className="pill-center-slot">
-              <AnimatePresence mode="wait" initial={false}>
-                {tab === 0 ? (
-                  <motion.div
-                    key="admit"
-                    className="pill-admit-wrap"
-                    initial={{ opacity: 0, scale: 0.9, y: 4 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.88, y: -2 }}
-                    transition={{
-                      duration: 0.48,
-                      ease: [0.16, 1, 0.3, 1] as const,
-                    }}
-                  >
-                    <TrackedLink
-                      className="pill-admit"
-                      eventName="hero_admit_click"
-                      href="/start"
-                    >
-                      <span className="pill-admit-word">ADMIT</span>
-                    </TrackedLink>
-                  </motion.div>
-                ) : (
-                  <motion.button
-                    key="home"
-                    type="button"
-                    className="pill-icon-btn pill-home-btn"
-                    onClick={() => goTo(0)}
-                    aria-label="Home"
-                    initial={{ opacity: 0, scale: 0.82 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.82 }}
-                    transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] as const }}
-                  >
-                    <HomeIcon />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-            </div>
-
             <button
               type="button"
               className={`pill-icon-btn${tab === 2 ? " active" : ""}`}
               onClick={() => goTo(2)}
-              aria-label="Leaderboard"
+              aria-label="Stats"
             >
-              <TrophyIcon />
+              <StatsIcon />
+            </button>
+            <button
+              type="button"
+              className={`pill-icon-btn${tab === 3 ? " active" : ""}`}
+              onClick={() => goTo(3)}
+              aria-label="Lock"
+            >
+              <LockIcon />
             </button>
           </div>
 
