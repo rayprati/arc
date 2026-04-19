@@ -1395,6 +1395,30 @@ li {
   color: #F5F5F5;
 }
 
+/* Home title — same liquid-glass recipe as `.header-settings-glass`, pill shape */
+.phone-header .header-arc-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+}
+
 .phone-screen .eyebrow {
   color: rgba(255,255,255,0.45);
 }
