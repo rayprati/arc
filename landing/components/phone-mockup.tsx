@@ -211,6 +211,18 @@ export function PhoneMockup() {
                                 <stop offset="100%" stopColor="#B89FD8" />
                               </linearGradient>
                             </defs>
+                            {/* Thin gray guide rings inside the arc (all radii below the arc path) */}
+                            {[37.57, 35.03].map((r) => (
+                              <circle
+                                key={`arc-ring-${r}`}
+                                cx="50"
+                                cy="50"
+                                r={r}
+                                fill="none"
+                                stroke="rgba(175, 184, 204, 0.52)"
+                                strokeWidth="0.65"
+                              />
+                            ))}
                             <circle cx="50" cy="50" r="46" fill="none"
                               stroke="rgba(255,255,255,0.08)" strokeWidth="5"
                               strokeLinecap="round"
