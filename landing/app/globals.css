@@ -652,6 +652,56 @@ li {
   z-index: 15;
 }
 
+.phone-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow:
+    12px 85px 0 0 rgba(255,255,255,0.22),
+    47px 140px 0 0 rgba(255,255,255,0.18),
+    78px 62px 0 0 rgba(255,255,255,0.20),
+    134px 210px 0 0 rgba(255,255,255,0.16),
+    165px 88px 0 0 rgba(255,255,255,0.24),
+    198px 320px 0 0 rgba(255,255,255,0.18),
+    223px 155px 0 0 rgba(255,255,255,0.20),
+    245px 480px 0 0 rgba(255,255,255,0.16),
+    267px 230px 0 0 rgba(255,255,255,0.22),
+    289px 580px 0 0 rgba(255,255,255,0.18),
+    312px 100px 0 0 rgba(255,255,255,0.20),
+    334px 360px 0 0 rgba(255,255,255,0.16),
+    356px 250px 0 0 rgba(255,255,255,0.24),
+    371px 490px 0 0 rgba(255,255,255,0.18),
+    380px 130px 0 0 rgba(255,255,255,0.20),
+    25px 300px 0 0 rgba(255,255,255,0.16),
+    55px 430px 0 0 rgba(255,255,255,0.22),
+    88px 560px 0 0 rgba(255,255,255,0.18),
+    110px 190px 0 0 rgba(255,255,255,0.20),
+    145px 680px 0 0 rgba(255,255,255,0.16),
+    175px 45px 0 0 rgba(255,255,255,0.24),
+    210px 620px 0 0 rgba(255,255,255,0.18),
+    238px 390px 0 0 rgba(255,255,255,0.20),
+    258px 70px 0 0 rgba(255,255,255,0.16),
+    280px 510px 0 0 rgba(255,255,255,0.22),
+    305px 270px 0 0 rgba(255,255,255,0.18),
+    325px 650px 0 0 rgba(255,255,255,0.20),
+    348px 180px 0 0 rgba(255,255,255,0.16),
+    365px 420px 0 0 rgba(255,255,255,0.24),
+    18px 550px 0 0 rgba(255,255,255,0.18),
+    40px 670px 0 0 rgba(255,255,255,0.20),
+    70px 380px 0 0 rgba(255,255,255,0.16),
+    100px 90px 0 0 rgba(255,255,255,0.22),
+    125px 460px 0 0 rgba(255,255,255,0.18),
+    155px 250px 0 0 rgba(255,255,255,0.20),
+    185px 580px 0 0 rgba(255,255,255,0.16),
+    215px 170px 0 0 rgba(255,255,255,0.24),
+    242px 640px 0 0 rgba(255,255,255,0.18),
+    270px 440px 0 0 rgba(255,255,255,0.20);
+}
+
 /* ─── Dark opal phone theme ──────────────────────────────────────────────── */
 /* ─── Phone stat cards: raw floating numbers, no containers ─────────────── */
 .phone-screen .stat-card {
@@ -923,7 +973,7 @@ li {
 .home-top {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 36px;
 }
 
 .home-spacer {
@@ -1850,14 +1900,14 @@ li {
 .home-hero-block {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 16px;
 }
 
 .home-metrics-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  padding-top: 28px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1902,6 +1952,10 @@ li {
   min-width: 14px;
   flex-shrink: 0;
   letter-spacing: 0;
+}
+
+.phone-page.phone-page-settings {
+  overflow: visible;
 }
 
 .phone-page.phone-page-lock {

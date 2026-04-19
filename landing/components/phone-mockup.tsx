@@ -163,6 +163,7 @@ export function PhoneMockup() {
         <div className="phone-side-button phone-side-button-vol-down" />
         <div className="phone-notch" />
         <div className="phone-screen">
+          <div className="phone-stars" aria-hidden />
           <div className="phone-status-bar">
             <span className="phone-status-time" aria-live="polite" aria-atomic="true">
               {statusTime}
@@ -214,7 +215,7 @@ export function PhoneMockup() {
                             <circle cx="50" cy="50" r="46" fill="none"
                               stroke="#8AA4C0" strokeWidth="5"
                               strokeLinecap="round"
-                              strokeDasharray="101.16 289.03"
+                              strokeDasharray="177.03 289.03"
                               transform="rotate(135 50 50)"
                             />
                           </svg>
@@ -356,7 +357,7 @@ export function PhoneMockup() {
               {tab === 3 && (
                 <motion.div
                   key="settings"
-                  className="phone-page"
+                  className="phone-page phone-page-settings"
                   custom={direction}
                   variants={variants}
                   initial="enter"
