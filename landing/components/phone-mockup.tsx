@@ -24,7 +24,6 @@ function formatEasternStatusTime(date: Date): string {
   return s.replace(/\s?[AP]M$/i, "").trim();
 }
 
-const monitoredApps = ["Instagram", "TikTok", "X", "YouTube"];
 
 const todaysUsage = [
   { app: "Instagram", minutes: 7 },
@@ -40,22 +39,17 @@ type CircleMember = {
   unlocksWeek: number;
   burned: string;
   status: "clean" | "unlocked";
+  isUser?: boolean;
 };
 
 const circleFeed: CircleMember[] = [
-  { name: "Ryan Smith", photo: "https://i.pravatar.cc/150?img=52", cleanStreak: 31, unlocksWeek: 0, burned: "$0", status: "clean" },
-  { name: "Alex Peterson", photo: "https://i.pravatar.cc/150?img=11", cleanStreak: 18, unlocksWeek: 2, burned: "$2", status: "clean" },
-  { name: "Jamal Williams", photo: "https://i.pravatar.cc/150?img=68", cleanStreak: 7, unlocksWeek: 1, burned: "$1", status: "clean" },
-  { name: "Jordan Martinez", photo: "https://i.pravatar.cc/150?img=33", cleanStreak: 0, unlocksWeek: 6, burned: "$6", status: "unlocked" },
+  { name: "Ryan Smith",     photo: "https://i.pravatar.cc/150?img=52", cleanStreak: 31, unlocksWeek: 0, burned: "$0", status: "clean" },
+  { name: "Alexa Peterson", photo: "https://i.pravatar.cc/150?img=16", cleanStreak: 18, unlocksWeek: 2, burned: "$2", status: "clean" },
+  { name: "You",            photo: "https://i.pravatar.cc/150?img=13", cleanStreak: 12, unlocksWeek: 0, burned: "$0", status: "clean", isUser: true },
+  { name: "Jamal Williams", photo: "https://i.pravatar.cc/150?img=8",  cleanStreak: 7,  unlocksWeek: 1, burned: "$1", status: "clean" },
+  { name: "Jordan Martinez",photo: "https://i.pravatar.cc/150?img=33", cleanStreak: 0,  unlocksWeek: 6, burned: "$6", status: "unlocked" },
 ];
 
-const unlockHistory = [
-  { when: "Today 11:42a", delta: "+10m", cost: "−$1" },
-  { when: "Yesterday 9:04p", delta: "+10m", cost: "−$1" },
-  { when: "Mon 7:15p", delta: "+10m", cost: "−$1" },
-  { when: "Sun 8:30p", delta: "+10m", cost: "−$1" },
-  { when: "Fri 6:22p", delta: "+10m", cost: "−$1" },
-];
 
 const HomeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -64,13 +58,6 @@ const HomeIcon = () => (
   </svg>
 );
 
-const StatsIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="6" y1="20" x2="6" y2="14" />
-    <line x1="12" y1="20" x2="12" y2="4" />
-    <line x1="18" y1="20" x2="18" y2="10" />
-  </svg>
-);
 
 const GroupIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -201,12 +188,16 @@ export function PhoneMockup() {
                 >
                   <div className="home-top">
                     <div className="phone-header">
-                      <div>
-                        <h3>Social Media</h3>
-                        <p className="commitment-meta">{monitoredApps.join(" · ")}</p>
-                      </div>
-                      <div className="phone-page-nav">
-                        <button type="button" aria-label="Settings"><SettingsIcon /></button>
+                      <h3>ARC</h3>
+                      <div className="header-right">
+                        <span className="header-name">Keith</span>
+                        <img
+                          className="header-avatar"
+                          src="https://i.pravatar.cc/150?img=13"
+                          alt="Profile"
+                          width={32}
+                          height={32}
+                        />
                       </div>
                     </div>
 
@@ -244,12 +235,12 @@ export function PhoneMockup() {
                           <span>Unlocks today</span>
                         </div>
                         <div className="home-metric">
-                          <strong>4h 12m</strong>
-                          <span>Baseline avg</span>
+                          <strong className="home-metric-burn">$0</strong>
+                          <span>This month</span>
                         </div>
                         <div className="home-metric">
-                          <strong className="home-metric-burn">$12</strong>
-                          <span>This month</span>
+                          <strong>58m</strong>
+                          <span>Daily avg</span>
                         </div>
                       </div>
                     </div>
@@ -280,12 +271,12 @@ export function PhoneMockup() {
                 >
                   <div className="phone-header">
                     <div>
-                      <h3>Your Circle</h3>
-                      <p className="commitment-meta">Most disciplined · This week</p>
+                      <h3>The Usual Suspects</h3>
+                      <p className="commitment-meta">This month</p>
                     </div>
                   </div>
 
-                  <div className="activity-feed">
+                  <div className="activity-feed circle-feed">
                     {circleFeed.map((item, i) => (
                       <div className="activity-item" key={item.name}>
                         <span className="activity-rank">{i + 1}</span>
@@ -293,81 +284,44 @@ export function PhoneMockup() {
                         <div className="activity-body">
                           <strong>{item.name}</strong>
                           <p>
-                            {item.status === "clean" ? (
-                              <>
-                                <span>{item.cleanStreak}d clean</span>
-                                {item.unlocksWeek > 0 && (
-                                  <span> · {item.unlocksWeek} unlock{item.unlocksWeek > 1 ? "s" : ""}</span>
-                                )}
-                              </>
+                            {item.burned !== "$0" ? (
+                              <span className="circle-burned">{item.burned}</span>
                             ) : (
-                              <span className="activity-status-unlocked">Unlocked today</span>
+                              <span className="circle-clean">Clean</span>
                             )}
                           </p>
                         </div>
-                        <span className="leaderboard-amount">{item.burned}</span>
+                        <span className="circle-streak-val">
+                          {item.status === "unlocked" ? "Today" : item.cleanStreak > 0 ? `${item.cleanStreak}d` : "—"}
+                        </span>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="circle-input-wrap">
+                    <div className="ledger-row circle-input-row">
+                      <span className="group-input-mock">Call someone out…</span>
+                      <button className="group-send-btn" type="button" aria-label="Send">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="circle-comment">
+                      <img className="circle-comment-avatar" src="https://i.pravatar.cc/150?img=8" alt="Jamal Williams" width={28} height={28} />
+                      <div className="circle-comment-body">
+                        <div className="circle-comment-meta">
+                          <strong>Jamal</strong>
+                          <span className="circle-comment-time">· 1d ago</span>
+                        </div>
+                        <span>get a grip Jordan</span>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               )}
 
               {tab === 2 && (
-                <motion.div
-                  key="stats"
-                  className="phone-page"
-                  custom={direction}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={transition}
-                >
-                  <div className="phone-header">
-                    <div>
-                      <h3>Stats</h3>
-                      <p className="commitment-meta">Last 30 days</p>
-                    </div>
-                  </div>
-
-                  <div className="stats-overview">
-                    <div className="stats-hero">
-                      <div className="stats-hero-label">Daily average</div>
-                      <div className="stats-hero-row">
-                        <strong>58m</strong>
-                        <span className="stats-hero-before">↓ from 4h 12m</span>
-                      </div>
-                    </div>
-
-                    <div className="stats-metrics">
-                      <div className="stats-metric">
-                        <strong>12d</strong>
-                        <span>Streak</span>
-                      </div>
-                      <div className="stats-metric">
-                        <strong className="stats-metric-burn">$12</strong>
-                        <span>Burned</span>
-                      </div>
-                      <div className="stats-metric">
-                        <strong>8</strong>
-                        <span>Unlocks</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="ledger-panel">
-                    <p className="ledger-title">Unlock history</p>
-                    {unlockHistory.map((row, i) => (
-                      <div className="ledger-row" key={`${row.when}-${i}`}>
-                        <span className="ledger-time">{row.when} · {row.delta}</span>
-                        <span className="ledger-amount">{row.cost}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {tab === 3 && (
                 <motion.div
                   key="lock"
                   className="phone-page phone-page-lock"
@@ -398,41 +352,80 @@ export function PhoneMockup() {
                   </div>
                 </motion.div>
               )}
+
+              {tab === 3 && (
+                <motion.div
+                  key="settings"
+                  className="phone-page"
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={transition}
+                >
+                  <div className="phone-header">
+                    <h3>Settings</h3>
+                  </div>
+
+                  <div className="settings-section">
+                    <p className="settings-label">Monitored Apps</p>
+                    {["Instagram", "TikTok", "Snapchat", "X", "YouTube"].map((app) => (
+                      <div className="settings-row" key={app}>
+                        <span className="settings-row-name">{app}</span>
+                        <span className="settings-row-value settings-toggle-on" />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="settings-section">
+                    <p className="settings-label">Daily Limit</p>
+                    <div className="settings-row">
+                      <span className="settings-row-name">Allowance</span>
+                      <span className="settings-row-value settings-row-value-white">60 min</span>
+                    </div>
+                    <div className="settings-row">
+                      <span className="settings-row-name">Unlock duration</span>
+                      <span className="settings-row-value">3 min</span>
+                    </div>
+                    <div className="settings-row">
+                      <span className="settings-row-name">Unlock price</span>
+                      <span className="settings-row-value">$1.00</span>
+                    </div>
+                  </div>
+
+                  <div className="settings-section">
+                    <p className="settings-label">Notifications</p>
+                    <div className="settings-row">
+                      <span className="settings-row-name">10 min before</span>
+                      <span className="settings-row-value settings-toggle-on" />
+                    </div>
+                    <div className="settings-row">
+                      <span className="settings-row-name">At limit</span>
+                      <span className="settings-row-value settings-toggle-on" />
+                    </div>
+                    <div className="settings-row">
+                      <span className="settings-row-name">Daily recap</span>
+                      <span className="settings-row-value settings-toggle-on" />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
 
           <div className="phone-bottom-pill">
-            <button
-              type="button"
-              className={`pill-icon-btn${tab === 0 ? " active" : ""}`}
-              onClick={() => goTo(0)}
-              aria-label="Home"
-            >
+            <button type="button" className={`pill-icon-btn${tab === 0 ? " active" : ""}`} onClick={() => goTo(0)} aria-label="Home">
               <HomeIcon />
             </button>
-            <button
-              type="button"
-              className={`pill-icon-btn${tab === 1 ? " active" : ""}`}
-              onClick={() => goTo(1)}
-              aria-label="Circle"
-            >
+            <button type="button" className={`pill-icon-btn${tab === 1 ? " active" : ""}`} onClick={() => goTo(1)} aria-label="Circle">
               <GroupIcon />
             </button>
-            <button
-              type="button"
-              className={`pill-icon-btn${tab === 2 ? " active" : ""}`}
-              onClick={() => goTo(2)}
-              aria-label="Stats"
-            >
-              <StatsIcon />
-            </button>
-            <button
-              type="button"
-              className={`pill-icon-btn${tab === 3 ? " active" : ""}`}
-              onClick={() => goTo(3)}
-              aria-label="Lock"
-            >
+            <button type="button" className={`pill-icon-btn${tab === 2 ? " active" : ""}`} onClick={() => goTo(2)} aria-label="Lock">
               <LockIcon />
+            </button>
+            <button type="button" className={`pill-icon-btn${tab === 3 ? " active" : ""}`} onClick={() => goTo(3)} aria-label="Settings">
+              <SettingsIcon />
             </button>
           </div>
 
