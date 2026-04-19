@@ -232,7 +232,7 @@ export function PhoneMockup() {
                       <div className="home-metrics-row">
                         <div className="home-metric">
                           <strong>0</strong>
-                          <span>Unlocks today</span>
+                          <span>Breaks today</span>
                         </div>
                         <div className="home-metric">
                           <strong className="home-metric-burn">$0</strong>
