@@ -26,8 +26,8 @@ function formatEasternStatusTime(date: Date): string {
 
 
 const todaysUsage = [
-  { app: "Instagram", minutes: 7 },
-  { app: "TikTok", minutes: 3 },
+  { app: "TikTok", minutes: 37 },
+  { app: "Instagram", minutes: 3 },
   { app: "X", minutes: 2 },
   { app: "YouTube", minutes: 0 },
 ];
@@ -209,13 +209,14 @@ export function PhoneMockup() {
 
                     <div className="home-hero-block">
                       <div className="home-arc-wrap">
+                        <div className="home-arc-teal-glow" />
                         <div className="home-nebula-bg" />
                         <div className="stat-arc-container">
                           <svg className="stat-arc-svg" viewBox="0 0 100 100" overflow="visible" aria-hidden>
                             <defs>
                               <linearGradient id="arcGrad" x1="17.5" y1="82.5" x2="95.9" y2="46.4" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stopColor="#E8187A" />
-                                <stop offset="100%" stopColor="#9B3FD4" />
+                                <stop offset="0%" stopColor="#F26030" />
+                                <stop offset="100%" stopColor="#1AD4D4" />
                               </linearGradient>
                             </defs>
                             {/* Thin gray guide rings inside the arc (all radii below the arc path) */}
@@ -245,7 +246,7 @@ export function PhoneMockup() {
                             {/* minimalist rocket at arc tip — stubby capsule, 2× scale */}
                             <g transform="translate(95.9, 46.4) rotate(175.5) scale(2)">
                               <ellipse rx="1.4" ry="2.5" fill="white" />
-                              <ellipse cy="2.9" rx="0.5" ry="0.85" fill="#9B3FD4" opacity="0.90" />
+                              <ellipse cy="2.9" rx="0.5" ry="0.85" fill="#1AD4D4" opacity="0.90" />
                             </g>
                           </svg>
                           <div className="stat-arc-content">
