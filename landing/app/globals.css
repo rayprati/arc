@@ -631,7 +631,7 @@ li {
   padding: 0;
   border-radius: 36px;
   background:
-    linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
+    linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.66)),
     url('/starfield.png') center center / cover no-repeat,
     #050505;
   overflow: hidden;
@@ -1117,7 +1117,7 @@ li {
   width: calc(100% - 64px);
   height: 62px;
   gap: 0;
-  background: rgba(8, 8, 10, 0.68);
+  background: rgba(8, 8, 10, 0.88);
   backdrop-filter: blur(24px) saturate(1.8);
   -webkit-backdrop-filter: blur(24px) saturate(1.8);
   border: 1px solid rgba(255,255,255,0.13);
@@ -1188,6 +1188,27 @@ li {
   color: #F5F5F5;
   letter-spacing: 0;
   flex: 1;
+}
+
+.ledger-app-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.settings-app-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.app-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 5px;
 }
 
 .ledger-amount {
@@ -1912,7 +1933,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 48px;
 }
 
 .home-arc-wrap {
@@ -1980,7 +2001,7 @@ li {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding-top: 14px;
+  padding-top: 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   width: 100%;
 }
