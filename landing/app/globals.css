@@ -913,6 +913,7 @@ li {
   display: grid;
   gap: 18px;
   height: 100%;
+  zoom: 1.1;
   overflow: hidden;
   align-content: start;
 }
@@ -1943,24 +1944,41 @@ li {
   justify-content: center;
 }
 
-.home-arc-glow {
+.home-nebula-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 640px;
-  height: 640px;
-  background:
-    radial-gradient(circle, rgba(138, 164, 192, 0.05) 0%, transparent 38%),
-    radial-gradient(circle, rgba(29, 39, 60, 0.50) 0%, rgba(29, 39, 60, 0.31) 28%, rgba(20, 30, 50, 0.09) 52%, transparent 68%);
+  transform: translate(-46%, -56%) translateY(1px);
+  width: 365px;
+  height: 365px;
+  background-image: url('/nebula.png');
+  background-size: 220%;
+  background-position: 52% 48%;
   pointer-events: none;
   z-index: 0;
+  -webkit-mask-image:
+    radial-gradient(circle,
+      rgba(0,0,0,0.34) 0%,
+      rgba(0,0,0,0.25) 20%,
+      rgba(0,0,0,0.13) 37%,
+      rgba(0,0,0,0.04) 50%,
+      transparent 62%
+    );
+  mask-image:
+    radial-gradient(circle,
+      rgba(0,0,0,0.34) 0%,
+      rgba(0,0,0,0.25) 20%,
+      rgba(0,0,0,0.13) 37%,
+      rgba(0,0,0,0.04) 50%,
+      transparent 62%
+    );
 }
 
 .home-arc-wrap .stat-arc-container {
   position: relative;
   z-index: 1;
 }
+
 
 .home-below-arc {
   display: grid;
@@ -1983,12 +2001,18 @@ li {
   align-items: center;
 }
 
+.home-stat-center strong {
+  color: #F5F5F5;
+  font-size: 28px;
+  font-weight: 800;
+}
+
 .home-trend {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3px;
-  color: #5CB87A;
+  color: #2EE87A;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -1996,11 +2020,11 @@ li {
 }
 
 .home-stat-side .home-trend span {
-  color: #5CB87A;
+  color: #2EE87A;
 }
 
 .home-stat-side .home-trend svg {
-  color: #5CB87A;
+  color: #2EE87A;
 }
 
 .home-stat-side strong {

@@ -209,18 +209,17 @@ export function PhoneMockup() {
 
                     <div className="home-hero-block">
                       <div className="home-arc-wrap">
-                        <div className="home-arc-glow" />
+                        <div className="home-nebula-bg" />
                         <div className="stat-arc-container">
-                          <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
+                          <svg className="stat-arc-svg" viewBox="0 0 100 100" overflow="visible" aria-hidden>
                             <defs>
                               <linearGradient id="arcGrad" x1="17.5" y1="82.5" x2="95.9" y2="46.4" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stopColor="#8AA4C0" />
-                                <stop offset="62%" stopColor="#9BA8D4" />
-                                <stop offset="100%" stopColor="#B89FD8" />
+                                <stop offset="0%" stopColor="#E8187A" />
+                                <stop offset="100%" stopColor="#9B3FD4" />
                               </linearGradient>
                             </defs>
                             {/* Thin gray guide rings inside the arc (all radii below the arc path) */}
-                            {[37.57, 35.03].map((r) => (
+                            {[36.82, 34.33].map((r) => (
                               <circle
                                 key={`arc-ring-${r}`}
                                 cx="50"
@@ -240,12 +239,14 @@ export function PhoneMockup() {
                             <circle cx="50" cy="50" r="46" fill="none"
                               stroke="url(#arcGrad)" strokeWidth="5"
                               strokeLinecap="round"
-                              strokeDasharray="177.03 289.03"
+                              strokeDasharray="172 289.03"
                               transform="rotate(135 50 50)"
                             />
-                            {/* planet dot at arc tip */}
-                            <circle cx="95.9" cy="46.4" r="4.5" fill="rgba(255,255,255,0.18)" />
-                            <circle cx="95.9" cy="46.4" r="3" fill="white" />
+                            {/* minimalist rocket at arc tip — stubby capsule, 2× scale */}
+                            <g transform="translate(95.9, 46.4) rotate(175.5) scale(2)">
+                              <ellipse rx="1.4" ry="2.5" fill="white" />
+                              <ellipse cy="2.9" rx="0.5" ry="0.85" fill="#9B3FD4" opacity="0.90" />
+                            </g>
                           </svg>
                           <div className="stat-arc-content">
                             <strong>18m</strong>
