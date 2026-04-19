@@ -259,15 +259,20 @@ export function PhoneMockup() {
                           <strong>12d</strong>
                           <span>Clean streak</span>
                         </div>
+                        <div className="home-stat-side home-stat-center">
+                          <strong>58m</strong>
+                          <span>Daily avg</span>
+                          <div className="home-trend">
+                            <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden>
+                              <path d="M5 1.5v7M2.5 6l2.5 2.5L7.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span>4h 12m</span>
+                          </div>
+                        </div>
                         <div className="home-stat-side home-stat-right">
                           <strong>$0</strong>
                           <span>Dedicated</span>
                         </div>
-                      </div>
-
-                      <div className="home-stat-avg">
-                        <strong>58m</strong>
-                        <span>Daily avg</span>
                       </div>
                     </div>
                   </div>

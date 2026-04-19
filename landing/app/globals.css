@@ -802,7 +802,7 @@ li {
 }
 
 .phone-screen .phone-page-home > .ledger-panel {
-  margin-top: 48px;
+  margin-top: 28px;
 }
 
 .phone-screen .stats-overview + .ledger-panel {
@@ -1933,7 +1933,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
 }
 
 .home-arc-wrap {
@@ -1963,8 +1963,8 @@ li {
 }
 
 .home-below-arc {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   padding: 0 4px;
 }
@@ -1977,6 +1977,30 @@ li {
 
 .home-stat-side:last-child {
   align-items: flex-end;
+}
+
+.home-stat-center {
+  align-items: center;
+}
+
+.home-trend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #5CB87A;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
+
+.home-stat-side .home-trend span {
+  color: #5CB87A;
+}
+
+.home-stat-side .home-trend svg {
+  color: #5CB87A;
 }
 
 .home-stat-side strong {
@@ -2001,8 +2025,7 @@ li {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding-top: 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0;
   width: 100%;
 }
 
