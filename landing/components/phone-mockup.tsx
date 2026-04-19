@@ -163,7 +163,6 @@ export function PhoneMockup() {
         <div className="phone-side-button phone-side-button-vol-down" />
         <div className="phone-notch" />
         <div className="phone-screen">
-          <div className="phone-stars" aria-hidden />
           <div className="phone-status-bar">
             <span className="phone-status-time" aria-live="polite" aria-atomic="true">
               {statusTime}
@@ -190,22 +189,28 @@ export function PhoneMockup() {
                   <div className="home-top">
                     <div className="phone-header">
                       <h3>ARC</h3>
-                      <div className="header-right">
-                        <span className="header-name">Keith</span>
-                        <img
-                          className="header-avatar"
-                          src="https://i.pravatar.cc/150?img=13"
-                          alt="Profile"
-                          width={32}
-                          height={32}
-                        />
-                      </div>
+                      <button
+                        type="button"
+                        className="header-settings-glass"
+                        onClick={() => goTo(3)}
+                        aria-label="Settings"
+                      >
+                        <SettingsIcon />
+                      </button>
                     </div>
 
                     <div className="home-hero-block">
-                      <div className="stat-earth-moon">
+                      <div className="home-arc-wrap">
+                        <div className="home-arc-glow" />
                         <div className="stat-arc-container">
                           <svg className="stat-arc-svg" viewBox="0 0 100 100" aria-hidden>
+                            <defs>
+                              <linearGradient id="arcGrad" x1="17.5" y1="82.5" x2="95.9" y2="46.4" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stopColor="#8AA4C0" />
+                                <stop offset="62%" stopColor="#9BA8D4" />
+                                <stop offset="100%" stopColor="#B89FD8" />
+                              </linearGradient>
+                            </defs>
                             <circle cx="50" cy="50" r="46" fill="none"
                               stroke="rgba(255,255,255,0.08)" strokeWidth="5"
                               strokeLinecap="round"
@@ -213,36 +218,36 @@ export function PhoneMockup() {
                               transform="rotate(135 50 50)"
                             />
                             <circle cx="50" cy="50" r="46" fill="none"
-                              stroke="#8AA4C0" strokeWidth="5"
+                              stroke="url(#arcGrad)" strokeWidth="5"
                               strokeLinecap="round"
                               strokeDasharray="177.03 289.03"
                               transform="rotate(135 50 50)"
                             />
+                            {/* planet dot at arc tip */}
+                            <circle cx="95.9" cy="46.4" r="4.5" fill="rgba(255,255,255,0.18)" />
+                            <circle cx="95.9" cy="46.4" r="3" fill="white" />
                           </svg>
                           <div className="stat-arc-content">
                             <strong>18m</strong>
                             <span>Left today</span>
                           </div>
                         </div>
-                        <div className="stat-moon">
-                          <strong><AnimatedNumber to={12} suffix="d" /></strong>
+                      </div>
+
+                      <div className="home-below-arc">
+                        <div className="home-stat-side">
+                          <strong>12d</strong>
                           <span>Clean streak</span>
+                        </div>
+                        <div className="home-stat-side home-stat-right">
+                          <strong>$0</strong>
+                          <span>This month</span>
                         </div>
                       </div>
 
-                      <div className="home-metrics-row">
-                        <div className="home-metric">
-                          <strong>0</strong>
-                          <span>Breaks today</span>
-                        </div>
-                        <div className="home-metric">
-                          <strong className="home-metric-burn">$0</strong>
-                          <span>This month</span>
-                        </div>
-                        <div className="home-metric">
-                          <strong>58m</strong>
-                          <span>Daily avg</span>
-                        </div>
+                      <div className="home-stat-avg">
+                        <strong>58m</strong>
+                        <span>Daily avg</span>
                       </div>
                     </div>
                   </div>
@@ -424,9 +429,6 @@ export function PhoneMockup() {
             </button>
             <button type="button" className={`pill-icon-btn${tab === 2 ? " active" : ""}`} onClick={() => goTo(2)} aria-label="Lock">
               <LockIcon />
-            </button>
-            <button type="button" className={`pill-icon-btn${tab === 3 ? " active" : ""}`} onClick={() => goTo(3)} aria-label="Settings">
-              <SettingsIcon />
             </button>
           </div>
 
