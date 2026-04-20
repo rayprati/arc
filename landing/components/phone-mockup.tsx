@@ -307,7 +307,7 @@ export function PhoneMockup() {
               {tab === 1 && (
                 <motion.div
                   key="circle"
-                  className="phone-page"
+                  className="phone-page phone-page-circle"
                   custom={direction}
                   variants={variants}
                   initial="enter"
@@ -362,11 +362,21 @@ export function PhoneMockup() {
                       </button>
                     </div>
                     <div className="circle-comment">
+                      <img className="circle-comment-avatar" src="https://i.pravatar.cc/150?img=16" alt="Alexa Peterson" width={28} height={28} />
+                      <div className="circle-comment-body">
+                        <div className="circle-comment-meta">
+                          <strong>Alexa</strong>
+                          <span className="circle-comment-time">· 5m ago</span>
+                        </div>
+                        <span>You can do it Jordan! Start tomorrow fresh. We&apos;ll do it together</span>
+                      </div>
+                    </div>
+                    <div className="circle-comment">
                       <img className="circle-comment-avatar" src="https://i.pravatar.cc/150?img=8" alt="Jamal Williams" width={28} height={28} />
                       <div className="circle-comment-body">
                         <div className="circle-comment-meta">
                           <strong>Jamal</strong>
-                          <span className="circle-comment-time">· 1d ago</span>
+                          <span className="circle-comment-time">· 4d ago</span>
                         </div>
                         <span>get a grip Jordan</span>
                       </div>
