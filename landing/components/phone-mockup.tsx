@@ -314,7 +314,7 @@ export function PhoneMockup() {
                       <p className="commitment-meta">This month</p>
                     </div>
                     <button type="button" className="header-settings-glass" aria-label="Add friend">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
                         <circle cx="9" cy="7" r="4" />
                         <line x1="19" y1="8" x2="19" y2="14" />
@@ -380,22 +380,19 @@ export function PhoneMockup() {
                   transition={transition}
                 >
                   <div className="lock-screen">
-                    <div className="lock-icon-wrap">
-                      <LockBigIcon />
-                    </div>
-                    <h2 className="lock-title">Time&apos;s Up</h2>
-                    <p className="lock-body">You&apos;ve used today&apos;s social allowance.</p>
+                    <h2 className="lock-title">Every decision you make has a cost</h2>
+                    <p className="lock-body">The choice is yours.</p>
 
                     <div className="lock-cta-group">
                       <button type="button" className="lock-cta-primary">
-                        Unlock 10m for $1
+                        $1
                       </button>
                       <button type="button" className="lock-cta-secondary">
-                        Stay Locked
+                        Continue my Arc
                       </button>
                     </div>
 
-                    <p className="lock-note">This breaks today&apos;s clean streak.</p>
+                    <p className="lock-note">Growth compounds. So do costs.</p>
                   </div>
                 </motion.div>
               )}
