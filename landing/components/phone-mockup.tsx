@@ -268,6 +268,7 @@ export function PhoneMockup() {
 
                       <div className="home-below-arc">
                         <div className="home-stat-side">
+                          <span>Streak</span>
                           <strong>
                             12d
                             <svg width="17" height="20" viewBox="0 0 16 20" fill="none" aria-hidden style={{ display: "inline-block", verticalAlign: "middle", marginLeft: "3px", marginBottom: "1px" }}>
@@ -285,11 +286,10 @@ export function PhoneMockup() {
                               <ellipse cx="8" cy="12.5" rx="2.2" ry="3" fill="#FFE066" opacity="0.55" />
                             </svg>
                           </strong>
-                          <span>Streak</span>
                         </div>
                         <div className="home-stat-side home-stat-center">
-                          <strong>58m</strong>
                           <span>Daily avg</span>
+                          <strong>58m</strong>
                           <div className="home-trend">
                             <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden>
                               <path d="M5 1.5v7M2.5 6l2.5 2.5L7.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -298,8 +298,8 @@ export function PhoneMockup() {
                           </div>
                         </div>
                         <div className="home-stat-side home-stat-right">
-                          <strong>$0</strong>
                           <span>Dedicated</span>
+                          <strong>$0</strong>
                         </div>
                       </div>
                     </div>

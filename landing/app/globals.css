@@ -727,7 +727,7 @@ li {
 
 .stat-arc-content strong {
   margin-top: 0;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 400;
   font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.03em;
@@ -2012,10 +2012,11 @@ li {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  align-items: center;
 }
 
 .home-stat-side:last-child {
-  align-items: flex-end;
+  align-items: center;
 }
 
 .home-stat-center {
@@ -2024,7 +2025,7 @@ li {
 
 .home-stat-center strong {
   color: #F5F5F5;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
   font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.03em;
@@ -2052,7 +2053,7 @@ li {
 }
 
 .home-stat-side strong {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
   font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.03em;
