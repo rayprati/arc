@@ -271,7 +271,7 @@ export function PhoneMockup() {
                           <span>Streak</span>
                           <strong>
                             12d
-                            <svg width="17" height="20" viewBox="0 0 16 20" fill="none" aria-hidden style={{ display: "inline-block", verticalAlign: "middle", marginLeft: "3px", marginBottom: "1px" }}>
+                            <svg width="17" height="20" viewBox="0 0 16 20" fill="none" aria-hidden style={{ display: "inline-block", verticalAlign: "middle", marginLeft: "3px", marginBottom: "3px" }}>
                               <defs>
                                 <radialGradient id="flameGrad" cx="50%" cy="62%" r="52%">
                                   <stop offset="0%" stopColor="#FFF5A0" />
@@ -307,15 +307,24 @@ export function PhoneMockup() {
 
                   <div className="ledger-panel">
                     <p className="ledger-title">Today&apos;s usage</p>
-                    {todaysUsage.map((row) => (
-                      <div className="ledger-row" key={row.app}>
-                        <span className="ledger-time ledger-app-name">
-                          <img className="app-icon" src={`https://www.google.com/s2/favicons?domain=${appDomains[row.app]}&sz=256`} alt="" />
-                          {row.app}
-                        </span>
-                        <span className="ledger-amount ledger-minutes">{row.minutes}m</span>
-                      </div>
-                    ))}
+                    {todaysUsage.map((row) => {
+                      const pct = Math.min(row.minutes / 60, 1) * 100;
+                      return (
+                        <div className="ledger-row" key={row.app}>
+                          <span className="ledger-time ledger-app-name">
+                            <img className="app-icon" src={`https://www.google.com/s2/favicons?domain=${appDomains[row.app]}&sz=256`} alt="" />
+                            {row.app}
+                          </span>
+                          <div className="ledger-progress-track">
+                            <div className="ledger-progress-fill" style={{ width: `${pct}%` }} />
+                            {[22, 50, 78].map((p) => (
+                              <div key={p} className="ledger-planet" style={{ left: `${p}%` }} />
+                            ))}
+                          </div>
+                          <span className="ledger-amount ledger-minutes">{row.minutes}m</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}

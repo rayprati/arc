@@ -1195,11 +1195,41 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   height: 52px;
-  padding: 0 16px;
-  background: #1A1A1E;
-  border-radius: 12px;
+  padding: 0 4px;
+  background: none;
+  border-radius: 0;
   border: none;
+}
+
+.ledger-progress-track {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+}
+
+.ledger-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(to right, #1AD4D4, #F26030);
+  background-size: 200px 100%;
+}
+
+.ledger-planet {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.22);
+  z-index: 2;
 }
 
 .ledger-time {
@@ -1207,7 +1237,8 @@ li {
   font-weight: 400;
   color: #F5F5F5;
   letter-spacing: 0;
-  flex: 1;
+  width: 100px;
+  flex-shrink: 0;
 }
 
 .ledger-app-name {
@@ -1944,6 +1975,8 @@ li {
   align-items: center;
   gap: 42px;
   margin-top: -6px;
+  transform: scale(1.05);
+  transform-origin: top center;
 }
 
 .home-arc-wrap {
