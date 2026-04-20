@@ -196,7 +196,10 @@ export function PhoneMockup() {
                 >
                   <div className="home-top">
                     <div className="phone-header">
-                      <h3 className="header-arc-glass">ARC</h3>
+                      <div className="header-arc-wrap">
+                        <h3 className="header-arc-title">A R C</h3>
+                        <span className="header-arc-sub">Keith</span>
+                      </div>
                       <button
                         type="button"
                         className="header-settings-glass"
