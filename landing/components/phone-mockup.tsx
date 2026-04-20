@@ -317,9 +317,6 @@ export function PhoneMockup() {
                           </span>
                           <div className="ledger-progress-track">
                             <div className="ledger-progress-fill" style={{ width: `${pct}%` }} />
-                            {[22, 50, 78].map((p) => (
-                              <div key={p} className="ledger-planet" style={{ left: `${p}%` }} />
-                            ))}
                           </div>
                           <span className="ledger-amount ledger-minutes">{row.minutes}m</span>
                         </div>
