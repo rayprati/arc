@@ -246,10 +246,17 @@ export function PhoneMockup() {
                               strokeDasharray="172 289.03"
                               transform="rotate(135 50 50)"
                             />
-                            {/* minimalist rocket at arc tip — stubby capsule, 2× scale */}
+                            {/* rocket at arc tip — tapered nose, fins, porthole */}
                             <g transform="translate(95.9, 46.4) rotate(175.5) scale(2)">
-                              <ellipse rx="1.4" ry="2.5" fill="white" />
-                              <ellipse cy="2.9" rx="0.5" ry="0.85" fill="#1AD4D4" opacity="0.90" />
+                              {/* body — tapered toward nose */}
+                              <path d="M0,-3.1 C0.5,-3.1 1.4,-1.6 1.4,0.9 L1.4,1.9 C1.4,2.4 0.8,2.6 0,2.6 C-0.8,2.6 -1.4,2.4 -1.4,1.9 L-1.4,0.9 C-1.4,-1.6 -0.5,-3.1 0,-3.1 Z" fill="white" />
+                              {/* fins */}
+                              <path d="M1.4,1.2 L2.5,2.8 L1.4,2.4 Z" fill="rgba(255,255,255,0.65)" />
+                              <path d="M-1.4,1.2 L-2.5,2.8 L-1.4,2.4 Z" fill="rgba(255,255,255,0.65)" />
+                              {/* porthole */}
+                              <circle cy="-0.4" r="0.52" fill="rgba(26,212,212,0.70)" />
+                              {/* exhaust */}
+                              <ellipse cy="3.1" rx="0.5" ry="0.85" fill="#1AD4D4" opacity="0.90" />
                             </g>
                           </svg>
                           <div className="stat-arc-content">
