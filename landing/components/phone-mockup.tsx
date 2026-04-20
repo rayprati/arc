@@ -423,7 +423,7 @@ export function PhoneMockup() {
                     <p className="lock-note">Growth compounds. So do costs.</p>
                   </div>
                   <div className="lock-screen">
-                    <h2 className="lock-title">Every decision you make has a cost</h2>
+                    <h2 className="lock-title">Every decision has a cost</h2>
                     <p className="lock-body">The choice is yours.</p>
                     <button type="button" className="lock-cta-white">Continue the arc</button>
                   </div>
