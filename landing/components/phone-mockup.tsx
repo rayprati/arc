@@ -418,20 +418,14 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
+                  <div className="lock-top-actions">
+                    <button type="button" className="lock-cta-red-small">$1 to break today</button>
+                    <p className="lock-note">Growth compounds. So do costs.</p>
+                  </div>
                   <div className="lock-screen">
                     <h2 className="lock-title">Every decision you make has a cost</h2>
                     <p className="lock-body">The choice is yours.</p>
-
-                    <div className="lock-cta-group">
-                      <button type="button" className="lock-cta-primary">
-                        $1
-                      </button>
-                      <button type="button" className="lock-cta-secondary">
-                        Continue my Arc
-                      </button>
-                    </div>
-
-                    <p className="lock-note">Growth compounds. So do costs.</p>
+                    <button type="button" className="lock-cta-white">Continue the arc</button>
                   </div>
                 </motion.div>
               )}
