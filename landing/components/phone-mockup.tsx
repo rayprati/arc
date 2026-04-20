@@ -285,7 +285,7 @@ export function PhoneMockup() {
                               <ellipse cx="8" cy="12.5" rx="2.2" ry="3" fill="#FFE066" opacity="0.55" />
                             </svg>
                           </strong>
-                          <span>Clean streak</span>
+                          <span>Streak</span>
                         </div>
                         <div className="home-stat-side home-stat-center">
                           <strong>58m</strong>
