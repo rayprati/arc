@@ -268,7 +268,23 @@ export function PhoneMockup() {
 
                       <div className="home-below-arc">
                         <div className="home-stat-side">
-                          <strong>12d</strong>
+                          <strong>
+                            12d
+                            <svg width="17" height="20" viewBox="0 0 16 20" fill="none" aria-hidden style={{ display: "inline-block", verticalAlign: "middle", marginLeft: "3px", marginBottom: "1px" }}>
+                              <defs>
+                                <radialGradient id="flameGrad" cx="50%" cy="62%" r="52%">
+                                  <stop offset="0%" stopColor="#FFF5A0" />
+                                  <stop offset="38%" stopColor="#FFD060" />
+                                  <stop offset="78%" stopColor="#F26030" />
+                                  <stop offset="100%" stopColor="#F26030" stopOpacity="0" />
+                                </radialGradient>
+                              </defs>
+                              <ellipse cx="8" cy="13" rx="7.5" ry="9" fill="#F26030" opacity="0.11" />
+                              <ellipse cx="8" cy="12.5" rx="5" ry="6.5" fill="#F26030" opacity="0.18" />
+                              <path d="M8,1.5 C9.2,3.2 12.5,7 12.5,11 C12.5,14.8 10.5,17.5 8,17.5 C5.5,17.5 3.5,14.8 3.5,11 C3.5,7.8 5.8,5.5 6.2,4.8 C6,6.2 6.8,7.2 7.5,7.4 C6.5,5.8 6.4,3 8,1.5 Z" fill="url(#flameGrad)" />
+                              <ellipse cx="8" cy="12.5" rx="2.2" ry="3" fill="#FFE066" opacity="0.55" />
+                            </svg>
+                          </strong>
                           <span>Clean streak</span>
                         </div>
                         <div className="home-stat-side home-stat-center">
