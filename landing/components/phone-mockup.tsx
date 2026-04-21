@@ -418,14 +418,18 @@ export function PhoneMockup() {
                   exit="exit"
                   transition={transition}
                 >
-                  <div className="lock-top-actions">
-                    <button type="button" className="lock-cta-red-small">$1 to break today</button>
-                    <p className="lock-note">Growth compounds. So do costs.</p>
-                  </div>
                   <div className="lock-screen">
+                    <svg className="lock-rocket" width="54" height="72" viewBox="-3 -3.6 6 8" fill="none" aria-hidden>
+                      <path d="M0,-3.1 C0.5,-3.1 1.4,-1.6 1.4,0.9 L1.4,1.9 C1.4,2.4 0.8,2.6 0,2.6 C-0.8,2.6 -1.4,2.4 -1.4,1.9 L-1.4,0.9 C-1.4,-1.6 -0.5,-3.1 0,-3.1 Z" fill="white" />
+                      <path d="M1.4,1.2 L2.5,2.8 L1.4,2.6 Z" fill="white" />
+                      <path d="M-1.4,1.2 L-2.5,2.8 L-1.4,2.6 Z" fill="white" />
+                      <circle cy="-0.4" r="0.52" fill="rgba(26,212,212,0.70)" />
+                      <ellipse cy="3.1" rx="0.5" ry="0.85" fill="#1AD4D4" opacity="0.90" />
+                    </svg>
                     <h2 className="lock-title">Every decision has a cost</h2>
                     <p className="lock-body">The choice is yours.</p>
                     <button type="button" className="lock-cta-white">Continue the arc</button>
+                    <button type="button" className="lock-cta-red-small">$1 to break today</button>
                   </div>
                 </motion.div>
               )}
