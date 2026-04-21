@@ -781,16 +781,16 @@ li {
 }
 
 .phone-screen .leaderboard-amount {
-  color: #D84B4B;
+  color: #C84343;
 }
 
 .phone-screen .stat-card strong.stat-danger,
 .phone-screen .stat-card strong.stat-danger span {
-  color: #D84B4B;
+  color: #C84343;
 }
 
 .phone-screen .leaderboard-amount {
-  color: #D84B4B;
+  color: #C84343;
 }
 
 .phone-screen .ledger-panel {
@@ -1266,7 +1266,7 @@ li {
 .ledger-amount {
   font-size: 15px;
   font-weight: 400;
-  color: #D84B4B;
+  color: #C84343;
   letter-spacing: 0;
 }
 
@@ -1671,11 +1671,11 @@ li {
 }
 
 .activity-status-unlocked {
-  color: #D84B4B;
+  color: #C84343;
 }
 
 .circle-burned {
-  color: #D84B4B;
+  color: #C84343;
   font-size: 0.76rem;
 }
 
@@ -1966,7 +1966,7 @@ li {
 }
 
 .stats-metric-burn {
-  color: #D84B4B !important;
+  color: #C84343 !important;
 }
 
 .home-hero-block {
@@ -2157,7 +2157,7 @@ li {
 }
 
 .home-metric-burn {
-  color: #D84B4B;
+  color: #C84343;
 }
 
 .home-metric span {
@@ -2298,7 +2298,8 @@ li {
 
 .lock-cta-red-small {
   padding: 7px 16px;
-  background: #C92B2B;
+  /* Home stat arc orange (arcGrad stop) */
+  background: #F26030;
   color: #FFFFFF;
   border: none;
   border-radius: 50px;
@@ -2311,7 +2312,7 @@ li {
 }
 
 .lock-cta-red-small:hover {
-  background: #D63535;
+  background: #FF7A4A;
 }
 
 .lock-cta-red-small:active {
